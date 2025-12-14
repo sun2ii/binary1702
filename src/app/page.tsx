@@ -4,7 +4,8 @@ import { siteConfig } from "@/config/site";
 
 const projectColors: Record<string, string> = {
   "Binary1702": "#f59e0b",
-  "Japanese Intent Game": "#a78bfa",
+  "iKnowJapanese": "#a78bfa",
+  "StenoRacer": "#3b82f6",
 };
 
 function getProjectColor(project: string): string {
