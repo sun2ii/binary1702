@@ -13,6 +13,10 @@ export const metadata: Metadata = {
   title: siteConfig.name,
   description: siteConfig.description,
   manifest: "/manifest.webmanifest",
+  icons: {
+    icon: "/icons/icon-512.ico",
+    apple: "/icons/icon-512.png",
+  },
 };
 
 export const viewport: Viewport = {
@@ -32,13 +36,10 @@ export default function RootLayout({
             <Link href="/" className="font-semibold">
               {siteConfig.name}
             </Link>
-            <Link href="/#services" className="text-[var(--muted)] hover:text-[var(--fg)]">
-              Services
-            </Link>
             <Link href="/logs" className="text-[var(--muted)] hover:text-[var(--fg)]">
               Work Log
             </Link>
-            <Link href="/#contact" className="text-[var(--muted)] hover:text-[var(--fg)]">
+            <Link href="/contact" className="text-[var(--muted)] hover:text-[var(--fg)]">
               Contact
             </Link>
           </nav>
