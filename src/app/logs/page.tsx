@@ -5,8 +5,13 @@ export default function LogsPage() {
   const logs = getAllLogs();
 
   return (
-    <div>
-      <h1 className="text-2xl font-semibold mb-6">Logs</h1>
+    <div className="max-w-4xl mx-auto px-6 py-8">
+      <div className="mb-8 space-y-2">
+        <h1 className="text-2xl md:text-3xl font-semibold">Work Log</h1>
+        <p className="text-[var(--muted)] text-sm md:text-base">
+          Public record of what we ship, when it ships, and why work stops.
+        </p>
+      </div>
 
       {logs.length === 0 ? (
         <p className="text-[#888]">No logs yet.</p>
