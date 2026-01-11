@@ -5,57 +5,43 @@ export function Services() {
     {
       title: 'Web Systems',
       items: [
-        'Secure client portals',
-        'Client access and intake pages',
-        'Inventory interfaces',
-        'Live connections to existing data and workflows'
+        'Client portals and intake forms',
+        'Real-time inventory tracking',
+        'Data connections to existing tools'
       ],
       priority: 'primary',
     },
     {
       title: 'AI Consulting',
       items: [
-        'Internal workflow automation',
-        'AI-assisted drafting and review tools',
-        'Document intake and sorting',
-        'Reduction of repetitive back-office tasks'
+        'Automate repetitive tasks',
+        'AI-assisted drafting and review',
+        'Document routing and sorting'
       ],
       priority: 'primary',
     },
     {
       title: 'Backend Services',
       items: [
-        'Reliable data handoffs',
-        'Connections between business systems',
-        'Ongoing support and monitoring',
-        'Secure database access'
+        'System integrations',
+        'Eliminate duplicate data entry',
+        'Ongoing support and monitoring'
       ],
       priority: 'infrastructure',
     },
     {
       title: 'Data & Analytics',
       items: [
-        'Data flow setup',
         'Reporting automation',
-        'Data cleanup and standardization',
-        'Clear operational metrics'
+        'Data cleanup and insights',
+        'Operational metrics'
       ],
       priority: 'infrastructure',
-    },
-    {
-      title: 'Compliance',
-      items: [
-        'Documentation',
-        'Access controls',
-        'Audit trail records',
-        'HIPAA and SOC 2 readiness'
-      ],
-      priority: 'supporting',
     },
   ];
 
   return (
-    <section id="services" className="py-20 md:py-28 px-6 md:px-8 space-y-12 bg-[var(--panel)] -mx-6">
+    <section id="services" className="py-12 md:py-16 px-6 md:px-8 space-y-12 bg-[var(--panel)] -mx-6">
       <div className="max-w-6xl mx-auto">
         <SectionHeading level={2}>Services</SectionHeading>
 
