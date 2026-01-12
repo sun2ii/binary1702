@@ -10,8 +10,8 @@ export function Hero() {
       </SectionHeading>
 
       <p className="text-lg md:text-xl text-[var(--muted)] max-w-3xl">
-        We design and implement web systems, AI automations, and backend infrastructure
-        that integrate with how your business actually operates.
+        We design and implement practical systems that <span className="text-green-400">reduce overhead</span>, <span className="text-green-400">improve visibility</span>, and <span className="text-green-400">protect margins</span>.
+        Our work pays for itself by helping businesses operate more efficiently and grow with confidence.
       </p>
 
       <div className="flex flex-col gap-3 pt-4 items-center sm:items-start">

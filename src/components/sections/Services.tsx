@@ -1,95 +1,65 @@
-'use client';
-
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { useState, useEffect } from 'react';
 
 export function Services() {
   const services = [
     {
-      title: 'Web Systems',
+      title: 'AI-Powered Automation',
       items: [
-        'Client portals and intake forms',
-        'Real-time inventory tracking',
-        'Data connections to existing tools'
+        'Automate repetitive admin and document handling',
+        'Reduce review and approval delays',
+        'Apply AI carefully where it saves time without introducing risk'
       ],
       priority: 'primary',
     },
     {
-      title: 'AI Consulting',
+      title: 'Custom Business Systems',
       items: [
-        'Automate repetitive tasks',
-        'AI-assisted drafting and review',
-        'Document routing and sorting'
+        'Replace spreadsheets and inbox chaos with one system',
+        'Forms and tools that capture information once and reuse it everywhere it\'s needed',
+        'Systems built around how you actually operate, so they don\'t break when business picks up'
       ],
       priority: 'primary',
     },
     {
-      title: 'Backend Services',
+      title: 'Operational Visibility',
       items: [
-        'System integrations',
-        'Eliminate duplicate data entry',
-        'Ongoing support and monitoring'
+        'Clear status across projects, clients, and operations',
+        'Early signals when things start slipping',
+        'Defined ownership so issues don\'t disappear'
       ],
       priority: 'infrastructure',
     },
     {
-      title: 'Data & Analytics',
+      title: 'Reporting & Insights',
       items: [
-        'Reporting automation',
-        'Data cleanup and insights',
-        'Operational metrics'
+        'Simple reports tied to real operational questions',
+        'Dashboards designed for owners, not analysts',
+        'Clean, consistent data you can trust'
       ],
       priority: 'infrastructure',
     },
   ];
-
-  const [expandedServices, setExpandedServices] = useState<string[]>([]);
-
-  useEffect(() => {
-    // On desktop, expand all services by default
-    if (window.innerWidth >= 640) {
-      setExpandedServices(services.map(s => s.title));
-    }
-  }, []);
-
-  const toggleService = (title: string) => {
-    setExpandedServices((prev) =>
-      prev.includes(title)
-        ? prev.filter((t) => t !== title)
-        : [...prev, title]
-    );
-  };
 
   return (
     <section id="services" className="py-12 md:py-16 px-6 md:px-8 space-y-12 bg-[var(--panel)] -mx-6">
       <div className="max-w-6xl mx-auto">
         <SectionHeading level={2}>Services</SectionHeading>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
         {services.map((service) => {
-          const isExpanded = expandedServices.includes(service.title);
           return (
             <div key={service.title} className="space-y-3">
-              <button
-                onClick={() => toggleService(service.title)}
-                className="w-full text-left cursor-pointer"
-              >
-                <h3 className={`text-lg font-semibold border-l-2 pl-3 transition-colors ${
-                  isExpanded ? 'border-[var(--accent)]' : 'border-[var(--accent)]/60'
-                } ${service.priority === 'supporting' ? 'text-[var(--muted)]' : ''}`}>
-                  {service.title}
-                </h3>
-              </button>
-              {isExpanded && (
-                <ul className="space-y-1.5">
-                  {service.items.map((item, index) => (
-                    <li key={index} className="text-[var(--muted)] text-xs leading-relaxed flex items-start">
-                      <span className="mr-2 mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-[var(--muted)]"></span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <h3 className="text-base md:text-lg font-semibold border-l-2 border-[var(--accent)] pl-3 text-center">
+                {service.title}
+              </h3>
+              <ul className="space-y-1.5">
+                {service.items.map((item, index) => (
+                  <li key={index} className="text-[var(--muted)] text-xs leading-relaxed flex items-start">
+                    <span className="mr-2 mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-[var(--muted)]"></span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           );
         })}
