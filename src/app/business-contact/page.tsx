@@ -85,8 +85,14 @@ export default function BusinessContactPage() {
       <section className="space-y-6 pt-8 border-t border-[var(--border)]">
         <h2 className="text-xl font-semibold">Pricing</h2>
         <div className="space-y-4">
+          <div className="inline-block px-3 py-1 mb-2 text-xs font-semibold uppercase tracking-wide bg-[var(--accent)] text-[var(--bg)] rounded">
+            Limited Time Offer
+          </div>
           <div className="space-y-2">
-            <p className="text-2xl font-semibold">$500</p>
+            <div className="flex items-baseline gap-3">
+              <p className="text-2xl font-semibold">$149</p>
+              <p className="text-lg text-[var(--muted)] line-through">$500</p>
+            </div>
             <p className="text-sm text-[var(--muted)]">One-time setup. No recurring fees.</p>
           </div>
           <p className="text-sm text-[var(--muted)] leading-relaxed">

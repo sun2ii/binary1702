@@ -14,7 +14,7 @@ export function Hero() {
         that integrate with how your business actually operates.
       </p>
 
-      <div className="flex flex-col gap-3 pt-4 items-center">
+      <div className="flex flex-col gap-3 pt-4 items-center sm:items-start">
         <div className="flex flex-col sm:flex-row gap-3">
           <Button variant="primary" href={siteConfig.contact.calendly} external>
             Schedule an Intro Call

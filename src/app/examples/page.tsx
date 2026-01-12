@@ -87,7 +87,7 @@ export default function ExamplesPage() {
         </div>
 
         {/* CTA Section */}
-        <div className="pt-12 border-t border-[var(--border)] text-center space-y-6">
+        <div className="pt-12 py-12 md:py-16 px-6 md:px-8 -mx-6 bg-[var(--panel)] text-center space-y-6">
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold">See your business here?</h2>
             <p className="text-[var(--muted)] max-w-2xl mx-auto">

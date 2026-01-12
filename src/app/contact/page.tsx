@@ -1,73 +1,138 @@
 'use client';
 
-import QRCode from 'react-qr-code';
-import { siteConfig } from '@/config/site';
-import Link from 'next/link';
-
-const generateVCard = () => {
-  return [
-    'BEGIN:VCARD',
-    'VERSION:4.0',
-    'FN:Ben Basuni',
-    'N:Basuni;Ben;;;',
-    'ORG:Binary 1702 LLC',
-    'TITLE:Principal',
-    'TEL;TYPE=work,voice:+19165957155',
-    'EMAIL:ben@binary1702.com',
-    'URL:https://binary1702.com',
-    'TZ:America/Los_Angeles',
-    'PHOTO;MEDIATYPE=image/jpeg:https://binary1702.com/profile-pic.jpg',
-    'END:VCARD',
-  ].join('\n');
-};
+import { SectionHeading } from '@/components/ui/SectionHeading';
+import { useState } from 'react';
 
 export default function ContactPage() {
-  const vcardString = generateVCard();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || 'Failed to send message');
+      }
+
+      setStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage(error instanceof Error ? error.message : 'Something went wrong');
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   return (
     <div className="max-w-2xl mx-auto px-6 py-16 md:py-24">
       <div className="space-y-8">
-        <div>
-          <h1 className="text-2xl md:text-3xl font-semibold mb-2">
-            Contact Information
-          </h1>
-          <p className="text-[var(--muted)]">
-            Scan to add Binary 1702 to your contacts
+        {/* Header */}
+        <div className="space-y-4">
+          <SectionHeading level={1}>Contact</SectionHeading>
+          <p className="text-lg text-[var(--muted)]">
+            Have a question or want to discuss a project? Send a message and I'll get back to you soon.
           </p>
         </div>
 
-        <div className="flex flex-col items-center gap-6 py-8">
-          {/* QR Code */}
-          <div className="bg-white p-6 rounded-sm">
-            <QRCode
-              value={vcardString}
-              size={256}
-              level="H"
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Name */}
+          <div className="space-y-2">
+            <label htmlFor="name" className="block text-sm font-medium">
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-2 bg-[var(--panel)] border border-[var(--border)] rounded-sm focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent"
             />
           </div>
 
-          {/* Contact Details */}
-          <div className="text-center space-y-1">
-            <p className="font-semibold">Ben Basuni</p>
-            <p className="text-[var(--muted)]">Binary 1702 LLC</p>
-            <a
-              href={`mailto:${siteConfig.contact.email}`}
-              className="text-[var(--accent)] hover:underline"
-            >
-              {siteConfig.contact.email}
-            </a>
+          {/* Email */}
+          <div className="space-y-2">
+            <label htmlFor="email" className="block text-sm font-medium">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-2 bg-[var(--panel)] border border-[var(--border)] rounded-sm focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent"
+            />
           </div>
-        </div>
 
-        {/* Back Link */}
-        <div className="text-center">
-          <Link
-            href="/"
-            className="text-sm text-[var(--muted)] hover:text-[var(--fg)]"
+          {/* Message */}
+          <div className="space-y-2">
+            <label htmlFor="message" className="block text-sm font-medium">
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              rows={6}
+              className="w-full px-4 py-2 bg-[var(--panel)] border border-[var(--border)] rounded-sm focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent resize-none"
+            />
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            disabled={status === 'loading'}
+            className="w-full px-6 py-3 bg-[var(--accent)] text-[var(--bg)] font-medium rounded-sm hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
           >
-            ← Back to home
-          </Link>
-        </div>
+            {status === 'loading' ? 'Sending...' : 'Send Message'}
+          </button>
+
+          {/* Status Messages */}
+          {status === 'success' && (
+            <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-sm">
+              <p className="text-sm text-green-500">
+                Message sent successfully! I'll get back to you soon.
+              </p>
+            </div>
+          )}
+
+          {status === 'error' && (
+            <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-sm">
+              <p className="text-sm text-red-500">
+                {errorMessage || 'Failed to send message. Please try again.'}
+              </p>
+            </div>
+          )}
+        </form>
       </div>
     </div>
   );

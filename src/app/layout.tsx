@@ -31,23 +31,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistMono.variable} antialiased min-h-screen flex flex-col`}>
-        <header className="border-b border-[var(--border)] px-6 py-4">
-          <nav className="max-w-4xl mx-auto flex gap-6 text-sm">
-            <Link href="/" className="font-semibold">
-              {siteConfig.name}
-            </Link>
-            <Link href="/logs" className="text-[var(--muted)] hover:text-[var(--fg)]">
-              Work Log
-            </Link>
-            <Link href="/contact" className="text-[var(--muted)] hover:text-[var(--fg)]">
-              Contact
-            </Link>
-          </nav>
-        </header>
         <main className="flex-1">{children}</main>
-        <footer className="border-t border-[var(--border)] mt-24 py-8">
+        <footer className="border-t border-[var(--border)] mt-8 py-8">
           <div className="max-w-4xl mx-auto px-6">
-            <div className="flex flex-col md:flex-row justify-between gap-6 text-sm">
+            <div className="flex flex-col gap-6 text-sm text-center items-center">
               <div className="text-[var(--muted)]">
                 © 2026 {siteConfig.name} LLC
               </div>
@@ -66,6 +53,9 @@ export default function RootLayout({
                     {link.label}
                   </a>
                 ))}
+                <a href="/qr" className="text-[var(--muted)] hover:text-[var(--fg)]">
+                  QR
+                </a>
               </div>
             </div>
           </div>

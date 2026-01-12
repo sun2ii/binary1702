@@ -4,7 +4,7 @@ import { siteConfig } from '@/config/site';
 
 export function Contact() {
   return (
-    <section id="contact" className="py-16 md:py-24 space-y-8">
+    <section id="contact" className="py-6 md:py-12 px-6 bg-[var(--panel)]">
       <SectionHeading level={2}>Start Here</SectionHeading>
 
       <div className="space-y-6 text-center">

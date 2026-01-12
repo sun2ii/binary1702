@@ -1,4 +1,7 @@
+'use client';
+
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { useState, useEffect } from 'react';
 
 export function Services() {
   const services = [
@@ -40,31 +43,56 @@ export function Services() {
     },
   ];
 
+  const [expandedServices, setExpandedServices] = useState<string[]>([]);
+
+  useEffect(() => {
+    // On desktop, expand all services by default
+    if (window.innerWidth >= 640) {
+      setExpandedServices(services.map(s => s.title));
+    }
+  }, []);
+
+  const toggleService = (title: string) => {
+    setExpandedServices((prev) =>
+      prev.includes(title)
+        ? prev.filter((t) => t !== title)
+        : [...prev, title]
+    );
+  };
+
   return (
     <section id="services" className="py-12 md:py-16 px-6 md:px-8 space-y-12 bg-[var(--panel)] -mx-6">
       <div className="max-w-6xl mx-auto">
         <SectionHeading level={2}>Services</SectionHeading>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 mt-12">
-        {services.map((service) => (
-          <div key={service.title} className="space-y-3">
-            <h3
-              className={`text-lg font-semibold border-l-2 border-[var(--accent)]/60 pl-3 ${
-                service.priority === 'supporting' ? 'text-[var(--muted)]' : ''
-              }`}
-            >
-              {service.title}
-            </h3>
-            <ul className="space-y-1.5">
-              {service.items.map((item, index) => (
-                <li key={index} className="text-[var(--muted)] text-sm leading-relaxed flex items-start">
-                  <span className="mr-2 mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-[var(--muted)]"></span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        {services.map((service) => {
+          const isExpanded = expandedServices.includes(service.title);
+          return (
+            <div key={service.title} className="space-y-3">
+              <button
+                onClick={() => toggleService(service.title)}
+                className="w-full text-left cursor-pointer"
+              >
+                <h3 className={`text-lg font-semibold border-l-2 pl-3 transition-colors ${
+                  isExpanded ? 'border-[var(--accent)]' : 'border-[var(--accent)]/60'
+                } ${service.priority === 'supporting' ? 'text-[var(--muted)]' : ''}`}>
+                  {service.title}
+                </h3>
+              </button>
+              {isExpanded && (
+                <ul className="space-y-1.5">
+                  {service.items.map((item, index) => (
+                    <li key={index} className="text-[var(--muted)] text-xs leading-relaxed flex items-start">
+                      <span className="mr-2 mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-[var(--muted)]"></span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          );
+        })}
         </div>
 
         {/* Entry Offering */}
