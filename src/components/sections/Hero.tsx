@@ -6,12 +6,11 @@ export function Hero() {
   return (
     <section className="py-16 md:py-24 space-y-6">
       <SectionHeading level={1}>
-        Binary 1702 builds systems behind businesses.
+        Binary 1702 builds systems tailored to your business.
       </SectionHeading>
 
       <p className="text-lg md:text-xl text-[var(--muted)] max-w-3xl">
-        We design and implement practical systems that <span className="text-green-400">reduce overhead</span>, <span className="text-green-400">improve visibility</span>, and <span className="text-green-400">protect margins</span>.
-        Our work pays for itself by helping businesses operate more efficiently and grow with confidence.
+        We design and implement systems that <span className="text-[var(--highlight)]">reduce overhead</span>, <span className="text-[var(--highlight)]">improve visibility</span>, and <span className="text-[var(--highlight)]">protect margins</span>.
       </p>
 
       <div className="flex flex-col gap-3 pt-4 items-center sm:items-start">

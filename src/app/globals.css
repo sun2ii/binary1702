@@ -1,12 +1,54 @@
 @import "tailwindcss";
 
 :root {
+  /* Dark mode (default) */
   --bg: #0a0a0a;
   --fg: #e5e5e5;
   --muted: #999;
   --accent: #3b82f6;
   --border: #2a2a2a;
   --panel: #111;
+
+  /* Prose colors - dark */
+  --prose-h1: #ededed;
+  --prose-h2: #3b82f6;
+  --prose-h3: #22d3ee;
+  --prose-text: #a1a1aa;
+  --prose-code-bg: #1a1a1a;
+
+  /* Semantic colors - dark */
+  --highlight: #22c55e;
+  --success-text: #22c55e;
+  --success-bg: #22c55e1a;
+  --success-border: #22c55e33;
+  --error-text: #ef4444;
+  --error-bg: #ef44441a;
+  --error-border: #ef444433;
+}
+
+[data-theme="light"] {
+  --bg: #ffffff;
+  --fg: #0a0a0a;
+  --muted: #666666;
+  --accent: #2563eb;
+  --border: #e5e5e5;
+  --panel: #f5f5f5;
+
+  /* Prose colors - light */
+  --prose-h1: #0a0a0a;
+  --prose-h2: #2563eb;
+  --prose-h3: #0891b2;
+  --prose-text: #525252;
+  --prose-code-bg: #f5f5f5;
+
+  /* Semantic colors - light */
+  --highlight: #16a34a;
+  --success-text: #16a34a;
+  --success-bg: #f0fdf4;
+  --success-border: #dcfce7;
+  --error-text: #dc2626;
+  --error-bg: #fef2f2;
+  --error-border: #fee2e2;
 }
 
 body {
@@ -31,23 +73,23 @@ a:hover {
   margin-top: 1.5em;
   margin-bottom: 0.5em;
   font-weight: 600;
-  color: #ededed;
+  color: var(--prose-h1);
 }
 .prose h2 {
   margin-top: 1.5em;
   margin-bottom: 0.5em;
   font-weight: 600;
-  color: #3b82f6;
+  color: var(--prose-h2);
 }
 .prose h3 {
   margin-top: 1.5em;
   margin-bottom: 0.5em;
   font-weight: 600;
-  color: #22d3ee;
+  color: var(--prose-h3);
 }
 .prose p {
   margin-bottom: 1em;
-  color: #a1a1aa;
+  color: var(--prose-text);
 }
 .prose ul,
 .prose ol {
@@ -56,16 +98,16 @@ a:hover {
 }
 .prose li {
   margin-bottom: 0.25em;
-  color: #a1a1aa;
+  color: var(--prose-text);
 }
 .prose code {
-  background: #1a1a1a;
+  background: var(--prose-code-bg);
   padding: 0.125em 0.25em;
   border-radius: 3px;
   font-size: 0.9em;
 }
 .prose pre {
-  background: #1a1a1a;
+  background: var(--prose-code-bg);
   padding: 1em;
   border-radius: 6px;
   overflow-x: auto;

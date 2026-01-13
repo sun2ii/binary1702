@@ -1,7 +1,7 @@
 import { SectionHeading } from '@/components/ui/SectionHeading';
 
 export function Services() {
-  const services = [
+  const features = [
     {
       title: 'AI-Powered Automation',
       items: [
@@ -41,19 +41,19 @@ export function Services() {
   ];
 
   return (
-    <section id="services" className="py-12 md:py-16 px-6 md:px-8 space-y-12 bg-[var(--panel)] -mx-6">
+    <section id="features" className="py-12 md:py-16 px-6 md:px-8 space-y-12 bg-[var(--panel)] -mx-6">
       <div className="max-w-6xl mx-auto">
-        <SectionHeading level={2}>Services</SectionHeading>
+        <SectionHeading level={2}>Features</SectionHeading>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-        {services.map((service) => {
+        {features.map((feature) => {
           return (
-            <div key={service.title} className="space-y-3">
+            <div key={feature.title} className="space-y-3">
               <h3 className="text-base md:text-lg font-semibold border-l-2 border-[var(--accent)] pl-3 text-center">
-                {service.title}
+                {feature.title}
               </h3>
               <ul className="space-y-1.5">
-                {service.items.map((item, index) => (
+                {feature.items.map((item, index) => (
                   <li key={index} className="text-[var(--muted)] text-xs leading-relaxed flex items-start">
                     <span className="mr-2 mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-[var(--muted)]"></span>
                     <span>{item}</span>

@@ -21,10 +21,10 @@ export function Founder() {
             {siteConfig.founder.name}, {siteConfig.founder.role}
           </h3>
           <p className="text-[var(--muted)] leading-relaxed text-left">
-            Built by a systems architect with 10+ years designing backend platforms, internal tools, and integration-heavy systems for healthcare, finance, and data-driven organizations.
+            Built by a systems architect with 10+ years designing backend platforms, internal tools, and integration-heavy systems for data-driven organizations.
           </p>
           <p className="text-[var(--muted)] leading-relaxed text-left">
-            I focus on turning ambiguous, manual, or fragmented workflows into durable software systems—prioritizing clarity, correctness, and long-term maintainability over hype.
+            I focus on turning ambiguous, manual, or fragmented workflows into durable software systems, prioritizing clarity, correctness, and long-term maintainability.
           </p>
         </div>
       </div>

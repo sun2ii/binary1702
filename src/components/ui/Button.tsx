@@ -12,7 +12,7 @@ export function Button({ variant, href, children, external = false, className: c
   const baseStyles = 'px-6 py-3 text-base font-medium transition-colors text-center';
 
   const variantStyles = {
-    primary: 'bg-[var(--accent)] !text-white hover:bg-blue-600 hover:!no-underline',
+    primary: 'bg-[var(--accent)] !text-white hover:opacity-90 hover:!no-underline',
     secondary: 'border border-[var(--border)] text-[var(--fg)] hover:border-[var(--muted)] hover:!no-underline',
   };
 

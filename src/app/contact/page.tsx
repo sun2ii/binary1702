@@ -118,16 +118,16 @@ export default function ContactPage() {
 
           {/* Status Messages */}
           {status === 'success' && (
-            <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-sm">
-              <p className="text-sm text-green-500">
+            <div className="p-4 bg-[var(--success-bg)] border border-[var(--success-border)] rounded-sm">
+              <p className="text-sm text-[var(--success-text)]">
                 Message sent successfully! I'll get back to you soon.
               </p>
             </div>
           )}
 
           {status === 'error' && (
-            <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-sm">
-              <p className="text-sm text-red-500">
+            <div className="p-4 bg-[var(--error-bg)] border border-[var(--error-border)] rounded-sm">
+              <p className="text-sm text-[var(--error-text)]">
                 {errorMessage || 'Failed to send message. Please try again.'}
               </p>
             </div>
