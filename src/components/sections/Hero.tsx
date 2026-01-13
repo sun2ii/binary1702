@@ -4,19 +4,25 @@ import { siteConfig } from '@/config/site';
 
 export function Hero() {
   return (
-    <section className="py-16 md:py-24 space-y-6">
+    <section className="py-4 space-y-6">
       <SectionHeading level={1}>
-        Binary 1702 builds systems tailored to your business.
+        Every growing business needs a central operating system.
       </SectionHeading>
 
       <p className="text-lg md:text-xl text-[var(--muted)] max-w-3xl">
-        We design and implement systems that <span className="text-[var(--highlight)]">reduce overhead</span>, <span className="text-[var(--highlight)]">improve visibility</span>, and <span className="text-[var(--highlight)]">protect margins</span>.
+        Right now, someone on your team is digging through email for the latest version.
+        Someone else is re-entering the same data from a spreadsheet.
+        That happens when work lives in too many places, and <span className="text-red-600">you're paying for it.</span>
+      </p>
+
+      <p className="text-lg text-[var(--muted)] max-w-3xl">
+        We build one system where everything runs: no rework, no guessing, no bottlenecks.
       </p>
 
       <div className="flex flex-col gap-3 pt-4 items-center sm:items-start">
         <div className="flex flex-col sm:flex-row gap-3">
           <Button variant="primary" href={siteConfig.contact.calendly} external>
-            Schedule an Intro Call
+            See if this saves you money
           </Button>
           <Button variant="secondary" href="/examples">
             View Examples

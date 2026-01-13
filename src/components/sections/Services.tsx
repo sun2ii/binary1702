@@ -3,53 +3,53 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 export function Services() {
   const features = [
     {
-      title: 'AI-Powered Automation',
+      title: 'Enter Once',
       items: [
-        'Automate repetitive admin and document handling',
-        'Reduce review and approval delays',
-        'Apply AI carefully where it saves time without introducing risk'
+        'Your team enters client info into the CRM',
+        'Then copies it into the billing system',
+        'We connect them so it happens once, automatically'
       ],
       priority: 'primary',
     },
     {
-      title: 'Custom Business Systems',
+      title: 'Find It Fast',
       items: [
-        'Replace spreadsheets and inbox chaos with one system',
-        'Forms and tools that capture information once and reuse it everywhere it\'s needed',
-        'Systems built around how you actually operate, so they don\'t break when business picks up'
+        'Client asks "Can you resend that?" for the third time',
+        'Team spends 20 minutes searching threads',
+        'We build one place where everything lives'
       ],
       priority: 'primary',
     },
     {
-      title: 'Operational Visibility',
+      title: 'See Real Status',
       items: [
-        'Clear status across projects, clients, and operations',
-        'Early signals when things start slipping',
-        'Defined ownership so issues don\'t disappear'
+        'You ask "Where are we on the Johnson project?"',
+        'Three people give you three different answers',
+        'We build dashboards that show real status instantly'
       ],
       priority: 'infrastructure',
     },
     {
-      title: 'Reporting & Insights',
+      title: 'Documents Done',
       items: [
-        'Simple reports tied to real operational questions',
-        'Dashboards designed for owners, not analysts',
-        'Clean, consistent data you can trust'
+        'Documents arrive by email, someone prints, files, loses them',
+        'Or they sit in an inbox nobody checks',
+        'We automate the whole thing - read, route, store, done'
       ],
       priority: 'infrastructure',
     },
   ];
 
   return (
-    <section id="features" className="py-12 md:py-16 px-6 md:px-8 space-y-12 bg-[var(--panel)] -mx-6">
+    <section id="features" className="py-8 px-6 md:px-8 space-y-12 bg-[var(--panel)] -mx-6">
       <div className="max-w-6xl mx-auto">
-        <SectionHeading level={2}>Features</SectionHeading>
+        <SectionHeading level={2}>What We Fix</SectionHeading>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
         {features.map((feature) => {
           return (
             <div key={feature.title} className="space-y-3">
-              <h3 className="text-base md:text-lg font-semibold border-l-2 border-[var(--accent)] pl-3 text-center">
+              <h3 className="text-base md:text-lg font-semibold border-l-2 border-[var(--accent)] pl-3">
                 {feature.title}
               </h3>
               <ul className="space-y-1.5">
@@ -66,7 +66,7 @@ export function Services() {
         </div>
 
         {/* Entry Offering */}
-        <div className="mt-16 pt-12 border-t border-[var(--border)]">
+        {/* <div className="mt-16 pt-12 border-t border-[var(--border)]">
           <div className="max-w-2xl space-y-3">
             <div>
               <h3 className="text-base font-semibold tracking-wide uppercase">
@@ -88,7 +88,7 @@ export function Services() {
               </a>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
