@@ -1,12 +1,4 @@
 {
-  "buildCommand": null,
-  "framework": null,
-  "rewrites": [
-    {
-      "source": "/profile/:slug",
-      "destination": "/profile/index.html"
-    }
-  ],
   "headers": [
     {
       "source": "/api/qr/(.*)",
