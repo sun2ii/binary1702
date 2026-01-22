@@ -198,66 +198,64 @@ export default function SubmitPage() {
               maxHeight: '500px',
               opacity: 1
             }}>
-              <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '0.75rem' }}>
-                <div style={{ flex: 1 }}>
-                  <label style={{
-                    display: 'block',
-                    marginBottom: '0.5rem',
-                    fontWeight: 400,
-                    fontSize: '0.875rem',
-                    color: '#52525B'
-                  }}>
-                    First Name <span style={{ color: '#DC2626' }}>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.firstName}
-                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                    style={{
-                      width: '100%',
-                      padding: '1rem 1rem',
-                      border: '1px solid #E4E4E7',
-                      borderRadius: '0.25rem',
-                      fontSize: '0.9375rem',
-                      color: '#27272A',
-                      background: 'white',
-                      transition: 'border-color 0.15s'
-                    }}
-                    onFocus={(e) => e.currentTarget.style.borderColor = '#A1A1AA'}
-                    onBlur={(e) => e.currentTarget.style.borderColor = '#E4E4E7'}
-                  />
-                </div>
+              <div style={{ marginBottom: '0.75rem' }}>
+                <label style={{
+                  display: 'block',
+                  marginBottom: '0.5rem',
+                  fontWeight: 400,
+                  fontSize: '0.875rem',
+                  color: '#52525B'
+                }}>
+                  First Name <span style={{ color: '#DC2626' }}>*</span>
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={formData.firstName}
+                  onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem 0.75rem',
+                    border: '1px solid #E4E4E7',
+                    borderRadius: '0.25rem',
+                    fontSize: '0.9375rem',
+                    color: '#27272A',
+                    background: 'white',
+                    transition: 'border-color 0.15s'
+                  }}
+                  onFocus={(e) => e.currentTarget.style.borderColor = '#A1A1AA'}
+                  onBlur={(e) => e.currentTarget.style.borderColor = '#E4E4E7'}
+                />
+              </div>
 
-                <div style={{ flex: 1 }}>
-                  <label style={{
-                    display: 'block',
-                    marginBottom: '0.5rem',
-                    fontWeight: 400,
-                    fontSize: '0.875rem',
-                    color: '#52525B'
-                  }}>
-                    Last Name <span style={{ color: '#DC2626' }}>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.lastName}
-                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                    style={{
-                      width: '100%',
-                      padding: '1rem 1rem',
-                      border: '1px solid #E4E4E7',
-                      borderRadius: '0.25rem',
-                      fontSize: '0.9375rem',
-                      color: '#27272A',
-                      background: 'white',
-                      transition: 'border-color 0.15s'
-                    }}
-                    onFocus={(e) => e.currentTarget.style.borderColor = '#A1A1AA'}
-                    onBlur={(e) => e.currentTarget.style.borderColor = '#E4E4E7'}
-                  />
-                </div>
+              <div style={{ marginBottom: '0.75rem' }}>
+                <label style={{
+                  display: 'block',
+                  marginBottom: '0.5rem',
+                  fontWeight: 400,
+                  fontSize: '0.875rem',
+                  color: '#52525B'
+                }}>
+                  Last Name <span style={{ color: '#DC2626' }}>*</span>
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={formData.lastName}
+                  onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem 0.75rem',
+                    border: '1px solid #E4E4E7',
+                    borderRadius: '0.25rem',
+                    fontSize: '0.9375rem',
+                    color: '#27272A',
+                    background: 'white',
+                    transition: 'border-color 0.15s'
+                  }}
+                  onFocus={(e) => e.currentTarget.style.borderColor = '#A1A1AA'}
+                  onBlur={(e) => e.currentTarget.style.borderColor = '#E4E4E7'}
+                />
               </div>
 
               <div style={{ marginBottom: '0.75rem' }}>
@@ -277,7 +275,7 @@ export default function SubmitPage() {
                   onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
                   style={{
                     width: '100%',
-                    padding: '1rem 1rem',
+                    padding: '0.75rem 0.75rem',
                     border: '1px solid #E4E4E7',
                     borderRadius: '0.25rem',
                     fontSize: '0.9375rem',
@@ -359,75 +357,73 @@ export default function SubmitPage() {
               opacity: expanded.reach ? 1 : 0
             }}>
               <div style={{ paddingTop: '0.5rem' }}>
-                <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '0.25rem' }}>
-                  <div style={{ flex: 1 }}>
-                    <label style={{
-                      display: 'block',
-                      marginBottom: '0.5rem',
-                      fontWeight: 400,
-                      fontSize: '0.875rem',
-                      color: '#52525B'
-                    }}>
-                      Phone <span style={{ color: '#DC2626' }}>*</span>
-                    </label>
-                    <input
-                      type="tel"
-                      inputMode="numeric"
-                      required
-                      value={formData.phone}
-                      onChange={handlePhoneChange}
-                      style={{
-                        width: '100%',
-                        padding: '1rem 1rem',
-                        border: '1px solid #E4E4E7',
-                        borderRadius: '0.25rem',
-                        fontSize: '0.9375rem',
-                        color: '#27272A',
-                        background: 'white',
-                        transition: 'border-color 0.15s'
-                      }}
-                      onFocus={(e) => e.currentTarget.style.borderColor = '#A1A1AA'}
-                      onBlur={(e) => e.currentTarget.style.borderColor = '#E4E4E7'}
-                    />
-                  </div>
+                <div style={{ marginBottom: '0.75rem' }}>
+                  <label style={{
+                    display: 'block',
+                    marginBottom: '0.5rem',
+                    fontWeight: 400,
+                    fontSize: '0.875rem',
+                    color: '#52525B'
+                  }}>
+                    Phone <span style={{ color: '#DC2626' }}>*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    inputMode="numeric"
+                    required
+                    value={formData.phone}
+                    onChange={handlePhoneChange}
+                    style={{
+                      width: '100%',
+                      padding: '1rem 1rem',
+                      border: '1px solid #E4E4E7',
+                      borderRadius: '0.25rem',
+                      fontSize: '0.9375rem',
+                      color: '#27272A',
+                      background: 'white',
+                      transition: 'border-color 0.15s'
+                    }}
+                    onFocus={(e) => e.currentTarget.style.borderColor = '#A1A1AA'}
+                    onBlur={(e) => e.currentTarget.style.borderColor = '#E4E4E7'}
+                  />
+                </div>
 
-                  <div style={{ flex: 1 }}>
-                    <label style={{
-                      display: 'block',
-                      marginBottom: '0.5rem',
-                      fontWeight: 400,
-                      fontSize: '0.875rem',
-                      color: '#52525B'
-                    }}>
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      style={{
-                        width: '100%',
-                        padding: '1rem 1rem',
-                        border: '1px solid #E4E4E7',
-                        borderRadius: '0.25rem',
-                        fontSize: '0.9375rem',
-                        color: '#27272A',
-                        background: 'white',
-                        transition: 'border-color 0.15s'
-                      }}
-                      onFocus={(e) => e.currentTarget.style.borderColor = '#A1A1AA'}
-                      onBlur={(e) => e.currentTarget.style.borderColor = '#E4E4E7'}
-                    />
-                    <p style={{
-                      fontSize: '0.8125rem',
-                      color: '#A1A1AA',
-                      marginTop: '0.375rem',
-                      lineHeight: 1.4
-                    }}>
-                      Verification link will be sent here
-                    </p>
-                  </div>
+                <div style={{ marginBottom: '0.75rem' }}>
+                  <label style={{
+                    display: 'block',
+                    marginBottom: '0.5rem',
+                    fontWeight: 400,
+                    fontSize: '0.875rem',
+                    color: '#52525B'
+                  }}>
+                    Email <span style={{ color: '#DC2626' }}>*</span>
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    style={{
+                      width: '100%',
+                      padding: '1rem 1rem',
+                      border: '1px solid #E4E4E7',
+                      borderRadius: '0.25rem',
+                      fontSize: '0.9375rem',
+                      color: '#27272A',
+                      background: 'white',
+                      transition: 'border-color 0.15s'
+                    }}
+                    onFocus={(e) => e.currentTarget.style.borderColor = '#A1A1AA'}
+                    onBlur={(e) => e.currentTarget.style.borderColor = '#E4E4E7'}
+                  />
+                  <p style={{
+                    fontSize: '0.8125rem',
+                    color: '#A1A1AA',
+                    marginTop: '0.375rem',
+                    lineHeight: 1.4
+                  }}>
+                    Verification link will be sent here
+                  </p>
                 </div>
 
                 <div style={{ marginBottom: '0.25rem' }}>
@@ -445,7 +441,7 @@ export default function SubmitPage() {
                     alignItems: 'center',
                     border: `1px solid ${focusedField === 'website' ? '#A1A1AA' : '#E4E4E7'}`,
                     borderRadius: '0.25rem',
-                    padding: '1rem 0.75rem',
+                    padding: '0.75rem 0.75rem',
                     background: 'white',
                     transition: 'border-color 0.15s'
                   }}>
@@ -572,7 +568,7 @@ export default function SubmitPage() {
                       fontWeight: 500,
                       whiteSpace: 'nowrap',
                     }}>
-                      https://linkedin.com/in/
+                      linkedin.com/in/
                     </span>
                     <input
                       type="text"
@@ -619,7 +615,7 @@ export default function SubmitPage() {
                       fontWeight: 500,
                       whiteSpace: 'nowrap',
                     }}>
-                      https://github.com/
+                      github.com/
                     </span>
                     <input
                       type="text"

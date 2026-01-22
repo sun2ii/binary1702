@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
 
     // Redirect to profile page
     return NextResponse.redirect(
-      new URL(`/profile/${tokenData.slug}?status=verified`, request.url)
+      new URL(`/profile/${tokenData.slug}`, request.url)
     );
   } catch (error) {
     console.error('Verification error:', error);

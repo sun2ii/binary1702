@@ -1,9 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useParams, useSearchParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { buildLinkedInUrl, buildGitHubUrl } from '@/lib/social-urls';
+import InstallButton from './components/InstallButton';
 
 interface Profile {
   slug: string;
@@ -21,9 +22,7 @@ interface Profile {
 
 export default function ProfilePage() {
   const params = useParams();
-  const searchParams = useSearchParams();
   const slug = params.slug as string;
-  const status = searchParams.get('status');
 
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
@@ -82,21 +81,6 @@ export default function ProfilePage() {
       <Link href="/" className="back-link">
         ← Back to home
       </Link>
-
-      {status === 'verified' && (
-        <div
-          style={{
-            background: '#E8F5E9',
-            color: '#2E7D32',
-            padding: '1rem',
-            borderRadius: '0.375rem',
-            marginBottom: '1.5rem',
-            textAlign: 'center',
-          }}
-        >
-          <strong>Success!</strong> Your profile has been verified and is now active.
-        </div>
-      )}
 
       <div style={{ textAlign: 'center' }}>
         <div style={{ marginBottom: '2rem' }}>
@@ -195,6 +179,24 @@ export default function ProfilePage() {
               </a>
             </div>
           )}
+        </div>
+
+        {/* Save Contact Button */}
+        <div style={{ marginTop: '2rem' }}>
+          <button
+            onClick={() => {
+              window.location.href = `/api/profiles/${slug}/vcard`;
+            }}
+            className="button"
+            style={{
+              width: '100%',
+              maxWidth: '400px',
+              textAlign: 'center',
+            }}
+          >
+            Save Contact
+          </button>
+          <InstallButton />
         </div>
 
         <div style={{ marginTop: '2rem' }}>
