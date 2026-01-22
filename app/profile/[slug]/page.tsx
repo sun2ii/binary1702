@@ -204,6 +204,36 @@ export default function ProfilePage() {
             Scan the QR code to save this contact to your phone
           </p>
         </div>
+
+        {/* iPhone Add to Home Screen Instructions */}
+        <div style={{
+          marginTop: '2rem',
+          padding: '1rem',
+          background: '#F5F5F4',
+          borderRadius: '0.375rem',
+          maxWidth: '400px',
+          margin: '2rem auto 0'
+        }}>
+          <p style={{
+            fontSize: '0.8125rem',
+            color: '#52525B',
+            fontWeight: 500,
+            marginBottom: '0.5rem'
+          }}>
+            Add to iPhone Home Screen
+          </p>
+          <ol style={{
+            fontSize: '0.8125rem',
+            color: '#71717A',
+            lineHeight: 1.6,
+            margin: 0,
+            paddingLeft: '1.25rem'
+          }}>
+            <li>Tap the Share button <span style={{ fontSize: '1rem' }}>⎘</span></li>
+            <li>Scroll down and tap "Add to Home Screen"</li>
+            <li>Tap "Add"</li>
+          </ol>
+        </div>
       </div>
     </div>
   );
