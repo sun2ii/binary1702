@@ -7,7 +7,7 @@ export default function HomePage() {
         <section>
           <h1>Everything is Simple, Finally.</h1>
           <p>We design simple systems that replace chaos with clarity, accelerating your business.</p>
-          <Link href="/submit" className="button" style={{ fontSize: '1.125rem' }}>
+          <Link href="/qr" className="button" style={{ fontSize: '1.125rem' }}>
             Create Your QR Profile
           </Link>
         </section>

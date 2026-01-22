@@ -69,7 +69,7 @@ export default function ProfilePage() {
         <div style={{ textAlign: 'center', paddingTop: '3rem' }}>
           <h1 style={{ color: '#C62828', fontSize: '1.5rem', marginBottom: '1rem' }}>Profile Not Found</h1>
           <p style={{ marginBottom: '1.5rem' }}>{error || 'This profile does not exist or has not been verified.'}</p>
-          <Link href="/submit" className="button">
+          <Link href="/qr" className="button">
             Create Your Profile
           </Link>
         </div>

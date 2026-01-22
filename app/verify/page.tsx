@@ -63,7 +63,7 @@ function VerifyContent() {
           >
             <h1 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>{message.title}</h1>
             <p style={{ marginBottom: '1.5rem', fontSize: '1rem' }}>{message.description}</p>
-            <Link href="/submit" className="button">
+            <Link href="/qr" className="button">
               Create New Profile
             </Link>
           </div>
