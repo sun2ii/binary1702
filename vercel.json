@@ -1,0 +1,21 @@
+{
+  "buildCommand": null,
+  "framework": null,
+  "rewrites": [
+    {
+      "source": "/profile/:slug",
+      "destination": "/profile/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/qr/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Binary 1702</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,7 +11,7 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -25,20 +22,20 @@
         main {
             text-align: center;
             max-width: 800px;
-            padding: 3rem 2rem;
+            padding: 6rem 2rem;
         }
         h1 {
             font-size: 2.5rem;
             font-weight: 600;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             letter-spacing: -0.02em;
-            line-height: 1.1;
+            line-height: 1;
             color: #2D2D2D;
         }
         p {
             font-size: 1.375rem;
             color: #2D2D2D;
-            margin-bottom: 3rem;
+            margin-bottom: 1.2rem;
             line-height: 1.6;
             font-weight: 400;
         }
@@ -46,16 +43,48 @@
             background: #6B8F71;
             color: #FAF9F7;
             border: none;
-            padding: 1rem 2.5rem;
+            padding: 1rem 1.5rem;
             font-size: 1.125rem;
             font-weight: 500;
             border-radius: 0.5rem;
             cursor: pointer;
             transition: all 0.2s ease;
-            font-family: 'Inter', sans-serif;
+            font-family: inherit;
         }
         button:hover {
             background: #5A7A60;
+        }
+        section {
+            margin-top: 3rem;
+        }
+        section:first-child {
+            margin-top: 0;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #2D2D2D;
+            letter-spacing: -0.01em;
+        }
+        ul {
+            list-style: none;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        li {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: #2D2D2D;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #6B8F71;
         }
         @media (max-width: 768px) {
             h1 {
@@ -69,9 +98,32 @@
 </head>
 <body>
     <main>
-        <h1>Everything is Simple, Finally.</h1>
-        <p>The single-system setup for teams that want less chaos and real relief.</p>
-        <button onclick="alert('Coming soon')">Let's talk</button>
+        <section>
+            <h1>Everything is Simple, Finally.</h1>
+            <p>We design simple services that replace chaos with clarity, preparing you for the digital world.</p>
+            <button>Let's talk</button>
+        </section>
+
+        <section>
+            <h2>How it works</h2>
+            <ul>
+                <li>We trace how value moves through your business</li>
+                <li>We uncover what's duplicated, broken, or invisible</li>
+                <li>We design the right system that removes those bottlenecks</li>
+                <li>You use it. Ongoing refinement until the system feels complete.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Who this is for</h2>
+            <p>If your business feels scattered, putting everything into one system isn’t just the right decision, it’s the right investment.</p>
+        </section>
+
+        <section>
+            <h2>Why teams come to me</h2>
+            <p>Most teams don't need more tools.<br>They need fewer places to think.</p>
+            <p>I help you replace scattered systems with one clear setup, built around how your business actually works.</p>
+        </section>
     </main>
 </body>
 </html>

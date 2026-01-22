@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ben Basuni - Contact QR Code</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #FAF9F7;
+            color: #2D2D2D;
+            padding: 2rem;
+        }
+        main {
+            text-align: center;
+            max-width: 600px;
+        }
+        .qr-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        #qrcode {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+        .contact-info p {
+            line-height: 1.6;
+            color: #2D2D2D;
+        }
+        .contact-info .name {
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+        .contact-info .company {
+            color: #666;
+        }
+        .back-link {
+            display: inline-block;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s ease;
+        }
+        .back-link:hover {
+            color: #6B8F71;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="qr-container">
+            <div id="qrcode"></div>
+        </div>
+
+        <div class="contact-info">
+            <p class="name">Ben Basuni</p>
+            <p class="company">Binary 1702 LLC</p>
+        </div>
+
+        <a href="/" class="back-link">← Back to home</a>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script>
+        const generateVCard = () => {
+            return [
+                'BEGIN:VCARD',
+                'VERSION:4.0',
+                'FN:Ben Basuni',
+                'N:Basuni;Ben;;;',
+                'ORG:Binary 1702 LLC',
+                'TITLE:Principal',
+                'TEL;TYPE=work,voice:+19165957155',
+                'EMAIL:ben@binary1702.com',
+                'URL:https://binary1702.com',
+                'URL:https://linkedin.com/in/benbasuni',
+                'URL:https://github.com/sun2ii',
+                'TZ:America/Los_Angeles',
+                'PHOTO;MEDIATYPE=image/jpeg:https://binary1702.com/profile-pic.jpg',
+                'END:VCARD',
+            ].join('\n');
+        };
+
+        const vcardString = generateVCard();
+
+        new QRCode(document.getElementById("qrcode"), {
+            text: vcardString,
+            width: 256,
+            height: 256,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    </script>
+</body>
+</html>
