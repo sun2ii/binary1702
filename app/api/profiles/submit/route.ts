@@ -50,6 +50,7 @@ export async function POST(request: NextRequest) {
       website: data.website,
       linkedin_handle: data.linkedin,
       github_handle: data.github,
+      occupation: data.occupation,
     });
 
     // Generate verification token

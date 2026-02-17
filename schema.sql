@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS profiles (
   website VARCHAR(500),
   linkedin_handle VARCHAR(100),
   github_handle VARCHAR(100),
+  occupation VARCHAR(255),
 
   -- Status tracking
   status VARCHAR(20) NOT NULL DEFAULT 'pending_verification',

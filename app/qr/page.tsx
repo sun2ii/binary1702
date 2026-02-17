@@ -14,6 +14,7 @@ export default function SubmitPage() {
     firstName: '',
     lastName: '',
     businessName: '',
+    occupation: '',
     email: '',
     phone: '',
     website: '',
@@ -97,6 +98,7 @@ export default function SubmitPage() {
           firstName: '',
           lastName: '',
           businessName: '',
+          occupation: '',
           email: '',
           phone: '',
           website: '',
@@ -273,6 +275,35 @@ export default function SubmitPage() {
                   required
                   value={formData.businessName}
                   onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem 0.75rem',
+                    border: '1px solid #E4E4E7',
+                    borderRadius: '0.25rem',
+                    fontSize: '0.9375rem',
+                    color: '#27272A',
+                    background: 'white',
+                    transition: 'border-color 0.15s'
+                  }}
+                  onFocus={(e) => e.currentTarget.style.borderColor = '#A1A1AA'}
+                  onBlur={(e) => e.currentTarget.style.borderColor = '#E4E4E7'}
+                />
+              </div>
+
+              <div style={{ marginBottom: '0.75rem' }}>
+                <label style={{
+                  display: 'block',
+                  marginBottom: '0.5rem',
+                  fontWeight: 400,
+                  fontSize: '0.875rem',
+                  color: '#52525B'
+                }}>
+                  Occupation
+                </label>
+                <input
+                  type="text"
+                  value={formData.occupation}
+                  onChange={(e) => setFormData({ ...formData, occupation: e.target.value })}
                   style={{
                     width: '100%',
                     padding: '0.75rem 0.75rem',

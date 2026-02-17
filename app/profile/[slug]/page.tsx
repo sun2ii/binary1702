@@ -16,6 +16,7 @@ interface Profile {
   website?: string;
   linkedin_handle?: string;
   github_handle?: string;
+  occupation?: string;
   profilePicUrl?: string;
   backgroundPicUrl?: string;
 }
@@ -99,6 +100,9 @@ export default function ProfilePage() {
         {/* Contact Info */}
         <div style={{ marginBottom: '2rem' }}>
           <h1 style={{ marginBottom: '0.5rem' }}>{profile.first_name} {profile.last_name}</h1>
+          {profile.occupation && (
+            <p style={{ color: '#52525B', fontSize: '1rem', marginBottom: '0.25rem' }}>{profile.occupation}</p>
+          )}
           {profile.business_name && (
             <p style={{ color: '#888', fontSize: '1.125rem', marginBottom: '0.5rem' }}>{profile.business_name}</p>
           )}
