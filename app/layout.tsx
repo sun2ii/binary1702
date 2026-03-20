@@ -2,13 +2,13 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Binary 1702 - QR Profile Service',
-  description: 'Generate scannable QR codes with your contact information',
+  title: 'Binary 1702 LLC - Technology Solutions Partner',
+  description: 'Custom software, automation systems, and scalable digital solutions for businesses. CRM implementation, business automation, and API integrations in California.',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'Binary1702',
+    title: 'Binary 1702',
   },
 };
 

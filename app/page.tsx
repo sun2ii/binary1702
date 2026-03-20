@@ -1,69 +1,450 @@
 import Link from 'next/link';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export default function HomePage() {
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
-      <main style={{ textAlign: 'center', maxWidth: '800px', padding: '6rem 2rem' }}>
-        <section>
-          <h1>Everything is Simple, Finally.</h1>
-          <p>We design simple systems that replace chaos with clarity, accelerating your business.</p>
-          <Link href="/qr" className="button" style={{ fontSize: '1.125rem' }}>
-            Create Your QR Profile
-          </Link>
+    <>
+      <Header />
+
+      <main>
+        {/* Hero Section */}
+        <section className="section-hero gradient-hero" style={{ position: 'relative', overflow: 'hidden' }}>
+          <div style={{
+            position: 'absolute',
+            top: '20%',
+            right: '-5%',
+            width: '400px',
+            height: '400px',
+            background: 'radial-gradient(circle, rgba(107, 143, 113, 0.05) 0%, transparent 70%)',
+            borderRadius: '50%',
+            pointerEvents: 'none'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            bottom: '10%',
+            left: '-5%',
+            width: '300px',
+            height: '300px',
+            background: 'radial-gradient(circle, rgba(107, 143, 113, 0.03) 0%, transparent 70%)',
+            borderRadius: '50%',
+            pointerEvents: 'none'
+          }}></div>
+          <div className="container-wide" style={{ position: 'relative', zIndex: 1 }}>
+            <p className="eyebrow">SYSTEMS THAT RUN BUSINESSES</p>
+            <h1 style={{ maxWidth: '900px', margin: '0 auto 1.5rem' }}>
+              We Don't Just Build Software. We Build Systems That Run Businesses.
+            </h1>
+            <p className="text-large text-secondary" style={{ maxWidth: '750px', margin: '0 auto 2.5rem' }}>
+              Binary 1702 designs operational software, automation, CRM, and integration systems that reduce chaos,
+              improve visibility, and support real business workflows.
+            </p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link href="/contact" className="button button-large">
+                Schedule Diagnostic Call
+              </Link>
+              <Link href="/work" className="button-secondary button-large">
+                View Our Work
+              </Link>
+            </div>
+          </div>
         </section>
 
-        <section style={{ marginTop: '3rem' }}>
-          <h2>How it works</h2>
-          <ul style={{ listStyle: 'none', textAlign: 'left', maxWidth: '600px', margin: '0 auto' }}>
-            {[
-              'We trace how value moves through your business',
-              "We uncover what's duplicated, broken, or invisible",
-              'We design the right system that removes those bottlenecks',
-              'You use it. Ongoing refinement until the system feels complete.',
-            ].map((item, i) => (
-              <li
-                key={i}
-                style={{
-                  fontSize: '1.125rem',
-                  lineHeight: '1.7',
-                  color: '#2D2D2D',
-                  paddingLeft: '1.5rem',
-                  position: 'relative',
-                }}
-              >
-                <span
-                  style={{
-                    position: 'absolute',
-                    left: 0,
-                    color: '#6B8F71',
-                  }}
-                >
-                  •
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
+        {/* Problems We Solve */}
+        <section className="section">
+          <div className="container-wide">
+            <div className="accent-line"></div>
+            <h2 className="text-center mb-3">Where Operations Start to Break Down</h2>
+            <p className="text-center text-secondary mb-8" style={{ fontSize: '1.125rem', maxWidth: '700px', margin: '0 auto 3rem' }}>
+              Most businesses don't have a software problem. They have a systems problem.
+            </p>
+
+            <div className="grid grid-2" style={{ maxWidth: '1000px', margin: '0 auto' }}>
+              <div className="card" style={{ borderLeft: '4px solid #6B8F71' }}>
+                <h4 className="mb-3" style={{ color: '#6B8F71' }}>Missed Leads and Slow Response Times</h4>
+                <p className="text-secondary" style={{ fontSize: '1rem' }}>
+                  Inquiries come in through multiple channels, but there's no clear system for capture, assignment,
+                  and follow-up. Leads slip through the cracks.
+                </p>
+              </div>
+
+              <div className="card" style={{ borderLeft: '4px solid #6B8F71' }}>
+                <h4 className="mb-3" style={{ color: '#6B8F71' }}>Scattered Software Creating Duplicated Work</h4>
+                <p className="text-secondary" style={{ fontSize: '1rem' }}>
+                  Customer data lives in five different tools. Staff manually re-enter information. Nothing syncs.
+                  Nobody has a complete picture.
+                </p>
+              </div>
+
+              <div className="card" style={{ borderLeft: '4px solid #6B8F71' }}>
+                <h4 className="mb-3" style={{ color: '#6B8F71' }}>Manual Follow-Up and Admin Overload</h4>
+                <p className="text-secondary" style={{ fontSize: '1rem' }}>
+                  Your team spends hours on repetitive tasks that should be automated. Follow-up is inconsistent.
+                  Response times are slow.
+                </p>
+              </div>
+
+              <div className="card" style={{ borderLeft: '4px solid #6B8F71' }}>
+                <h4 className="mb-3" style={{ color: '#6B8F71' }}>Unclear Pipelines and Operational Blind Spots</h4>
+                <p className="text-secondary" style={{ fontSize: '1rem' }}>
+                  You can't see where things are stuck. You don't know who's responsible for what. Your operational
+                  visibility is limited to asking people for status updates.
+                </p>
+              </div>
+            </div>
+          </div>
         </section>
 
-        <section style={{ marginTop: '3rem' }}>
-          <h2>Who this is for</h2>
-          <p>
-            If your business feels scattered, putting everything into one system isn't just the right decision, it's
-            the right investment.
-          </p>
+        {/* Services Overview */}
+        <section className="section section-alt">
+          <div className="container-wide">
+            <h2 className="text-center mb-6">What We Build</h2>
+            <div className="grid grid-4">
+              <div className="card">
+                <h4 className="mb-3">Custom Software</h4>
+                <p className="text-secondary" style={{ fontSize: '1rem', marginBottom: '1.5rem' }}>
+                  Replace spreadsheet chaos and centralize fragmented workflows with structured operational systems
+                  designed for your business.
+                </p>
+                <Link href="/services#custom-software" style={{ color: '#6B8F71', fontWeight: 500 }}>
+                  Learn more →
+                </Link>
+              </div>
+
+              <div className="card">
+                <h4 className="mb-3">Business Automation</h4>
+                <p className="text-secondary" style={{ fontSize: '1rem', marginBottom: '1.5rem' }}>
+                  Reduce manual follow-up, eliminate repetitive admin work, and speed response times with intelligent
+                  automation.
+                </p>
+                <Link href="/services#automation" style={{ color: '#6B8F71', fontWeight: 500 }}>
+                  Learn more →
+                </Link>
+              </div>
+
+              <div className="card">
+                <h4 className="mb-3">CRM & Lead Management</h4>
+                <p className="text-secondary" style={{ fontSize: '1rem', marginBottom: '1.5rem' }}>
+                  Create visibility into your pipeline, structure lead handling, and make follow-up ownership clear.
+                </p>
+                <Link href="/services#crm" style={{ color: '#6B8F71', fontWeight: 500 }}>
+                  Learn more →
+                </Link>
+              </div>
+
+              <div className="card">
+                <h4 className="mb-3">API Integrations</h4>
+                <p className="text-secondary" style={{ fontSize: '1rem', marginBottom: '1.5rem' }}>
+                  Reduce duplicate entry and connect tools that currently break handoffs to create coherent operational
+                  systems.
+                </p>
+                <Link href="/services#integrations" style={{ color: '#6B8F71', fontWeight: 500 }}>
+                  Learn more →
+                </Link>
+              </div>
+            </div>
+          </div>
         </section>
 
-        <section style={{ marginTop: '3rem' }}>
-          <h2>Why teams come to me</h2>
-          <p>
-            Most teams don't need more tools.
-            <br />
-            They need fewer places to think.
-          </p>
-          <p>I help you replace scattered systems with one clear setup, built around how your business actually works.</p>
+        {/* Featured System - emp.care */}
+        <section className="section" style={{ position: 'relative', background: 'linear-gradient(180deg, #FAF9F7 0%, #F8FAF9 100%)' }}>
+          <div className="container-wide">
+            <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+              <div className="accent-line"></div>
+              <p className="eyebrow text-center">FEATURED SYSTEM</p>
+              <h2 className="text-center mb-4">emp.care — Elder Care Operations Platform</h2>
+              <p className="text-large text-secondary text-center mb-6" style={{ maxWidth: '800px', margin: '0 auto 3rem' }}>
+                A production system designed to manage the full path from inquiry to active care, replacing fragmented
+                spreadsheets and manual coordination with structured lead tracking, patient conversion, role-based
+                workflows, assessments, care plans, and service logging.
+              </p>
+
+              <div className="card-featured">
+                <h4 className="mb-4" style={{ color: '#6B8F71' }}>Why This System Matters</h4>
+                <div className="grid grid-2" style={{ gap: '1.5rem' }}>
+                  <div>
+                    <p className="text-secondary" style={{ fontSize: '1rem', marginBottom: '1rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#6B8F71', marginRight: '0.75rem', fontSize: '1.25rem', fontWeight: 600 }}>✓</span>
+                      <span>Built for real daily operations, not demo screens</span>
+                    </p>
+                    <p className="text-secondary" style={{ fontSize: '1rem', marginBottom: '1rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#6B8F71', marginRight: '0.75rem', fontSize: '1.25rem', fontWeight: 600 }}>✓</span>
+                      <span>Designed to manage complex workflows from intake to active care</span>
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-secondary" style={{ fontSize: '1rem', marginBottom: '1rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#6B8F71', marginRight: '0.75rem', fontSize: '1.25rem', fontWeight: 600 }}>✓</span>
+                      <span>Structured for team visibility, accountability, and continuity</span>
+                    </p>
+                    <p className="text-secondary" style={{ fontSize: '1rem', marginBottom: '1rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span style={{ color: '#6B8F71', marginRight: '0.75rem', fontSize: '1.25rem', fontWeight: 600 }}>✓</span>
+                      <span>Backed by production-grade architecture and iterative development</span>
+                    </p>
+                  </div>
+                </div>
+
+                <div style={{ marginTop: '2rem', paddingTop: '2rem', borderTop: '2px solid rgba(107, 143, 113, 0.1)', textAlign: 'center' }}>
+                  <Link href="/work" className="button button-large">
+                    See the System
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* How We Work */}
+        <section className="section section-alt">
+          <div className="container-wide">
+            <h2 className="text-center mb-3">How We Work</h2>
+            <p className="text-center text-secondary mb-8" style={{ fontSize: '1.125rem', maxWidth: '700px', margin: '0 auto 3rem' }}>
+              Our process is structured, diagnostic, and consultative. Not a generic sales pitch.
+            </p>
+
+            <div className="grid grid-3" style={{ maxWidth: '1100px', margin: '0 auto' }}>
+              <div className="card">
+                <div style={{
+                  width: '60px',
+                  height: '60px',
+                  background: '#6B8F71',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '1.5rem',
+                  fontWeight: 700,
+                  marginBottom: '1.5rem'
+                }}>
+                  1
+                </div>
+                <h4 className="mb-3">Qualify</h4>
+                <p className="text-secondary" style={{ fontSize: '1rem' }}>
+                  We ensure alignment before spending time on discovery. If budget or scope don't match, we'll tell
+                  you upfront.
+                </p>
+              </div>
+
+              <div className="card">
+                <div style={{
+                  width: '60px',
+                  height: '60px',
+                  background: '#6B8F71',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '1.5rem',
+                  fontWeight: 700,
+                  marginBottom: '1.5rem'
+                }}>
+                  2
+                </div>
+                <h4 className="mb-3">Diagnose</h4>
+                <p className="text-secondary" style={{ fontSize: '1rem' }}>
+                  We identify operational bottlenecks and understand the business impact. This isn't about what you
+                  want built—it's about what actually needs to be fixed.
+                </p>
+              </div>
+
+              <div className="card">
+                <div style={{
+                  width: '60px',
+                  height: '60px',
+                  background: '#6B8F71',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '1.5rem',
+                  fontWeight: 700,
+                  marginBottom: '1.5rem'
+                }}>
+                  3
+                </div>
+                <h4 className="mb-3">Design</h4>
+                <p className="text-secondary" style={{ fontSize: '1rem' }}>
+                  We architect the solution based on your operational reality. Clear scope, defined outcomes, structured
+                  approach.
+                </p>
+              </div>
+
+              <div className="card">
+                <div style={{
+                  width: '60px',
+                  height: '60px',
+                  background: '#6B8F71',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '1.5rem',
+                  fontWeight: 700,
+                  marginBottom: '1.5rem'
+                }}>
+                  4
+                </div>
+                <h4 className="mb-3">Build</h4>
+                <p className="text-secondary" style={{ fontSize: '1rem' }}>
+                  We implement the system with clarity and accountability. You know what's happening, when it's
+                  happening, and what's next.
+                </p>
+              </div>
+
+              <div className="card">
+                <div style={{
+                  width: '60px',
+                  height: '60px',
+                  background: '#6B8F71',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '1.5rem',
+                  fontWeight: 700,
+                  marginBottom: '1.5rem'
+                }}>
+                  5
+                </div>
+                <h4 className="mb-3">Optimize</h4>
+                <p className="text-secondary" style={{ fontSize: '1rem' }}>
+                  Systems improve through use. We refine based on real operational feedback, not theoretical
+                  assumptions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing */}
+        <section className="section">
+          <div className="container-wide">
+            <h2 className="text-center mb-3">Service Packages</h2>
+            <p className="text-center text-secondary mb-2" style={{ fontSize: '1.125rem' }}>
+              We offer both ongoing systems support and custom project work
+            </p>
+            <p className="text-center text-muted mb-8" style={{ fontSize: '0.9375rem', maxWidth: '800px', margin: '0 auto 3rem' }}>
+              Monthly plans cover systems support, optimization, and maintenance. Custom projects involve full
+              implementations, architecture design, and system builds.
+            </p>
+
+            <div className="grid grid-3">
+              {/* Basic Plan */}
+              <div className="card">
+                <span className="badge mb-3">SYSTEMS SUPPORT</span>
+                <h3 className="mb-2">$297<span style={{ fontSize: '1rem', fontWeight: 400, color: '#71717A' }}>/month</span></h3>
+                <p className="text-muted text-small mb-4">Setup: $500 - $1,000</p>
+
+                <ul style={{ listStyle: 'none', padding: 0, marginBottom: '2rem' }}>
+                  {[
+                    'CRM setup and support',
+                    '1 pipeline configuration',
+                    'Basic automation workflows',
+                    '1 landing page or lead form',
+                    'Monthly system check'
+                  ].map((feature, i) => (
+                    <li key={i} style={{ padding: '0.5rem 0', color: '#52525B', fontSize: '0.9375rem' }}>
+                      ✓ {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <Link href="/contact?plan=basic" className="button" style={{ width: '100%', textAlign: 'center' }}>
+                  Get Started
+                </Link>
+              </div>
+
+              {/* Growth Plan */}
+              <div className="card" style={{ border: '2px solid #6B8F71' }}>
+                <span className="badge mb-3">MOST POPULAR</span>
+                <h3 className="mb-2">$497<span style={{ fontSize: '1rem', fontWeight: 400, color: '#71717A' }}>/month</span></h3>
+                <p className="text-muted text-small mb-4">Setup: $1,000 - $2,000</p>
+
+                <ul style={{ listStyle: 'none', padding: 0, marginBottom: '2rem' }}>
+                  {[
+                    'Everything in Basic',
+                    'Multiple pipeline configurations',
+                    'Advanced automation workflows',
+                    'Funnel or multi-page system',
+                    'AI automation integration',
+                    'Monthly optimization calls'
+                  ].map((feature, i) => (
+                    <li key={i} style={{ padding: '0.5rem 0', color: '#52525B', fontSize: '0.9375rem' }}>
+                      ✓ {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <Link href="/contact?plan=growth" className="button" style={{ width: '100%', textAlign: 'center' }}>
+                  Get Started
+                </Link>
+              </div>
+
+              {/* Advanced Plan */}
+              <div className="card">
+                <span className="badge badge-secondary mb-3">COMPREHENSIVE</span>
+                <h3 className="mb-2">$997+<span style={{ fontSize: '1rem', fontWeight: 400, color: '#71717A' }}>/month</span></h3>
+                <p className="text-muted text-small mb-4">Setup: $2,000+</p>
+
+                <ul style={{ listStyle: 'none', padding: 0, marginBottom: '2rem' }}>
+                  {[
+                    'Everything in Growth',
+                    'Full system implementation',
+                    'Multi-channel automation',
+                    'Advanced integrations',
+                    'Custom development work',
+                    'Weekly consulting and support'
+                  ].map((feature, i) => (
+                    <li key={i} style={{ padding: '0.5rem 0', color: '#52525B', fontSize: '0.9375rem' }}>
+                      ✓ {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <Link href="/contact?plan=advanced" className="button" style={{ width: '100%', textAlign: 'center' }}>
+                  Get Started
+                </Link>
+              </div>
+            </div>
+
+            {/* Custom Projects */}
+            <div className="card" style={{ marginTop: '3rem', maxWidth: '800px', margin: '3rem auto 0' }}>
+              <h3 className="mb-3">Custom Project Development</h3>
+              <p className="text-secondary mb-4" style={{ fontSize: '1rem' }}>
+                Need a full system build beyond ongoing support? We take on custom projects including operational
+                software, enterprise integrations, and specialized automation systems.
+              </p>
+              <p className="text-secondary mb-4" style={{ fontSize: '1rem' }}>
+                <strong>Pricing:</strong> Custom quotes based on scope and requirements (typically $3,000 - $25,000+)
+              </p>
+              <Link href="/contact" className="button">
+                Discuss Your Project
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="section section-alt">
+          <div className="container-wide text-center">
+            <h2 className="mb-3">Ready to Build a System for Your Business?</h2>
+            <p className="text-large text-secondary mb-6" style={{ maxWidth: '700px', margin: '0 auto 2.5rem' }}>
+              If your business is dealing with fragmented tools, manual coordination, or unclear workflows, let's talk
+              about what a structured system could look like.
+            </p>
+            <Link href="/contact" className="button button-large">
+              Schedule Diagnostic Call
+            </Link>
+          </div>
         </section>
       </main>
-    </div>
+
+      <Footer />
+    </>
   );
 }
