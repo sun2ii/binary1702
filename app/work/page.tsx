@@ -24,7 +24,7 @@ export default function WorkPage() {
             <h1 className="mb-4">10 Production Systems. Here Are The Flagship Projects.</h1>
             <div className="accent-line" style={{ margin: '1.5rem auto' }}></div>
             <p className="text-large text-secondary" style={{ maxWidth: '800px', margin: '0 auto' }}>
-              Binary 1702 builds operational systems—AI, automation, and platforms—that replace manual workflows
+              Binary 1702 LLC builds operational systems—AI, automation, and platforms—that replace manual workflows
               and give businesses visibility and control.
             </p>
           </div>
@@ -407,7 +407,7 @@ export default function WorkPage() {
             <div className="accent-line"></div>
             <h2 className="mb-4 text-center">What These Systems Prove</h2>
             <p className="text-large mb-6 text-center" style={{ maxWidth: '750px', margin: '0 auto 3rem' }}>
-              Binary 1702 doesn't guess. We've built AI chatbots, operational platforms, multi-region automation,
+              Binary 1702 LLC doesn't guess. We've built AI chatbots, operational platforms, multi-region automation,
               and healthcare systems—all deployed, all working.
             </p>
 

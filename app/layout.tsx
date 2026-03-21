@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'Binary 1702',
+    title: 'Binary 1702 LLC',
   },
 };
 

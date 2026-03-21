@@ -29,7 +29,7 @@ export default function Header() {
           color: '#2D2D2D',
           textDecoration: 'none',
         }}>
-          Binary 1702
+          Binary 1702 LLC
         </Link>
 
         {/* Desktop Navigation */}

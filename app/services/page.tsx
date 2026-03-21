@@ -463,7 +463,7 @@ export default function ServicesPage() {
                 </div>
 
                 <div>
-                  <h4 className="mb-3">Binary 1702 Provides:</h4>
+                  <h4 className="mb-3">Binary 1702 LLC Provides:</h4>
                   <ul style={{ listStyle: 'none', padding: 0 }}>
                     <li style={{ padding: '0.5rem 0', color: '#52525B' }}>
                       • System design and architecture

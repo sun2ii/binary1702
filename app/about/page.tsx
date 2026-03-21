@@ -11,7 +11,7 @@ export default function AboutPage() {
         {/* Hero Section */}
         <section className="section-hero" style={{ paddingTop: '4rem', paddingBottom: '3rem' }}>
           <div className="container-wide text-center">
-            <h1 className="mb-4">About Binary 1702</h1>
+            <h1 className="mb-4">About Binary 1702 LLC</h1>
             <p className="text-large text-secondary" style={{ maxWidth: '700px', margin: '0 auto' }}>
               Operational systems, proven results
             </p>
@@ -23,7 +23,7 @@ export default function AboutPage() {
           <div className="container-wide" style={{ maxWidth: '900px' }}>
             <h2 className="mb-4 text-center">What We Build</h2>
             <p className="text-large text-secondary text-center mb-6" style={{ maxWidth: '800px', margin: '0 auto' }}>
-              Binary 1702 builds operational systems—AI, automation, and platforms—that replace manual workflows
+              Binary 1702 LLC builds operational systems—AI, automation, and platforms—that replace manual workflows
               and give businesses visibility and control.
             </p>
 
@@ -113,7 +113,7 @@ export default function AboutPage() {
             </div>
 
             <p className="text-secondary text-center" style={{ marginTop: '2rem', fontSize: '1rem' }}>
-              Binary 1702 operates from the consultant mindset. We don't take orders—we diagnose problems and
+              Binary 1702 LLC operates from the consultant mindset. We don't take orders—we diagnose problems and
               prescribe solutions.
             </p>
           </div>
@@ -147,12 +147,12 @@ export default function AboutPage() {
                   </p>
 
                   <p className="mb-4">
-                    Ben Basuni founded Binary 1702 to help businesses replace operational chaos with structured systems.
+                    Ben Basuni founded Binary 1702 LLC to help businesses replace operational chaos with structured systems.
                     The company is built on a simple conviction: clients don't care about code—they care about outcomes.
                   </p>
 
                   <p className="mb-4">
-                    Before Binary 1702, Ben experienced the same technician-to-consultant identity crisis that defines
+                    Before Binary 1702 LLC, Ben experienced the same technician-to-consultant identity crisis that defines
                     most developers' careers. The shift from "I hope they choose me" to "This is the investment required"
                     requires what he calls "unyielding interpersonal courage." That philosophy is embedded in every
                     client engagement.
@@ -170,7 +170,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Freelancer vs Agency vs Binary 1702 */}
+        {/* Freelancer vs Agency vs Binary 1702 LLC */}
         <section className="section section-alt">
           <div className="container-wide" style={{ maxWidth: '1000px' }}>
             <div className="accent-line"></div>
@@ -191,7 +191,7 @@ export default function AboutPage() {
                       <th style={{ padding: '1rem', textAlign: 'left', fontWeight: 600 }}></th>
                       <th style={{ padding: '1rem', textAlign: 'left', fontWeight: 600, color: '#71717A' }}>Freelancers</th>
                       <th style={{ padding: '1rem', textAlign: 'left', fontWeight: 600, color: '#71717A' }}>Agencies</th>
-                      <th style={{ padding: '1rem', textAlign: 'left', fontWeight: 600, color: '#6B8F71' }}>Binary 1702</th>
+                      <th style={{ padding: '1rem', textAlign: 'left', fontWeight: 600, color: '#6B8F71' }}>Binary 1702 LLC</th>
                     </tr>
                   </thead>
                   <tbody>

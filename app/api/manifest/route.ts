@@ -5,7 +5,7 @@ export async function GET(request: NextRequest) {
   const startUrl = searchParams.get('start_url') || '/';
 
   const manifest = {
-    name: 'Binary 1702 - QR Profile Service',
+    name: 'Binary 1702 LLC - QR Profile Service',
     short_name: 'Binary1702',
     description: 'Generate scannable QR codes with your contact information',
     start_url: startUrl,
