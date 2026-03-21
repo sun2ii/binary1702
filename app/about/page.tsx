@@ -13,51 +13,113 @@ export default function AboutPage() {
           <div className="container-wide text-center">
             <h1 className="mb-4">About Binary 1702</h1>
             <p className="text-large text-secondary" style={{ maxWidth: '700px', margin: '0 auto' }}>
-              Your Technology Solutions Partner
+              Operational systems, proven results
             </p>
           </div>
         </section>
 
-        {/* Why We Exist */}
+        {/* What We Build */}
         <section className="section">
           <div className="container-wide" style={{ maxWidth: '900px' }}>
-            <h2 className="mb-4 text-center">Why Binary 1702 Exists</h2>
-            <p className="text-large text-secondary text-center mb-6" style={{ maxWidth: '800px', margin: '0 auto 2rem' }}>
-              Binary 1702 grew out of a simple conviction: businesses do not need more scattered tools. They need systems
-              that make operations clearer, more accountable, and easier to run.
+            <h2 className="mb-4 text-center">What We Build</h2>
+            <p className="text-large text-secondary text-center mb-6" style={{ maxWidth: '800px', margin: '0 auto' }}>
+              Binary 1702 builds operational systems—AI, automation, and platforms—that replace manual workflows
+              and give businesses visibility and control.
             </p>
-            <p className="text-secondary text-center" style={{ maxWidth: '800px', margin: '0 auto', fontSize: '1rem' }}>
-              That philosophy is not abstract. I've applied it in production systems like emp.care and bring the same
-              structured thinking into every client engagement. The goal is always the same: replace operational chaos
-              with clarity and control.
-            </p>
-          </div>
-        </section>
 
-        {/* Mission & Vision */}
-        <section className="section section-alt">
-          <div className="container-wide" style={{ maxWidth: '900px' }}>
-            <div className="grid grid-2" style={{ gap: '3rem' }}>
-              <div>
-                <h2 className="mb-4">Our Mission</h2>
-                <p className="text-large text-secondary">
-                  To help businesses operate more efficiently and grow consistently through practical software
-                  solutions, automation, and intelligent systems.
+            <div className="grid grid-3" style={{ gap: '2rem', marginTop: '3rem' }}>
+              <div className="card">
+                <h4 className="mb-2" style={{ color: '#6B8F71' }}>10 Systems</h4>
+                <p className="text-secondary text-small">
+                  Production systems deployed, not prototypes
                 </p>
               </div>
 
-              <div>
-                <h2 className="mb-4">Our Vision</h2>
-                <p className="text-large text-secondary">
-                  To become a trusted technology partner for businesses seeking custom software, smarter operations,
-                  and scalable automation solutions in California and beyond.
+              <div className="card">
+                <h4 className="mb-2" style={{ color: '#6B8F71' }}>500 Users</h4>
+                <p className="text-secondary text-small">
+                  AI chatbot handling real customer support
                 </p>
               </div>
+
+              <div className="card">
+                <h4 className="mb-2" style={{ color: '#6B8F71' }}>5 User Roles</h4>
+                <p className="text-secondary text-small">
+                  Healthcare platform with complete role-based access
+                </p>
+              </div>
+            </div>
+
+            <div style={{ marginTop: '2rem', textAlign: 'center' }}>
+              <Link href="/work" style={{ color: '#6B8F71', fontWeight: 500, fontSize: '1rem' }}>
+                See all systems we've built →
+              </Link>
             </div>
           </div>
         </section>
 
-        {/* Founder Section */}
+        {/* Philosophy: Technician to Consultant */}
+        <section className="section section-alt">
+          <div className="container-wide" style={{ maxWidth: '900px' }}>
+            <div className="accent-line"></div>
+            <h2 className="mb-4 text-center">From Technician to Consultant</h2>
+            <p className="text-large mb-6 text-center" style={{ maxWidth: '750px', margin: '0 auto 3rem' }}>
+              The hardest transition in tech isn't learning a new framework. It's shifting from "highly skilled
+              technician taking orders" to "highly paid consultant calling the shots."
+            </p>
+
+            <div className="grid grid-2" style={{ gap: '3rem' }}>
+              <div className="card" style={{ background: '#F8FAF9', borderLeft: '4px solid #E4E4E7' }}>
+                <h4 className="mb-3" style={{ color: '#71717A' }}>Technician Mindset</h4>
+                <ul style={{ listStyle: 'none', padding: 0 }}>
+                  <li style={{ padding: '0.5rem 0', color: '#52525B', fontSize: '0.9375rem' }}>
+                    • "Do you want this in React or Vue?"
+                  </li>
+                  <li style={{ padding: '0.5rem 0', color: '#52525B', fontSize: '0.9375rem' }}>
+                    • Over-explains to prove how smart they are
+                  </li>
+                  <li style={{ padding: '0.5rem 0', color: '#52525B', fontSize: '0.9375rem' }}>
+                    • Gets dopamine from being the hero who writes complex scripts
+                  </li>
+                  <li style={{ padding: '0.5rem 0', color: '#52525B', fontSize: '0.9375rem' }}>
+                    • Says "yes" to everything (people-pleaser)
+                  </li>
+                  <li style={{ padding: '0.5rem 0', color: '#52525B', fontSize: '0.9375rem' }}>
+                    • Bills by the hour (penalized for being fast)
+                  </li>
+                </ul>
+              </div>
+
+              <div className="card" style={{ borderLeft: '4px solid #6B8F71' }}>
+                <h4 className="mb-3" style={{ color: '#6B8F71' }}>Consultant Mindset</h4>
+                <ul style={{ listStyle: 'none', padding: 0 }}>
+                  <li style={{ padding: '0.5rem 0', color: '#52525B', fontSize: '0.9375rem' }}>
+                    • "How many leads are you losing per week?"
+                  </li>
+                  <li style={{ padding: '0.5rem 0', color: '#52525B', fontSize: '0.9375rem' }}>
+                    • Diagnoses business problems, not technical specs
+                  </li>
+                  <li style={{ padding: '0.5rem 0', color: '#52525B', fontSize: '0.9375rem' }}>
+                    • Prescribes solutions based on ROI and impact
+                  </li>
+                  <li style={{ padding: '0.5rem 0', color: '#52525B', fontSize: '0.9375rem' }}>
+                    • Protects scope with clear boundaries
+                  </li>
+                  <li style={{ padding: '0.5rem 0', color: '#52525B', fontSize: '0.9375rem' }}>
+                    • Charges for outcomes (rewarded for efficiency)
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <p className="text-secondary text-center" style={{ marginTop: '2rem', fontSize: '1rem' }}>
+              Binary 1702 operates from the consultant mindset. We don't take orders—we diagnose problems and
+              prescribe solutions.
+            </p>
+          </div>
+        </section>
+
+        {/* Founder Story */}
         <section className="section">
           <div className="container-wide" style={{ maxWidth: '900px' }}>
             <h2 className="text-center mb-8">Leadership</h2>
@@ -85,15 +147,15 @@ export default function AboutPage() {
                   </p>
 
                   <p className="mb-4">
-                    Ben Basuni founded Binary 1702 LLC to help businesses transform operations through practical
-                    technology solutions. With expertise in custom software development, CRM implementation, and
-                    business automation, he leads the company's mission to deliver structured, scalable systems.
+                    Ben Basuni founded Binary 1702 to help businesses replace operational chaos with structured systems.
+                    The company is built on a simple conviction: clients don't care about code—they care about outcomes.
                   </p>
 
                   <p className="mb-4">
-                    Binary 1702 is built on the principle that technology should solve real business problems without
-                    unnecessary complexity. This philosophy is tested in production through systems like emp.care and
-                    applied to every client engagement with the same structured, systems-oriented approach.
+                    Before Binary 1702, Ben experienced the same technician-to-consultant identity crisis that defines
+                    most developers' careers. The shift from "I hope they choose me" to "This is the investment required"
+                    requires what he calls "unyielding interpersonal courage." That philosophy is embedded in every
+                    client engagement.
                   </p>
 
                   <p className="text-secondary" style={{ fontSize: '1rem' }}>
@@ -103,6 +165,62 @@ export default function AboutPage() {
                     </a>
                   </p>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Freelancer vs Agency vs Binary 1702 */}
+        <section className="section section-alt">
+          <div className="container-wide" style={{ maxWidth: '1000px' }}>
+            <div className="accent-line"></div>
+            <h2 className="mb-4 text-center">Different From Freelancers. More Focused Than Agencies.</h2>
+            <p className="text-large mb-6 text-center" style={{ maxWidth: '750px', margin: '0 auto 3rem' }}>
+              We're not trying to be everything to everyone. Here's how we compare.
+            </p>
+
+            <div className="card">
+              <div style={{ overflowX: 'auto' }}>
+                <table style={{
+                  width: '100%',
+                  borderCollapse: 'collapse',
+                  fontSize: '0.9375rem'
+                }}>
+                  <thead>
+                    <tr style={{ borderBottom: '2px solid #E4E4E7' }}>
+                      <th style={{ padding: '1rem', textAlign: 'left', fontWeight: 600 }}></th>
+                      <th style={{ padding: '1rem', textAlign: 'left', fontWeight: 600, color: '#71717A' }}>Freelancers</th>
+                      <th style={{ padding: '1rem', textAlign: 'left', fontWeight: 600, color: '#71717A' }}>Agencies</th>
+                      <th style={{ padding: '1rem', textAlign: 'left', fontWeight: 600, color: '#6B8F71' }}>Binary 1702</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style={{ borderBottom: '1px solid #F4F4F5' }}>
+                      <td style={{ padding: '1rem', fontWeight: 500 }}>Approach</td>
+                      <td style={{ padding: '1rem', color: '#52525B' }}>Learn as they go</td>
+                      <td style={{ padding: '1rem', color: '#52525B' }}>Overstaffed teams</td>
+                      <td style={{ padding: '1rem', color: '#52525B' }}>Proven systems</td>
+                    </tr>
+                    <tr style={{ borderBottom: '1px solid #F4F4F5' }}>
+                      <td style={{ padding: '1rem', fontWeight: 500 }}>Pricing</td>
+                      <td style={{ padding: '1rem', color: '#52525B' }}>Hourly billing</td>
+                      <td style={{ padding: '1rem', color: '#52525B' }}>High overhead</td>
+                      <td style={{ padding: '1rem', color: '#52525B' }}>Outcome-focused</td>
+                    </tr>
+                    <tr style={{ borderBottom: '1px solid #F4F4F5' }}>
+                      <td style={{ padding: '1rem', fontWeight: 500 }}>Solutions</td>
+                      <td style={{ padding: '1rem', color: '#52525B' }}>One-off fixes</td>
+                      <td style={{ padding: '1rem', color: '#52525B' }}>Generic processes</td>
+                      <td style={{ padding: '1rem', color: '#52525B' }}>Tailored systems</td>
+                    </tr>
+                    <tr>
+                      <td style={{ padding: '1rem', fontWeight: 500 }}>Experience</td>
+                      <td style={{ padding: '1rem', color: '#52525B' }}>Variable</td>
+                      <td style={{ padding: '1rem', color: '#52525B' }}>Junior devs assigned</td>
+                      <td style={{ padding: '1rem', color: '#52525B' }}>Founder-led, 10 systems</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -159,87 +277,15 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Company Positioning */}
-        <section className="section section-alt">
-          <div className="container-wide">
-            <h2 className="text-center mb-8">What We Stand For</h2>
-
-            <div className="grid grid-3">
-              <div className="text-center">
-                <div style={{
-                  width: '80px',
-                  height: '80px',
-                  background: '#6B8F71',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  margin: '0 auto 1.5rem',
-                  color: 'white',
-                  fontSize: '2rem'
-                }}>
-                  ⚙
-                </div>
-                <h4 className="mb-3">Structured Company, Not Freelance</h4>
-                <p className="text-secondary">
-                  Professional technology partner delivering complete systems, not isolated tasks or one-off fixes.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div style={{
-                  width: '80px',
-                  height: '80px',
-                  background: '#6B8F71',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  margin: '0 auto 1.5rem',
-                  color: 'white',
-                  fontSize: '2rem'
-                }}>
-                  💡
-                </div>
-                <h4 className="mb-3">Solutions, Not Just Code</h4>
-                <p className="text-secondary">
-                  We sell structured solutions, expertise, and business transformation through technology.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div style={{
-                  width: '80px',
-                  height: '80px',
-                  background: '#6B8F71',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  margin: '0 auto 1.5rem',
-                  color: 'white',
-                  fontSize: '2rem'
-                }}>
-                  🤝
-                </div>
-                <h4 className="mb-3">Long-Term Partnership</h4>
-                <p className="text-secondary">
-                  Built on recurring relationships and sustainable business practices, not project-to-project churn.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Final CTA */}
-        <section className="section">
+        <section className="section section-alt">
           <div className="container-wide text-center">
             <h2 className="mb-4">Work With Us</h2>
             <p className="text-large text-secondary mb-6" style={{ maxWidth: '600px', margin: '0 auto 2.5rem' }}>
-              Experience the difference of a structured technology partner
+              Experience the difference of a structured technology partner with proven systems
             </p>
             <Link href="/contact" className="button button-large">
-              Get in Touch
+              Schedule Diagnostic Call
             </Link>
           </div>
         </section>

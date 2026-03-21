@@ -11,9 +11,9 @@ export default function ServicesPage() {
         {/* Page Header */}
         <section className="section-hero" style={{ paddingTop: '4rem', paddingBottom: '3rem' }}>
           <div className="container-wide text-center">
-            <h1 className="mb-4">Services</h1>
+            <h1 className="mb-4">What Problems We Solve</h1>
             <p className="text-large text-secondary" style={{ maxWidth: '700px', margin: '0 auto' }}>
-              Comprehensive technology solutions for modern businesses
+              Operational systems, automation, and AI—built for businesses that need clarity, not more chaos.
             </p>
           </div>
         </section>
@@ -34,14 +34,12 @@ export default function ServicesPage() {
             </p>
 
             <div className="card" style={{ marginTop: '2rem', background: '#F8FAF9', border: '1px solid #D4E4D7' }}>
-              <h4 className="mb-3">Example: emp.care — Elder Care Operations Platform</h4>
+              <h4 className="mb-3">Proven: emp.care — Elder Care Operations Platform</h4>
               <p className="text-secondary" style={{ fontSize: '1rem', marginBottom: '1rem' }}>
-                A production system spanning intake, patient conversion, staff workflows, care planning, and service logging.
-                Built to manage the full operational path from inquiry to active care with structured lead tracking,
-                role-based access, and audit-ready workflow history.
+                Full operational platform managing lead intake → patient pipeline → facility workflows → care tracking. Complete patient lifecycle, multi-role access control, compliance-ready audit trails.
               </p>
               <Link href="/work" style={{ color: '#6B8F71', fontWeight: 500 }}>
-                View the full case study →
+                See all systems we've built →
               </Link>
             </div>
 
@@ -93,6 +91,16 @@ export default function ServicesPage() {
               nothing falls through the cracks. Every workflow is designed to integrate seamlessly with your existing
               tools and adapt as your business evolves.
             </p>
+
+            <div className="card" style={{ marginTop: '2rem', background: '#F8FAF9', border: '1px solid #D4E4D7' }}>
+              <h4 className="mb-3">Proven: MyFencer AI — Customer Support Chatbot</h4>
+              <p className="text-secondary" style={{ fontSize: '1rem', marginBottom: '1rem' }}>
+                AI-powered chatbot with RAG trained on 5,397 knowledge chunks. Handles 500 monthly users with 200-800ms response time. Multimodal support for images and PDFs.
+              </p>
+              <Link href="/work" style={{ color: '#6B8F71', fontWeight: 500 }}>
+                See all systems we've built →
+              </Link>
+            </div>
 
             <h3 className="mb-3 mt-6">What's Included</h3>
             <div className="grid grid-2">
@@ -361,31 +369,95 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* Client Responsibility */}
+        {/* You Own Your Infrastructure */}
         <section className="section">
           <div className="container-wide" style={{ maxWidth: '900px' }}>
-            <div className="card">
-              <h3 className="mb-4">Service Delivery & Client Responsibilities</h3>
-              <p className="text-secondary mb-4">
-                Binary 1702 LLC provides setup, configuration, strategy, and ongoing support. To ensure transparency
-                and avoid hidden costs, clients are responsible for third-party platform subscriptions and usage fees.
+            <div className="card" style={{ borderLeft: '4px solid #6B8F71' }}>
+              <h3 className="mb-4">You Own Your Infrastructure</h3>
+              <p className="text-large mb-4">
+                Unlike agencies that bundle hidden costs, you own your systems—hosting, APIs, messaging, platforms.
               </p>
 
-              <div className="grid grid-2">
+              <div className="grid grid-3" style={{ gap: '2rem', marginBottom: '2rem' }}>
+                <div className="text-center">
+                  <div style={{
+                    width: '60px',
+                    height: '60px',
+                    background: '#6B8F71',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto 1rem',
+                    color: 'white',
+                    fontSize: '1.5rem'
+                  }}>
+                    🔓
+                  </div>
+                  <h4 className="mb-2">No Vendor Lock-In</h4>
+                  <p className="text-secondary text-small">
+                    Your systems run on your infrastructure. You're never trapped in proprietary platforms.
+                  </p>
+                </div>
+
+                <div className="text-center">
+                  <div style={{
+                    width: '60px',
+                    height: '60px',
+                    background: '#6B8F71',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto 1rem',
+                    color: 'white',
+                    fontSize: '1.5rem'
+                  }}>
+                    💎
+                  </div>
+                  <h4 className="mb-2">Full Transparency</h4>
+                  <p className="text-secondary text-small">
+                    Every cost is clear upfront. No surprise fees, no hidden subscription markups.
+                  </p>
+                </div>
+
+                <div className="text-center">
+                  <div style={{
+                    width: '60px',
+                    height: '60px',
+                    background: '#6B8F71',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto 1rem',
+                    color: 'white',
+                    fontSize: '1.5rem'
+                  }}>
+                    ✓
+                  </div>
+                  <h4 className="mb-2">Systems That Are Truly Yours</h4>
+                  <p className="text-secondary text-small">
+                    You control the platforms, the data, and the infrastructure. We provide the expertise.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-2" style={{ gap: '2rem', paddingTop: '2rem', borderTop: '2px solid rgba(107, 143, 113, 0.1)' }}>
                 <div>
-                  <h4 className="mb-3">Client Provides:</h4>
+                  <h4 className="mb-3">You Provide:</h4>
                   <ul style={{ listStyle: 'none', padding: 0 }}>
                     <li style={{ padding: '0.5rem 0', color: '#52525B' }}>
-                      • GoHighLevel subscription (if applicable)
+                      • Platform subscriptions (GoHighLevel, etc.)
                     </li>
                     <li style={{ padding: '0.5rem 0', color: '#52525B' }}>
-                      • SMS/email sending services (Twilio, etc.)
+                      • SMS/email services (Twilio, SendGrid, etc.)
                     </li>
                     <li style={{ padding: '0.5rem 0', color: '#52525B' }}>
-                      • Domains and hosting
+                      • Hosting and domains
                     </li>
                     <li style={{ padding: '0.5rem 0', color: '#52525B' }}>
-                      • AI tools and API usage costs
+                      • AI API usage (if applicable)
                     </li>
                   </ul>
                 </div>
@@ -394,13 +466,13 @@ export default function ServicesPage() {
                   <h4 className="mb-3">Binary 1702 Provides:</h4>
                   <ul style={{ listStyle: 'none', padding: 0 }}>
                     <li style={{ padding: '0.5rem 0', color: '#52525B' }}>
-                      • System setup and configuration
-                    </li>
-                    <li style={{ padding: '0.5rem 0', color: '#52525B' }}>
-                      • Strategy and planning
+                      • System design and architecture
                     </li>
                     <li style={{ padding: '0.5rem 0', color: '#52525B' }}>
                       • Development and implementation
+                    </li>
+                    <li style={{ padding: '0.5rem 0', color: '#52525B' }}>
+                      • Strategy and consultation
                     </li>
                     <li style={{ padding: '0.5rem 0', color: '#52525B' }}>
                       • Ongoing support and optimization
@@ -408,10 +480,6 @@ export default function ServicesPage() {
                   </ul>
                 </div>
               </div>
-
-              <p className="text-small text-muted" style={{ marginTop: '2rem', paddingTop: '2rem', borderTop: '1px solid #E4E4E7' }}>
-                All costs are transparently discussed before project initiation. No surprise fees or hidden charges.
-              </p>
             </div>
           </div>
         </section>

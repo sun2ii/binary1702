@@ -31,20 +31,19 @@ export default function HomePage() {
             pointerEvents: 'none'
           }}></div>
           <div className="container-wide" style={{ position: 'relative', zIndex: 1 }}>
-            <p className="eyebrow">SYSTEMS THAT RUN BUSINESSES</p>
             <h1 style={{ maxWidth: '900px', margin: '0 auto 1.5rem' }}>
-              We Don't Just Build Software. We Build Systems That Run Businesses.
+              We Build Systems That Actually Run Businesses.
             </h1>
-            <p className="text-large text-secondary" style={{ maxWidth: '750px', margin: '0 auto 2.5rem' }}>
-              Binary 1702 designs operational software, automation, CRM, and integration systems that reduce chaos,
-              improve visibility, and support real business workflows.
+            <p className="text-large text-secondary" style={{ maxWidth: '800px', margin: '0 auto 2.5rem' }}>
+              10 production systems. AI chatbots, operational platforms, automation pipelines—already deployed, already working.
+              We don't experiment on your business. We apply what's proven.
             </p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link href="/contact" className="button button-large">
-                Schedule Diagnostic Call
+              <Link href="/work" className="button button-large">
+                View Systems
               </Link>
-              <Link href="/work" className="button-secondary button-large">
-                View Our Work
+              <Link href="/contact" className="button-secondary button-large">
+                Schedule Diagnostic Call
               </Link>
             </div>
           </div>
@@ -152,41 +151,36 @@ export default function HomePage() {
             <div style={{ maxWidth: '900px', margin: '0 auto' }}>
               <div className="accent-line"></div>
               <p className="eyebrow text-center">FEATURED SYSTEM</p>
-              <h2 className="text-center mb-4">emp.care — Elder Care Operations Platform</h2>
+              <h2 className="text-center mb-4">Built for Real Operations, Not Demos</h2>
               <p className="text-large text-secondary text-center mb-6" style={{ maxWidth: '800px', margin: '0 auto 3rem' }}>
-                A production system designed to manage the full path from inquiry to active care, replacing fragmented
-                spreadsheets and manual coordination with structured lead tracking, patient conversion, role-based
-                workflows, assessments, care plans, and service logging.
+                emp.care is a full operational platform for elder care agencies—handling intake, patient pipelines, facility workflows, and care tracking.
               </p>
 
               <div className="card-featured">
-                <h4 className="mb-4" style={{ color: '#6B8F71' }}>Why This System Matters</h4>
-                <div className="grid grid-2" style={{ gap: '1.5rem' }}>
-                  <div>
-                    <p className="text-secondary" style={{ fontSize: '1rem', marginBottom: '1rem', display: 'flex', alignItems: 'flex-start' }}>
+                <div style={{ marginBottom: '2rem' }}>
+                  <ul style={{ listStyle: 'none', padding: 0 }}>
+                    <li style={{ fontSize: '1rem', marginBottom: '1rem', color: '#52525B', display: 'flex', alignItems: 'flex-start' }}>
                       <span style={{ color: '#6B8F71', marginRight: '0.75rem', fontSize: '1.25rem', fontWeight: 600 }}>✓</span>
-                      <span>Built for real daily operations, not demo screens</span>
-                    </p>
-                    <p className="text-secondary" style={{ fontSize: '1rem', marginBottom: '1rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span>Complete patient lifecycle (intake → active care)</span>
+                    </li>
+                    <li style={{ fontSize: '1rem', marginBottom: '1rem', color: '#52525B', display: 'flex', alignItems: 'flex-start' }}>
                       <span style={{ color: '#6B8F71', marginRight: '0.75rem', fontSize: '1.25rem', fontWeight: 600 }}>✓</span>
-                      <span>Designed to manage complex workflows from intake to active care</span>
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-secondary" style={{ fontSize: '1rem', marginBottom: '1rem', display: 'flex', alignItems: 'flex-start' }}>
+                      <span>Multi-role system (5 user types across operations)</span>
+                    </li>
+                    <li style={{ fontSize: '1rem', marginBottom: '1rem', color: '#52525B', display: 'flex', alignItems: 'flex-start' }}>
                       <span style={{ color: '#6B8F71', marginRight: '0.75rem', fontSize: '1.25rem', fontWeight: 600 }}>✓</span>
-                      <span>Structured for team visibility, accountability, and continuity</span>
-                    </p>
-                    <p className="text-secondary" style={{ fontSize: '1rem', marginBottom: '1rem', display: 'flex', alignItems: 'flex-start' }}>
-                      <span style={{ color: '#6B8F71', marginRight: '0.75rem', fontSize: '1.25rem', fontWeight: 600 }}>✓</span>
-                      <span>Backed by production-grade architecture and iterative development</span>
-                    </p>
-                  </div>
+                      <span>Compliance-ready audit trails</span>
+                    </li>
+                  </ul>
                 </div>
+
+                <p className="text-secondary" style={{ fontSize: '1.125rem', fontStyle: 'italic', textAlign: 'center', marginBottom: '2rem' }}>
+                  This is what we mean by "systems."
+                </p>
 
                 <div style={{ marginTop: '2rem', paddingTop: '2rem', borderTop: '2px solid rgba(107, 143, 113, 0.1)', textAlign: 'center' }}>
                   <Link href="/work" className="button button-large">
-                    See the System
+                    See How It Works
                   </Link>
                 </div>
               </div>
@@ -197,9 +191,9 @@ export default function HomePage() {
         {/* How We Work */}
         <section className="section section-alt">
           <div className="container-wide">
-            <h2 className="text-center mb-3">How We Work</h2>
-            <p className="text-center text-secondary mb-8" style={{ fontSize: '1.125rem', maxWidth: '700px', margin: '0 auto 3rem' }}>
-              Our process is structured, diagnostic, and consultative. Not a generic sales pitch.
+            <h2 className="text-center mb-3">We Don't Bill for Time. We Build for Outcomes.</h2>
+            <p className="text-center text-secondary mb-8" style={{ fontSize: '1.125rem', maxWidth: '800px', margin: '0 auto 3rem' }}>
+              Most developers charge by the hour. That rewards slowness and experimentation. We work differently—diagnosing your operation first, designing systems that fit your workflow, and building with clarity and defined scope.
             </p>
 
             <div className="grid grid-3" style={{ maxWidth: '1100px', margin: '0 auto' }}>
