@@ -1,27 +1,54 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────────
+   Design tokens for Tailwind 4 utility generation.
+   Used by the (marketing) route group.
+   ───────────────────────────────────────────────────────────── */
+@theme {
+  --color-paper: #F4F1EA;
+  --color-paper-deep: #ECE7DA;
+  --color-ink: #1A1814;
+  --color-ink-soft: #4A4640;
+  --color-ink-mute: #756F65;
+  --color-rule: #D9D2C4;
+  --color-accent: #B8492C;
+  --color-accent-deep: #8B2D14;
+  --color-night: #14110D;
+  --color-night-soft: #1E1A14;
+  --color-night-rule: #2A251D;
+  --color-cream: #F4F1EA;
+  --color-cream-mute: #B8B1A1;
+
+  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display-mono: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Existing logs/gallery palette — kept under .logs-scope so
+   it doesn't bleed into the (marketing) route group.
+   ───────────────────────────────────────────────────────────── */
 :root {
   --bg: #0a0a0a;
   --fg: #ededed;
   --muted: #888;
-  --accent: #3b82f6;
+  --accent-logs: #3b82f6;
   --border: #222;
 }
 
-body {
-  background: var(--bg);
-  color: var(--fg);
-  font-family: var(--font-geist-mono), monospace;
+html {
+  scroll-behavior: smooth;
 }
 
-a {
-  color: var(--accent);
+/* Scoped link defaults — only inside .logs-scope */
+.logs-scope a {
+  color: var(--accent-logs);
   text-decoration: none;
 }
-a:hover {
+.logs-scope a:hover {
   text-decoration: underline;
 }
 
+/* Prose styles used by markdown-rendered log content. Unchanged. */
 .prose {
   max-width: 65ch;
   line-height: 1.7;
