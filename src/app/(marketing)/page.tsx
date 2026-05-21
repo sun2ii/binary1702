@@ -6,7 +6,13 @@ import { MarketingFooter } from "@/components/marketing/MarketingFooter";
 const navLinks: NavLink[] = [
   { href: "#work", label: "Work", sectionId: "work" },
   { href: "#case", label: "Case Study", sectionId: "case" },
-  { href: "/msp", label: "For MSPs ↗", accent: true },
+  {
+    label: "Customers",
+    children: [
+      { href: "/msp", label: "For MSPs" },
+      { href: "/letip", label: "LeTip Members" },
+    ],
+  },
   { href: "#about", label: "About", sectionId: "about" },
   { href: "#contact", label: "Contact", sectionId: "contact" },
 ];
