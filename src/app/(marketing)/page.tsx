@@ -2,6 +2,7 @@ import Link from "next/link";
 import { MarketingNav, type NavLink } from "@/components/marketing/MarketingNav";
 import { SectionHead } from "@/components/marketing/SectionHead";
 import { MarketingFooter } from "@/components/marketing/MarketingFooter";
+import { RouteModal } from "@/components/RouteModal";
 
 const navLinks: NavLink[] = [
   { href: "#work", label: "Work", sectionId: "work" },
@@ -20,6 +21,7 @@ const navLinks: NavLink[] = [
 export default function HomePage() {
   return (
     <>
+      <RouteModal />
       <MarketingNav variant="light" links={navLinks} brandHref="#top" />
 
       {/* HERO */}

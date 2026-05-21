@@ -79,7 +79,7 @@ export default function IntakeForm() {
     return (
       <div className="cta-strip">
         <h2>Ready for the free audit?</h2>
-        <p>30 minutes. No pitch. You'll leave with a clearer picture of your business either way.</p>
+        <p>30 minutes. Just clarity. We'll walk through what's working and what isn't.</p>
         <button onClick={() => setShowForm(true)} className="btn-primary">
           Email Us to Book It
         </button>

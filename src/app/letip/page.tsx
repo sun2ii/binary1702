@@ -48,7 +48,7 @@ export default function LetipPage() {
               <p>Customers can't find you when they search your service in your area. Your competitor with the worse work shows up first.</p>
             </div>
             <div className="card">
-              <h3>"Leads slip through the cracks."</h3>
+              <h3>"I forget to call people back."</h3>
               <p>The contact form goes to an email nobody checks. Quotes take three days. Missed calls don't get returned. Real money is leaking and you can feel it.</p>
             </div>
           </div>
