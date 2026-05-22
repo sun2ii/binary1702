@@ -7,6 +7,7 @@ import { RouteModal } from "@/components/RouteModal";
 const navLinks: NavLink[] = [
   { href: "#work", label: "Work", sectionId: "work" },
   { href: "#case", label: "Case Study", sectionId: "case" },
+  { href: "/operations", label: "Operations" },
   {
     label: "Customers",
     children: [

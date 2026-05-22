@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 234 234">
+  <defs>
+    <linearGradient id="iMessageGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#34C759"/>
+      <stop offset="100%" stop-color="#30D158"/>
+    </linearGradient>
+  </defs>
+  <rect width="234" height="234" rx="60" fill="url(#iMessageGrad)"/>
+  <path fill="#fff" d="M117 37c-48.523 0-87.85 36.213-87.85 80.85 0 29.647 17.006 55.635 42.9 70.021v29.129l29.951-17.857c4.956.949 10.071 1.457 15.299 1.457 48.523 0 87.85-36.213 87.85-80.85S165.523 37 117 37z"/>
+</svg>
