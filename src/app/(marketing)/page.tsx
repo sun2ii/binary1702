@@ -812,49 +812,120 @@ function WorkTogether() {
    Divisions
    ──────────────────────────────────────────────────────────────── */
 
-const divisions = [
+function DivisionIcon({ kind, size = 24 }: { kind: "studio" | "labs" | "legacy"; size?: number }) {
+  const paths: Record<string, React.ReactNode> = {
+    studio: (
+      <>
+        <circle cx="12" cy="12" r="8" />
+        <path d="M22 12h-4M6 12H2M12 6V2M12 22v-4" />
+        <circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none" />
+      </>
+    ),
+    labs: (
+      <>
+        <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+        <path d="m3.3 7 8.7 5 8.7-5M12 22V12" />
+      </>
+    ),
+    legacy: <path d="M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M12 2 3 7h18l-9-5Z" />,
+  };
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={size > 40 ? 1.2 : 2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      {paths[kind]}
+    </svg>
+  );
+}
+
+const divisions: {
+  name: string;
+  href: string;
+  icon: "studio" | "labs" | "legacy";
+  accent: string;
+  linkColor: string;
+  border: string;
+  bg: string;
+  body: string;
+}[] = [
   {
     name: "STUDIO",
     href: "/studio",
-    accent: "#7C3AED",
+    icon: "studio",
+    accent: "#C084FC",
+    linkColor: "#C084FC",
+    border: "rgba(168,85,247,0.35)",
+    bg: "linear-gradient(135deg, rgba(52,26,88,0.55), rgba(20,12,36,0.7))",
     body: "Operational systems, websites, automation, and support plans built to help your business run and grow.",
   },
   {
     name: "LABS",
     href: "/labs",
-    accent: "#2DD4BF",
+    icon: "labs",
+    accent: "#34E0A1",
+    linkColor: "#34E0A1",
+    border: "rgba(52,224,161,0.3)",
+    bg: "linear-gradient(135deg, rgba(10,44,36,0.5), rgba(10,18,16,0.7))",
     body: "Where we experiment, prototype, and build the tools that power tomorrow.",
   },
   {
     name: "LEGACY",
     href: "/legacy",
-    accent: "#C8A24D",
+    icon: "legacy",
+    accent: "#D9A94A",
+    linkColor: "#D9A94A",
+    border: "rgba(217,169,74,0.35)",
+    bg: "linear-gradient(135deg, rgba(58,44,14,0.45), rgba(24,18,8,0.7))",
     body: "Projects and resources that create lasting impact and leave a mark for future generations.",
   },
 ];
 
-function Divisions() {
+function DivisionCards() {
   return (
-    <section className="mx-auto max-w-6xl px-5 py-16">
-      <div className="grid gap-4 md:grid-cols-3">
-        {divisions.map((d) => (
-          <Link
-            key={d.name}
-            href={d.href}
-            className="group rounded-2xl border border-line bg-charcoal/60 p-6 transition hover:-translate-y-0.5"
-            style={{ boxShadow: `inset 0 1px 0 ${d.accent}22` }}
+    <div className="grid gap-[22px] lg:grid-cols-3">
+      {divisions.map((d) => (
+        <div
+          key={d.name}
+          className="grid overflow-hidden rounded-2xl border sm:grid-cols-[1fr_44%]"
+          style={{ borderColor: d.border, background: d.bg }}
+        >
+          <div className="flex flex-col gap-3.5 px-[22px] py-[26px]">
+            <div className="flex items-center gap-3.5">
+              <span
+                className="flex h-[46px] w-[46px] shrink-0 items-center justify-center rounded-xl border"
+                style={{ borderColor: d.border, color: d.accent }}
+              >
+                <DivisionIcon kind={d.icon} />
+              </span>
+              <h3 className="font-heading text-[22px] font-bold tracking-[1px] text-white">
+                {d.name}
+              </h3>
+            </div>
+            <p className="text-sm leading-[1.6] text-[#C9C7D6]">{d.body}</p>
+            <Link
+              href={d.href}
+              className="mt-auto inline-flex items-center gap-2 font-heading text-[13.5px] font-bold tracking-[1.5px] transition hover:brightness-125"
+              style={{ color: d.linkColor }}
+            >
+              EXPLORE {d.name} <span aria-hidden>→</span>
+            </Link>
+          </div>
+          {/* Visual slot — swap for real imagery in public/divisions/ when ready */}
+          <div
+            className="relative hidden min-h-[120px] sm:block"
+            style={{
+              background: `radial-gradient(90% 90% at 60% 50%, ${d.accent}2E, transparent 75%)`,
+            }}
+            aria-hidden
           >
-            <h3 className="text-lg font-extrabold tracking-wide" style={{ color: d.accent }}>
-              {d.name}
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-fog">{d.body}</p>
-            <p className="mt-5 text-xs font-bold tracking-wide transition group-hover:translate-x-1" style={{ color: d.accent }}>
-              EXPLORE {d.name} →
-            </p>
-          </Link>
-        ))}
-      </div>
-    </section>
+            <span
+              className="absolute inset-0 flex items-center justify-center opacity-25"
+              style={{ color: d.accent }}
+            >
+              <DivisionIcon kind={d.icon} size={72} />
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }
 
@@ -864,71 +935,143 @@ function Divisions() {
 
 function FinalCta() {
   return (
-    <section id="contact" className="border-y border-line bg-gradient-to-r from-royal/30 via-charcoal to-charcoal">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-5 py-14 text-center md:flex-row md:text-left">
-        <LogoMark size={64} />
-        <div className="flex-1">
-          <h2 className="text-2xl font-extrabold text-frost md:text-3xl">Let&apos;s build systems that scale.</h2>
-          <p className="mt-2 max-w-xl text-sm leading-relaxed text-fog">
-            Book a free 15-minute call and see if we&apos;re the right partner to bring clarity,
-            automation, and leverage back to your business.
-          </p>
-        </div>
-        <div className="flex flex-col items-center gap-3">
-          <CallButton label="BOOK A FREE 15-MINUTE CALL" />
-          <Link href={intakeUrl} className="text-xs font-semibold text-mint hover:underline">
-            Or take our 5-minute intake →
-          </Link>
-        </div>
+    <div
+      id="contact"
+      className="grid items-center gap-6 rounded-2xl border border-violet-bright/25 px-8 py-8 md:grid-cols-[96px_1fr_auto] md:gap-9 md:px-11 md:py-[34px]"
+      style={{
+        background:
+          "linear-gradient(90deg, rgba(35,20,66,0.6), rgba(15,12,28,0.8) 55%, rgba(35,20,66,0.4))",
+      }}
+    >
+      <span className="flex h-[88px] w-[88px] items-center justify-center rounded-[20px] bg-gradient-to-br from-violet to-violet-bright font-heading text-[52px] font-bold text-white">
+        B
+      </span>
+      <div className="flex flex-col gap-2">
+        <h2 className="font-heading text-[30px] font-bold text-white">
+          Let&apos;s build systems that scale.
+        </h2>
+        <p className="max-w-[560px] text-base leading-[1.55] text-[#C9C7D6]">
+          Book a free 15-minute call and see if we&apos;re the right partner to bring clarity,
+          automation, and leverage back to your business.
+        </p>
       </div>
-    </section>
+      <div className="flex flex-col items-center gap-3.5">
+        <CallButton label="BOOK A FREE 15-MINUTE CALL" />
+        <Link
+          href={intakeUrl}
+          className="inline-flex items-center gap-2 text-[15px] font-bold text-mint transition hover:text-[#7EF0C4]"
+        >
+          Or take our 5-minute intake <span aria-hidden>→</span>
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+function SocialIcon({ kind }: { kind: "linkedin" | "mail" | "instagram" | "youtube" }) {
+  const paths: Record<string, React.ReactNode> = {
+    linkedin: (
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM6 9H2v12h4zM4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
+    ),
+    mail: (
+      <>
+        <rect x="2" y="4" width="20" height="16" rx="2" />
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+      </>
+    ),
+    instagram: (
+      <>
+        <rect x="2" y="2" width="20" height="20" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+      </>
+    ),
+    youtube: (
+      <>
+        <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+        <path d="m10 15 5-3-5-3z" />
+      </>
+    ),
+  };
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      {paths[kind]}
+    </svg>
+  );
+}
+
+const footerSocials: { kind: "linkedin" | "mail" | "instagram" | "youtube"; href: string; label: string }[] = [
+  { kind: "linkedin", href: "https://linkedin.com/in/benbasuni", label: "LinkedIn" },
+  { kind: "mail", href: "mailto:benbasuni1@gmail.com", label: "Email" },
+  { kind: "instagram", href: "#", label: "Instagram" },
+  { kind: "youtube", href: "#", label: "YouTube" },
+];
+
+function FooterCol({ title, links }: { title: string; links: { label: string; href: string }[] }) {
+  return (
+    <div className="flex flex-col gap-2.5">
+      <p className="text-[13px] font-extrabold tracking-[1.5px] text-violet-bright">{title}</p>
+      {links.map((l) => (
+        <Link key={l.label} href={l.href} className="text-[14.5px] text-[#C9C7D6] transition hover:text-white">
+          {l.label}
+        </Link>
+      ))}
+    </div>
   );
 }
 
 function HomeFooter() {
   return (
-    <footer id="footer" className="mx-auto max-w-6xl px-5 py-12">
-      <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr_1.2fr]">
-        <div>
-          <Link href="/" className="flex items-center gap-2.5">
-            <LogoMark size={28} />
-            <span className="font-extrabold tracking-wide text-frost">
-              BINARY <span className="text-violet">1702</span>
-            </span>
-          </Link>
-        </div>
-        <div>
-          <p className="font-display-mono text-[10px] font-semibold tracking-[0.2em] text-lavender">COMPANY</p>
-          <ul className="mt-3 space-y-2 text-sm text-fog">
-            <li><a href="#footer" className="hover:text-frost">About</a></li>
-            <li><a href="#contact" className="hover:text-frost">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <p className="font-display-mono text-[10px] font-semibold tracking-[0.2em] text-lavender">DIVISIONS</p>
-          <ul className="mt-3 space-y-2 text-sm text-fog">
-            {divisions.map((d) => (
-              <li key={d.name}>
-                <Link href={d.href} className="hover:text-frost">
-                  {d.name.charAt(0) + d.name.slice(1).toLowerCase()}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <p className="font-display-mono text-[10px] font-semibold tracking-[0.2em] text-lavender">RESOURCES</p>
-          <ul className="mt-3 space-y-2 text-sm text-fog">
-            <li><a href="#case-study" className="hover:text-frost">Case Studies</a></li>
-            <li><a href="#how-we-work" className="hover:text-frost">How It Works</a></li>
-          </ul>
-          <p className="mt-6 text-xs leading-relaxed text-fog">
+    <footer id="footer" className="flex flex-col gap-7">
+      <div className="grid items-start gap-7 border-t border-white/[0.08] pt-7 md:grid-cols-[1.2fr_1fr_1fr_1fr_1.2fr]">
+        <Link href="/" className="flex items-center gap-3">
+          <LogoMark size={38} />
+          <span className="font-heading text-[19px] font-bold tracking-[0.5px] text-white">
+            BINARY <span className="text-violet-bright">1702</span>
+          </span>
+        </Link>
+        <FooterCol
+          title="COMPANY"
+          links={[
+            { label: "About", href: "#footer" },
+            { label: "Contact", href: "#contact" },
+          ]}
+        />
+        <FooterCol
+          title="DIVISIONS"
+          links={divisions.map((d) => ({
+            label: d.name.charAt(0) + d.name.slice(1).toLowerCase(),
+            href: d.href,
+          }))}
+        />
+        <FooterCol
+          title="RESOURCES"
+          links={[
+            { label: "Case Studies", href: "#case-study" },
+            { label: "How It Works", href: "#how-we-work" },
+          ]}
+        />
+        <div className="flex flex-col gap-3.5">
+          <p className="text-sm leading-[1.6] text-[#C9C7D6]">
             We build systems that help founder-led businesses run smarter, scale faster, and reclaim
             their time.
           </p>
+          <div className="flex gap-3.5">
+            {footerSocials.map((s) => (
+              <a
+                key={s.kind}
+                href={s.href}
+                aria-label={s.label}
+                className="inline-flex text-[#B7B5C4] transition hover:text-white"
+                {...(s.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              >
+                <SocialIcon kind={s.kind} />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
-      <p className="mt-10 border-t border-line pt-6 text-center text-xs text-fog">
+      <p className="text-center text-[13px] text-[#8B899A]">
         © {new Date().getFullYear()} Binary 1702. All rights reserved.
       </p>
     </footer>
@@ -948,10 +1091,14 @@ export default function HomePage() {
         <PainPoints />
         <HowWeWork />
         <WorkTogether />
-        <Divisions />
-        <FinalCta />
+        <section className="mx-auto max-w-[1360px] px-6 pb-10 pt-8">
+          <div className="flex flex-col gap-8 rounded-2xl border border-white/[0.06] bg-gradient-to-b from-[#0B0A14] to-[#08070F] px-9 pb-7 pt-9">
+            <DivisionCards />
+            <FinalCta />
+            <HomeFooter />
+          </div>
+        </section>
       </main>
-      <HomeFooter />
     </div>
   );
 }
