@@ -28,8 +28,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# PWA
-public/sw.js
+# PWA (next-pwa removed — public/sw.js is now a tracked kill-switch worker)
 public/workbox-*.js
 
 # private operator notes
