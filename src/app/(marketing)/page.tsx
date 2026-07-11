@@ -55,24 +55,95 @@ function CallButton({ label = "Book a free 15-minute call" }: { label?: string }
       href={bookingUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-2 rounded-lg bg-mint px-6 py-3 text-sm font-bold text-midnight transition hover:bg-mint-deep"
+      className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-mint-deep to-mint px-6 py-3 text-sm font-bold text-midnight shadow-[0_0_24px_rgba(45,212,191,0.3)] transition hover:opacity-90"
     >
       {label} <span aria-hidden>→</span>
     </a>
   );
 }
 
-/* Letter tiles standing in for tool logos (swap for real SVGs later) */
-function ToolTile({ label, color }: { label: string; color: string }) {
+/* ── Tool logo tiles for the hero diagram ── */
+
+function Tile({ bg, label, children }: { bg: string; label: string; children: React.ReactNode }) {
   return (
     <span
-      className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-charcoal text-sm font-bold"
-      style={{ color }}
+      className="flex h-11 w-11 items-center justify-center rounded-xl shadow-md"
+      style={{ backgroundColor: bg }}
       title={label}
       aria-label={label}
     >
-      {label.slice(0, 2)}
+      {children}
     </span>
+  );
+}
+
+const disconnectedRow = [
+  <Tile key="slack" bg="#FFFFFF" label="Slack">
+    {/* eslint-disable-next-line @next/next/no-img-element */}
+    <img src="/logos/slack.svg" alt="" className="h-6 w-6" />
+  </Tile>,
+  <Tile key="gmail" bg="#FFFFFF" label="Gmail">
+    <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden>
+      <path d="M3 6.5V18h3.6v-7.2L12 14l5.4-3.2V18H21V6.5L12 12z" fill="#EA4335" />
+      <path d="M3 6.5 12 12l9-5.5L19.6 5 12 9.6 4.4 5z" fill="#C5221F" />
+    </svg>
+  </Tile>,
+  <Tile key="notion" bg="#FFFFFF" label="Notion">
+    {/* eslint-disable-next-line @next/next/no-img-element */}
+    <img src="/logos/notion.svg" alt="" className="h-6 w-6" />
+  </Tile>,
+  <Tile key="quickbooks" bg="#FFFFFF" label="QuickBooks">
+    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#2CA01C] text-[10px] font-bold text-white">
+      qb
+    </span>
+  </Tile>,
+  <Tile key="more" bg="#FFFFFF" label="And more">
+    <span className="pb-1 text-lg font-extrabold tracking-wider text-[#5F6368]">…</span>
+  </Tile>,
+];
+
+const alignedRow = [
+  <Tile key="hubspot" bg="#FF7A59" label="HubSpot">
+    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="#fff" aria-hidden>
+      <circle cx="13" cy="14" r="3.6" strokeWidth="2.2" />
+      <path d="M13 10.4V5.2" strokeWidth="2.2" />
+      <circle cx="13" cy="4" r="1.6" fill="#fff" stroke="none" />
+      <path d="M10.3 12.1 6.2 8.9" strokeWidth="2" />
+      <circle cx="5.2" cy="8" r="1.4" fill="#fff" stroke="none" />
+      <path d="m10.6 16.6-2.9 2.9" strokeWidth="2" />
+      <circle cx="6.8" cy="20.4" r="1.4" fill="#fff" stroke="none" />
+    </svg>
+  </Tile>,
+  <Tile key="notion2" bg="#0F0F12" label="Notion">
+    <span className="font-serif text-lg font-bold text-white">N</span>
+  </Tile>,
+  <Tile key="stripe" bg="#635BFF" label="Stripe">
+    <span className="text-lg font-extrabold text-white">S</span>
+  </Tile>,
+  <Tile key="sheets" bg="#34A853" label="Google Sheets">
+    <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden>
+      <rect x="6" y="4" width="12" height="16" rx="1.5" fill="#fff" />
+      <path d="M8.5 9h7M8.5 12h7M8.5 15h7M12 9v8" stroke="#34A853" strokeWidth="1.2" />
+    </svg>
+  </Tile>,
+  <Tile key="postgres" bg="#336791" label="Postgres">
+    <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden>
+      <ellipse cx="12" cy="7" rx="6" ry="2.5" fill="#fff" />
+      <path d="M6 7v9c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5V7" fill="none" stroke="#fff" strokeWidth="1.8" />
+    </svg>
+  </Tile>,
+];
+
+/* Dotted connector stubs between diagram rows */
+function DashRow() {
+  return (
+    <div className="flex justify-center gap-2" aria-hidden>
+      {[0, 1, 2, 3, 4].map((i) => (
+        <span key={i} className="flex w-11 justify-center">
+          <span className="h-5 border-l border-dashed border-mint/40" />
+        </span>
+      ))}
+    </div>
   );
 }
 
@@ -101,19 +172,26 @@ function HomeNav() {
         </Link>
         <div className="hidden items-center gap-7 md:flex">
           {navLinks.map((l) => (
-            <Link key={l.label} href={l.href} className="text-sm font-medium text-fog transition hover:text-frost">
+            <Link
+              key={l.label}
+              href={l.href}
+              className="text-xs font-semibold uppercase tracking-[0.15em] text-fog transition hover:text-frost"
+            >
               {l.label}
             </Link>
           ))}
         </div>
-        <a
-          href={bookingUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-lg border border-mint px-4 py-2 text-xs font-bold tracking-wide text-mint transition hover:bg-mint hover:text-midnight"
-        >
-          FREE 15-MINUTE CALL →
-        </a>
+        <div className="flex flex-col items-end gap-1">
+          <a
+            href={bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-lg border border-mint px-4 py-2 text-xs font-bold tracking-wide text-mint shadow-[0_0_16px_rgba(45,212,191,0.2)] transition hover:bg-mint hover:text-midnight"
+          >
+            FREE 15-MINUTE CALL →
+          </a>
+          <span className="hidden text-[10px] text-fog sm:block">No pressure. Just a conversation.</span>
+        </div>
       </nav>
     </header>
   );
@@ -122,22 +200,6 @@ function HomeNav() {
 /* ────────────────────────────────────────────────────────────────
    Hero
    ──────────────────────────────────────────────────────────────── */
-
-const disconnectedTools = [
-  { label: "Slack", color: "#E01E5A" },
-  { label: "Gmail", color: "#EA4335" },
-  { label: "Notion", color: "#F8FAFC" },
-  { label: "QuickBooks", color: "#2CA01C" },
-  { label: "…", color: "#9CA3AF" },
-];
-
-const alignedTools = [
-  { label: "HubSpot", color: "#FF7A59" },
-  { label: "Notion", color: "#F8FAFC" },
-  { label: "Stripe", color: "#635BFF" },
-  { label: "Sheets", color: "#34A853" },
-  { label: "Postgres", color: "#699ECA" },
-];
 
 const heroTrust = ["Fixed scope", "Working systems", "No open-ended contracts", "You own everything we build"];
 
@@ -158,10 +220,10 @@ function Hero() {
       />
       <div className="relative mx-auto grid max-w-6xl gap-12 px-5 py-16 lg:grid-cols-[1.05fr_1fr] lg:py-20">
         <div>
-          <Eyebrow>Systems. Workflows. Clarity.</Eyebrow>
-          <h1 className="mt-4 text-4xl font-extrabold leading-tight text-frost md:text-5xl">
-            Your business should not depend on you manually{" "}
-            <span className="text-lavender">holding every system together.</span>
+          <Eyebrow className="text-mint">Systems. Workflows. Clarity.</Eyebrow>
+          <h1 className="mt-4 max-w-xl text-4xl font-extrabold leading-tight text-frost md:text-[2.9rem]">
+            Your business should not depend on you manually holding{" "}
+            <span className="text-lavender">every system together.</span>
           </h1>
           <p className="mt-5 max-w-xl text-lg text-fog">
             Binary 1702 maps your tools, fixes broken handoffs, and builds the workflows that give
@@ -195,26 +257,20 @@ function Hero() {
             <p className="mt-4 text-center font-display-mono text-[10px] tracking-[0.2em] text-fog">
               DISCONNECTED TODAY
             </p>
-            <div className="mt-2 flex justify-center gap-2">
-              {disconnectedTools.map((t) => (
-                <ToolTile key={t.label} {...t} />
-              ))}
-            </div>
-            <div className="mx-auto my-4 flex w-fit items-center gap-3 rounded-xl border border-violet/40 bg-midnight px-5 py-3 shadow-[0_0_30px_rgba(124,58,237,0.25)]">
+            <div className="mt-2 flex justify-center gap-2">{disconnectedRow}</div>
+            <DashRow />
+            <div className="mx-auto flex w-fit items-center gap-3 rounded-xl border border-violet/40 bg-midnight px-5 py-3 shadow-[0_0_30px_rgba(124,58,237,0.25)]">
               <LogoMark size={30} />
               <span className="text-left">
                 <span className="block text-sm font-bold text-frost">BINARY 1702</span>
                 <span className="block text-xs text-fog">Maps. Fixes. Builds.</span>
               </span>
             </div>
+            <DashRow />
             <p className="text-center font-display-mono text-[10px] tracking-[0.2em] text-mint">
               ALIGNED &amp; AUTOMATED
             </p>
-            <div className="mt-2 flex justify-center gap-2">
-              {alignedTools.map((t) => (
-                <ToolTile key={t.label} {...t} />
-              ))}
-            </div>
+            <div className="mt-2 flex justify-center gap-2">{alignedRow}</div>
           </div>
           <div className="flex flex-col justify-between rounded-2xl border border-line bg-charcoal/60 p-5">
             <div>
