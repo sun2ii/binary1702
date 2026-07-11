@@ -1074,14 +1074,16 @@ export default function HomePage() {
         <PainPoints />
         <HowWeWork />
         <WorkTogether />
-        <section className="mx-auto max-w-[1360px] px-6 pb-10 pt-8">
-          <div className="flex flex-col gap-8 rounded-2xl border border-white/[0.06] bg-gradient-to-b from-[#0B0A14] to-[#08070F] px-9 pb-7 pt-9">
+        <section className="mx-auto max-w-[1360px] px-6 pb-4 pt-8">
+          <div className="flex flex-col gap-8 rounded-2xl border border-white/[0.06] bg-gradient-to-b from-[#0B0A14] to-[#08070F] px-9 pb-9 pt-9">
             <DivisionCards />
             <FinalCta />
-            <HomeFooter />
           </div>
         </section>
       </main>
+      <div className="mx-auto max-w-[1360px] px-6 pb-10">
+        <HomeFooter />
+      </div>
     </div>
   );
 }
