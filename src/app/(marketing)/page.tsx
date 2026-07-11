@@ -23,23 +23,6 @@ function LogoMark({ size = 34 }: { size?: number }) {
   );
 }
 
-function Check({ className = "text-mint" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 16 16" className={`h-4 w-4 shrink-0 ${className}`} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <circle cx="8" cy="8" r="7" strokeWidth="1.2" opacity="0.5" />
-      <path d="M5 8.2l2 2 4-4.4" />
-    </svg>
-  );
-}
-
-function Eyebrow({ children, className = "text-lavender" }: { children: React.ReactNode; className?: string }) {
-  return (
-    <p className={`font-display-mono text-xs font-semibold tracking-[0.2em] uppercase ${className}`}>
-      {children}
-    </p>
-  );
-}
-
 function CallButton({ label = "Book a free 15-minute call" }: { label?: string }) {
   return (
     <a
