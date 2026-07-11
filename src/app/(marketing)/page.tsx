@@ -560,7 +560,7 @@ function HowWeWork() {
           <h2 className="mb-6 font-heading text-[19px] font-bold tracking-[2px] text-violet-bright">
             HOW WE WORK
           </h2>
-          <div className="grid flex-1 content-center items-start gap-3 sm:grid-cols-[minmax(0,1fr)_18px_minmax(0,1fr)_18px_minmax(0,1fr)]">
+          <div className="grid flex-1 content-start items-start gap-3 pt-4 sm:grid-cols-[minmax(0,1fr)_18px_minmax(0,1fr)_18px_minmax(0,1fr)]">
             {steps.map((s, i) => (
               <div key={s.n} className="contents">
                 {i > 0 && (
