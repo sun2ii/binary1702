@@ -560,7 +560,7 @@ function HowWeWork() {
           <h2 className="mb-6 font-heading text-[19px] font-bold tracking-[2px] text-violet-bright">
             HOW WE WORK
           </h2>
-          <div className="grid flex-1 content-start items-start gap-3 pt-4 sm:grid-cols-[minmax(0,1fr)_18px_minmax(0,1fr)_18px_minmax(0,1fr)]">
+          <div className="grid flex-1 gap-3 pt-4 sm:grid-cols-[minmax(0,1fr)_18px_minmax(0,1fr)_18px_minmax(0,1fr)]">
             {steps.map((s, i) => (
               <div key={s.n} className="contents">
                 {i > 0 && (
@@ -581,8 +581,8 @@ function HowWeWork() {
                       {s.title}
                     </h3>
                   </div>
-                  <p className="text-[15px] leading-[1.6] text-[#C9C7D6]">{s.body}</p>
-                  <div className="flex items-center justify-center pt-8 text-violet-bright sm:pt-11">
+                  <p className="mt-2 text-[15px] leading-[1.6] text-[#C9C7D6]">{s.body}</p>
+                  <div className="flex items-center justify-center pt-10 text-violet-bright sm:pt-14">
                     <StepIcon kind={s.icon} />
                   </div>
                 </div>
