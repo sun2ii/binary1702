@@ -21,6 +21,21 @@
 
   --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  /* ── Binary 1702 brand palette (dark cinematic) ──
+     Base + Studio accent = violet · Labs = mint · Legacy = gold */
+  --color-midnight: #05050A;
+  --color-charcoal: #11111A;
+  --color-violet: #7C3AED;
+  --color-royal: #4C1D95;
+  --color-lavender: #A78BFA;
+  --color-mint: #2DD4BF;
+  --color-mint-deep: #14B8A6;
+  --color-gold: #C8A24D;
+  --color-gold-bright: #F2C94C;
+  --color-line: #2A2A3A;
+  --color-frost: #F8FAFC;
+  --color-fog: #9CA3AF;
 }
 
 /* ─────────────────────────────────────────────────────────────

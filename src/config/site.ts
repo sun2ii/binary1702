@@ -14,3 +14,9 @@ export const siteConfig = {
 } as const;
 
 export type SiteConfig = typeof siteConfig;
+
+/** Scheduling link used by every "free 15-minute call" CTA. */
+export const bookingUrl = "https://calendly.com/benbasuni";
+
+/** 5-minute intake form (Notion + Slack pipeline). */
+export const intakeUrl = "/operations";

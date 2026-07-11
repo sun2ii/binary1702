@@ -1,365 +1,620 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { MarketingNav, type NavLink } from "@/components/marketing/MarketingNav";
-import { SectionHead } from "@/components/marketing/SectionHead";
-import { MarketingFooter } from "@/components/marketing/MarketingFooter";
-import { RouteModal } from "@/components/RouteModal";
+import { bookingUrl, intakeUrl } from "@/config/site";
 
-const navLinks: NavLink[] = [
-  { href: "#work", label: "Work", sectionId: "work" },
-  { href: "#case", label: "Case Study", sectionId: "case" },
-  { href: "/operations", label: "Operations" },
-  {
-    label: "Customers",
-    children: [
-      { href: "/msp", label: "For MSPs" },
-      { href: "/letip", label: "LeTip Members" },
-    ],
-  },
-  { href: "#about", label: "About", sectionId: "about" },
-  { href: "#contact", label: "Contact", sectionId: "contact" },
+export const metadata: Metadata = {
+  title: "Binary 1702 — Systems. Workflows. Clarity.",
+  description:
+    "Binary 1702 maps your tools, fixes broken handoffs, and builds the workflows that give founders their time back.",
+};
+
+/* ────────────────────────────────────────────────────────────────
+   Small shared pieces
+   ──────────────────────────────────────────────────────────────── */
+
+function LogoMark({ size = 34 }: { size?: number }) {
+  return (
+    <span
+      className="inline-flex items-center justify-center rounded-lg bg-gradient-to-br from-violet to-royal font-bold text-frost"
+      style={{ width: size, height: size, fontSize: size * 0.55 }}
+    >
+      B
+    </span>
+  );
+}
+
+function Check({ className = "text-mint" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 16 16" className={`h-4 w-4 shrink-0 ${className}`} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <circle cx="8" cy="8" r="7" strokeWidth="1.2" opacity="0.5" />
+      <path d="M5 8.2l2 2 4-4.4" />
+    </svg>
+  );
+}
+
+function Cross() {
+  return (
+    <svg viewBox="0 0 16 16" className="h-4 w-4 shrink-0 text-red-400" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
+      <circle cx="8" cy="8" r="7" strokeWidth="1.2" opacity="0.5" />
+      <path d="M5.5 5.5l5 5M10.5 5.5l-5 5" />
+    </svg>
+  );
+}
+
+function Eyebrow({ children, className = "text-lavender" }: { children: React.ReactNode; className?: string }) {
+  return (
+    <p className={`font-display-mono text-xs font-semibold tracking-[0.2em] uppercase ${className}`}>
+      {children}
+    </p>
+  );
+}
+
+function CallButton({ label = "Book a free 15-minute call" }: { label?: string }) {
+  return (
+    <a
+      href={bookingUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-2 rounded-lg bg-mint px-6 py-3 text-sm font-bold text-midnight transition hover:bg-mint-deep"
+    >
+      {label} <span aria-hidden>→</span>
+    </a>
+  );
+}
+
+/* Letter tiles standing in for tool logos (swap for real SVGs later) */
+function ToolTile({ label, color }: { label: string; color: string }) {
+  return (
+    <span
+      className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-charcoal text-sm font-bold"
+      style={{ color }}
+      title={label}
+      aria-label={label}
+    >
+      {label.slice(0, 2)}
+    </span>
+  );
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Nav
+   ──────────────────────────────────────────────────────────────── */
+
+const navLinks = [
+  { label: "Studio", href: "/studio" },
+  { label: "Labs", href: "/labs" },
+  { label: "Legacy", href: "/legacy" },
+  { label: "Work", href: "#case-study" },
+  { label: "About", href: "#footer" },
+  { label: "Contact", href: "#contact" },
 ];
+
+function HomeNav() {
+  return (
+    <header className="sticky top-0 z-50 border-b border-line bg-midnight/90 backdrop-blur">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3">
+        <Link href="/" className="flex items-center gap-2.5">
+          <LogoMark />
+          <span className="text-lg font-extrabold tracking-wide text-frost">
+            BINARY <span className="text-violet">1702</span>
+          </span>
+        </Link>
+        <div className="hidden items-center gap-7 md:flex">
+          {navLinks.map((l) => (
+            <Link key={l.label} href={l.href} className="text-sm font-medium text-fog transition hover:text-frost">
+              {l.label}
+            </Link>
+          ))}
+        </div>
+        <a
+          href={bookingUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-lg border border-mint px-4 py-2 text-xs font-bold tracking-wide text-mint transition hover:bg-mint hover:text-midnight"
+        >
+          FREE 15-MINUTE CALL →
+        </a>
+      </nav>
+    </header>
+  );
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Hero
+   ──────────────────────────────────────────────────────────────── */
+
+const disconnectedTools = [
+  { label: "Slack", color: "#E01E5A" },
+  { label: "Gmail", color: "#EA4335" },
+  { label: "Notion", color: "#F8FAFC" },
+  { label: "QuickBooks", color: "#2CA01C" },
+  { label: "…", color: "#9CA3AF" },
+];
+
+const alignedTools = [
+  { label: "HubSpot", color: "#FF7A59" },
+  { label: "Notion", color: "#F8FAFC" },
+  { label: "Stripe", color: "#635BFF" },
+  { label: "Sheets", color: "#34A853" },
+  { label: "Postgres", color: "#699ECA" },
+];
+
+const heroTrust = ["Fixed scope", "Working systems", "No open-ended contracts", "You own everything we build"];
+
+const heroResults = [
+  "Disconnected tools become one system",
+  "Manual handoffs become automated",
+  "Clean data you can trust",
+  "Founder time is reclaimed",
+];
+
+function Hero() {
+  return (
+    <section className="relative overflow-hidden">
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{ background: "radial-gradient(60% 50% at 75% 20%, rgba(124,58,237,0.16), transparent 70%)" }}
+        aria-hidden
+      />
+      <div className="relative mx-auto grid max-w-6xl gap-12 px-5 py-16 lg:grid-cols-[1.05fr_1fr] lg:py-20">
+        <div>
+          <Eyebrow>Systems. Workflows. Clarity.</Eyebrow>
+          <h1 className="mt-4 text-4xl font-extrabold leading-tight text-frost md:text-5xl">
+            Your business should not depend on you manually{" "}
+            <span className="text-lavender">holding every system together.</span>
+          </h1>
+          <p className="mt-5 max-w-xl text-lg text-fog">
+            Binary 1702 maps your tools, fixes broken handoffs, and builds the workflows that give
+            founders their time back.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <CallButton />
+            <a
+              href="#case-study"
+              className="inline-flex items-center rounded-lg border border-line px-5 py-3 text-xs font-semibold tracking-wide text-fog transition hover:border-fog hover:text-frost"
+            >
+              SEE A REAL CLIENT TRANSFORMATION
+            </a>
+          </div>
+          <p className="mt-3 text-sm text-fog/80">Let&apos;s talk about your business and challenges.</p>
+          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2">
+            {heroTrust.map((t) => (
+              <li key={t} className="flex items-center gap-2 text-xs font-medium text-fog">
+                <Check className="text-violet" /> {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Diagram panel */}
+        <div className="grid gap-4 sm:grid-cols-[1.5fr_1fr]">
+          <div className="rounded-2xl border border-line bg-charcoal/60 p-5">
+            <p className="text-center text-sm font-bold tracking-wide text-frost">
+              FROM DISCONNECTED TO <span className="text-mint">ALIGNED</span>
+            </p>
+            <p className="mt-4 text-center font-display-mono text-[10px] tracking-[0.2em] text-fog">
+              DISCONNECTED TODAY
+            </p>
+            <div className="mt-2 flex justify-center gap-2">
+              {disconnectedTools.map((t) => (
+                <ToolTile key={t.label} {...t} />
+              ))}
+            </div>
+            <div className="mx-auto my-4 flex w-fit items-center gap-3 rounded-xl border border-violet/40 bg-midnight px-5 py-3 shadow-[0_0_30px_rgba(124,58,237,0.25)]">
+              <LogoMark size={30} />
+              <span className="text-left">
+                <span className="block text-sm font-bold text-frost">BINARY 1702</span>
+                <span className="block text-xs text-fog">Maps. Fixes. Builds.</span>
+              </span>
+            </div>
+            <p className="text-center font-display-mono text-[10px] tracking-[0.2em] text-mint">
+              ALIGNED &amp; AUTOMATED
+            </p>
+            <div className="mt-2 flex justify-center gap-2">
+              {alignedTools.map((t) => (
+                <ToolTile key={t.label} {...t} />
+              ))}
+            </div>
+          </div>
+          <div className="flex flex-col justify-between rounded-2xl border border-line bg-charcoal/60 p-5">
+            <div>
+              <p className="text-sm font-bold tracking-wide text-frost">THE RESULTS</p>
+              <ul className="mt-3 space-y-2.5">
+                {heroResults.map((r) => (
+                  <li key={r} className="flex items-start gap-2 text-xs text-fog">
+                    <Check /> {r}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-5 border-t border-line pt-4">
+              <Eyebrow className="text-lavender">The Opportunity</Eyebrow>
+              <p className="mt-1 text-2xl font-extrabold text-frost">
+                10+ <span className="text-sm font-semibold text-fog">hrs/week reclaimed</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Pain points
+   ──────────────────────────────────────────────────────────────── */
+
+const pains = [
+  "Your systems only work because you manually connect them.",
+  "Important client information lives across multiple tools.",
+  "Your team asks you questions the system should answer.",
+  "Fixing one workflow seems to break another.",
+  "Nobody has a complete map of how your business operates.",
+];
+
+function PainPoints() {
+  return (
+    <section className="border-y border-line bg-charcoal/40">
+      <div className="mx-auto max-w-6xl px-5 py-14">
+        <h2 className="text-center font-display-mono text-sm font-semibold tracking-[0.25em] text-frost">
+          DOES THIS SOUND FAMILIAR?
+        </h2>
+        <ul className="mt-10 grid gap-8 text-center sm:grid-cols-2 lg:grid-cols-5">
+          {pains.map((p) => (
+            <li key={p} className="mx-auto max-w-[220px] text-sm leading-relaxed text-fog">
+              <span className="mb-3 block text-2xl text-violet" aria-hidden>
+                ◈
+              </span>
+              {p}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+/* ────────────────────────────────────────────────────────────────
+   How we work + case study
+   ──────────────────────────────────────────────────────────────── */
+
+const steps = [
+  { n: 1, title: "MAP", body: "We document your tools, workflows, handoffs, dependencies, and bottlenecks." },
+  { n: 2, title: "FIX", body: "We repair the immediate failures affecting your customers and your team." },
+  { n: 3, title: "BUILD", body: "We implement the highest-value workflows and hand the completed system back to you." },
+];
+
+const caseBefore = [
+  "Founder manually synchronizing customer information",
+  "Two-day quarterly audit preparation",
+  "Broken invitation & access workflows",
+  "Disconnected membership & payment systems",
+];
+
+const caseAfter = [
+  "Full systems architecture map",
+  "Prioritized workflow roadmap",
+  "Corrected customer-facing issues",
+  "Automated data handoffs",
+  "Reorganized member experience",
+];
+
+const impact = [
+  { big: "10+", small: "hrs/week reclaimed" },
+  { big: "90%", small: "reduction in manual work" },
+  { big: "2 Days → 2 Hrs", small: "audit prep time" },
+  { big: "100%", small: "access issues eliminated" },
+];
+
+function HowWeWork() {
+  return (
+    <section id="how-we-work" className="mx-auto max-w-6xl px-5 py-16">
+      <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
+        <div>
+          <Eyebrow>How we work</Eyebrow>
+          <ol className="mt-8 space-y-8">
+            {steps.map((s) => (
+              <li key={s.n} className="flex gap-4">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-violet text-sm font-bold text-frost">
+                  {s.n}
+                </span>
+                <div>
+                  <h3 className="font-bold tracking-wide text-frost">{s.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-fog">{s.body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div id="case-study" className="grid gap-4 md:grid-cols-[1.5fr_1fr]">
+          <div className="rounded-2xl border border-line bg-charcoal/60 p-6">
+            <Eyebrow>Featured case study</Eyebrow>
+            <h3 className="mt-2 text-xl font-extrabold text-frost">
+              25-Year Service Business
+              <span className="block text-base font-bold text-fog">13 Systems. One Founder Bottleneck.</span>
+            </h3>
+            <div className="mt-5 grid gap-6 sm:grid-cols-2">
+              <div>
+                <p className="font-display-mono text-[10px] font-semibold tracking-[0.2em] text-red-400">BEFORE</p>
+                <ul className="mt-2 space-y-2">
+                  {caseBefore.map((b) => (
+                    <li key={b} className="flex items-start gap-2 text-xs text-fog">
+                      <Cross /> {b}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p className="font-display-mono text-[10px] font-semibold tracking-[0.2em] text-mint">AFTER</p>
+                <ul className="mt-2 space-y-2">
+                  {caseAfter.map((a) => (
+                    <li key={a} className="flex items-start gap-2 text-xs text-fog">
+                      <Check /> {a}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <blockquote className="mt-6 border-l-2 border-violet pl-4 text-sm italic leading-relaxed text-lavender">
+              &ldquo;Binary 1702 identified problems we had been living with for years and gave us a clear
+              system for fixing them. The impact was immediate.&rdquo;
+              <footer className="mt-1 not-italic text-fog">— Mike, Business Owner</footer>
+            </blockquote>
+          </div>
+          <div className="rounded-2xl border border-line bg-charcoal/60 p-6">
+            <p className="font-display-mono text-[10px] font-semibold tracking-[0.2em] text-frost">
+              MEASURED IMPACT <span className="text-fog">(90 DAYS)</span>
+            </p>
+            <ul className="mt-4 space-y-5">
+              {impact.map((m) => (
+                <li key={m.small}>
+                  <p className="text-xl font-extrabold text-frost">{m.big}</p>
+                  <p className="text-xs text-fog">{m.small}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Ways to work together
+   ──────────────────────────────────────────────────────────────── */
+
+const diagnostic = [
+  "1 week engagement",
+  "Complete systems assessment",
+  "Architecture map & findings",
+  "Prioritized roadmap",
+  "Immediate issues fixed",
+];
+
+const sprint = [
+  "4 week implementation sprint",
+  "High-impact workflow builds",
+  "Automation & integrations",
+  "Documentation & training",
+  "You own everything we build",
+];
+
+function WorkTogether() {
+  return (
+    <section className="border-y border-line bg-charcoal/40">
+      <div className="mx-auto max-w-6xl px-5 py-16">
+        <Eyebrow>How we can work together</Eyebrow>
+        <div className="mt-8 grid gap-4 lg:grid-cols-[1.2fr_1fr_1fr_1fr]">
+          <div className="flex flex-col justify-center rounded-2xl border border-mint/40 bg-midnight p-6">
+            <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-mint/15 text-xl text-mint" aria-hidden>
+              ✆
+            </span>
+            <h3 className="text-lg font-extrabold text-frost">Start with a free 15-minute call.</h3>
+            <p className="mt-2 text-sm leading-relaxed text-fog">
+              We learn about your business and challenges so we can recommend the best next step.
+            </p>
+            <p className="mt-4 text-xs font-semibold text-mint">No pressure. Just clarity.</p>
+          </div>
+
+          <div className="rounded-2xl border border-line bg-midnight p-6">
+            <h3 className="font-bold text-frost">Operations Diagnostic</h3>
+            <p className="mt-1 text-2xl font-extrabold text-lavender">$2,000</p>
+            <ul className="mt-4 space-y-2">
+              {diagnostic.map((d) => (
+                <li key={d} className="flex items-start gap-2 text-xs text-fog">
+                  <Check className="text-violet" /> {d}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="rounded-2xl border border-line bg-midnight p-6">
+            <h3 className="font-bold text-frost">Systems Sprint</h3>
+            <p className="mt-1 text-2xl font-extrabold text-lavender">
+              <span className="text-sm font-semibold text-fog">Starting at</span> $5,000
+            </p>
+            <ul className="mt-4 space-y-2">
+              {sprint.map((s) => (
+                <li key={s} className="flex items-start gap-2 text-xs text-fog">
+                  <Check className="text-violet" /> {s}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="rounded-2xl border border-violet/40 bg-midnight p-6">
+            <p className="font-display-mono text-[10px] font-semibold tracking-[0.2em] text-lavender">
+              INVESTMENT GUIDE
+            </p>
+            <dl className="mt-4 space-y-4 text-sm">
+              <div className="flex items-baseline justify-between gap-2">
+                <dt className="text-fog">Diagnostic</dt>
+                <dd className="font-bold text-frost">$2,000</dd>
+              </div>
+              <div className="flex items-baseline justify-between gap-2">
+                <dt className="text-fog">Sprint investment</dt>
+                <dd className="font-bold text-frost">$3,000+</dd>
+              </div>
+              <div className="flex items-baseline justify-between gap-2 border-t border-line pt-4">
+                <dt className="font-semibold text-frost">Total investment</dt>
+                <dd className="text-xl font-extrabold text-lavender">$5,000+</dd>
+              </div>
+            </dl>
+            <p className="mt-4 text-xs text-mint">Clear scope. No surprises.</p>
+            <p className="mt-1 text-xs text-fog">Diagnostic is credited toward your sprint.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Divisions
+   ──────────────────────────────────────────────────────────────── */
+
+const divisions = [
+  {
+    name: "STUDIO",
+    href: "/studio",
+    accent: "#7C3AED",
+    body: "Operational systems, websites, automation, and support plans built to help your business run and grow.",
+  },
+  {
+    name: "LABS",
+    href: "/labs",
+    accent: "#2DD4BF",
+    body: "Where we experiment, prototype, and build the tools that power tomorrow.",
+  },
+  {
+    name: "LEGACY",
+    href: "/legacy",
+    accent: "#C8A24D",
+    body: "Projects and resources that create lasting impact and leave a mark for future generations.",
+  },
+];
+
+function Divisions() {
+  return (
+    <section className="mx-auto max-w-6xl px-5 py-16">
+      <div className="grid gap-4 md:grid-cols-3">
+        {divisions.map((d) => (
+          <Link
+            key={d.name}
+            href={d.href}
+            className="group rounded-2xl border border-line bg-charcoal/60 p-6 transition hover:-translate-y-0.5"
+            style={{ boxShadow: `inset 0 1px 0 ${d.accent}22` }}
+          >
+            <h3 className="text-lg font-extrabold tracking-wide" style={{ color: d.accent }}>
+              {d.name}
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-fog">{d.body}</p>
+            <p className="mt-5 text-xs font-bold tracking-wide transition group-hover:translate-x-1" style={{ color: d.accent }}>
+              EXPLORE {d.name} →
+            </p>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Final CTA + footer
+   ──────────────────────────────────────────────────────────────── */
+
+function FinalCta() {
+  return (
+    <section id="contact" className="border-y border-line bg-gradient-to-r from-royal/30 via-charcoal to-charcoal">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-5 py-14 text-center md:flex-row md:text-left">
+        <LogoMark size={64} />
+        <div className="flex-1">
+          <h2 className="text-2xl font-extrabold text-frost md:text-3xl">Let&apos;s build systems that scale.</h2>
+          <p className="mt-2 max-w-xl text-sm leading-relaxed text-fog">
+            Book a free 15-minute call and see if we&apos;re the right partner to bring clarity,
+            automation, and leverage back to your business.
+          </p>
+        </div>
+        <div className="flex flex-col items-center gap-3">
+          <CallButton label="BOOK A FREE 15-MINUTE CALL" />
+          <Link href={intakeUrl} className="text-xs font-semibold text-mint hover:underline">
+            Or take our 5-minute intake →
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HomeFooter() {
+  return (
+    <footer id="footer" className="mx-auto max-w-6xl px-5 py-12">
+      <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr_1.2fr]">
+        <div>
+          <Link href="/" className="flex items-center gap-2.5">
+            <LogoMark size={28} />
+            <span className="font-extrabold tracking-wide text-frost">
+              BINARY <span className="text-violet">1702</span>
+            </span>
+          </Link>
+        </div>
+        <div>
+          <p className="font-display-mono text-[10px] font-semibold tracking-[0.2em] text-lavender">COMPANY</p>
+          <ul className="mt-3 space-y-2 text-sm text-fog">
+            <li><a href="#footer" className="hover:text-frost">About</a></li>
+            <li><a href="#contact" className="hover:text-frost">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <p className="font-display-mono text-[10px] font-semibold tracking-[0.2em] text-lavender">DIVISIONS</p>
+          <ul className="mt-3 space-y-2 text-sm text-fog">
+            {divisions.map((d) => (
+              <li key={d.name}>
+                <Link href={d.href} className="hover:text-frost">
+                  {d.name.charAt(0) + d.name.slice(1).toLowerCase()}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p className="font-display-mono text-[10px] font-semibold tracking-[0.2em] text-lavender">RESOURCES</p>
+          <ul className="mt-3 space-y-2 text-sm text-fog">
+            <li><a href="#case-study" className="hover:text-frost">Case Studies</a></li>
+            <li><a href="#how-we-work" className="hover:text-frost">How It Works</a></li>
+          </ul>
+          <p className="mt-6 text-xs leading-relaxed text-fog">
+            We build systems that help founder-led businesses run smarter, scale faster, and reclaim
+            their time.
+          </p>
+        </div>
+      </div>
+      <p className="mt-10 border-t border-line pt-6 text-center text-xs text-fog">
+        © {new Date().getFullYear()} Binary 1702. All rights reserved.
+      </p>
+    </footer>
+  );
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Page
+   ──────────────────────────────────────────────────────────────── */
 
 export default function HomePage() {
   return (
-    <>
-      <RouteModal />
-      <MarketingNav variant="light" links={navLinks} brandHref="#top" />
-
-      {/* HERO */}
-      <header id="top" className="pt-[120px] pb-[100px] border-b border-rule">
-        <div className="max-w-[1120px] mx-auto px-8">
-          <div className="font-display-mono text-xs uppercase tracking-[0.12em] text-accent font-medium mb-6">
-            Binary 1702 · Operating Partnership
-          </div>
-          <h1 className="text-[clamp(38px,5.5vw,64px)] font-bold leading-[1.05] tracking-tight max-w-[920px] mb-7">
-            I rebuild the{" "}
-            <span className="text-accent not-italic">operational spine</span>{" "}
-            of $2–5M service businesses.
-          </h1>
-          <p className="text-xl text-ink-soft max-w-[720px] mb-10 leading-[1.5]">
-            Fixed-scope diagnostic and sprint engagements for founder-led
-            businesses drowning in tool sprawl. No retainers. No discovery
-            debt. The architecture map and the working systems both belong to
-            you when we&apos;re done.
-          </p>
-          <div className="flex gap-3 flex-wrap">
-            <Link
-              href="#contact"
-              className="inline-flex items-center gap-2 px-[22px] py-[14px] text-[15px] font-medium rounded-md bg-ink text-paper hover:bg-accent-deep transition-colors no-underline"
-            >
-              Book a diagnostic →
-            </Link>
-            <Link
-              href="/msp"
-              className="inline-flex items-center gap-2 px-[22px] py-[14px] text-[15px] font-medium rounded-md bg-transparent text-ink border border-ink hover:bg-ink hover:text-paper transition-colors no-underline"
-            >
-              For MSP partners ↗
-            </Link>
-          </div>
-        </div>
-      </header>
-
-      {/* PROBLEM */}
-      <section id="problem" className="py-[100px] border-b border-rule">
-        <div className="max-w-[1120px] mx-auto px-8">
-          <SectionHead
-            label="01 — The problem"
-            title="The founder is the integration glue. That's the actual problem."
-          />
-          <p className="text-[clamp(24px,3vw,34px)] font-medium leading-[1.3] tracking-tight max-w-[820px] mb-6 text-ink">
-            <span className="text-accent">&ldquo;</span>The part of the
-            business that brings the most revenue is also what keeps me from
-            building everything else.<span className="text-accent">&rdquo;</span>
-          </p>
-          <p className="font-display-mono text-[13px] text-ink-mute mb-12">
-            — A founder, on our first call
-          </p>
-          <div className="text-lg text-ink-soft max-w-[720px] leading-[1.65] space-y-[18px]">
-            <p>
-              Every $2–5M service business I work with says some version of
-              this. Twenty-five years of growth without architectural strategy.
-              Ten to fifteen tools, none of which were chosen together. A
-              founder personally syncing data every morning because nothing
-              else does. An audit prep cycle that costs two full days every
-              quarter. A 45-day drip sequence that strands warm leads the
-              moment it ends.
-            </p>
-            <p>
-              The business is the asset. The founder is the integration glue
-              holding it together. That&apos;s the work.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* HOW I WORK */}
-      <section id="work" className="py-[100px] border-b border-rule">
-        <div className="max-w-[1120px] mx-auto px-8">
-          <SectionHead
-            label="02 — How I work"
-            title="Two phases. Fixed scope. No retainer."
-          />
-          <div className="grid sm:grid-cols-2 gap-6 mb-8">
-            <Phase
-              tag="Phase 1 — Diagnostic"
-              title="Map the spine."
-              meta="$2,000 · 1 week"
-              items={[
-                "End-to-end map of every tool, every integration, every manual handoff.",
-                "Written report identifying the highest-ROI automation targets and the bottlenecks costing the founder the most hours per week.",
-                "Sprint 1 roadmap, prioritized by founder time bought back — not by what's technically interesting.",
-                "The immediate bleeders — broken invites, dead links, sync failures — fixed in the same week.",
-              ]}
-            />
-            <Phase
-              tag="Phase 2 — Sprint 1"
-              title="Ship the spine."
-              meta="$5,000 · 4 weeks"
-              items={[
-                "Execute the top priorities from the diagnostic. Build the missing flows. Restructure what needs restructuring.",
-                "Automate the manual syncs that were eating the founder's mornings.",
-                "Whiteboard handover: the founder owns the architecture map at the end, not me.",
-                "Measured outcomes documented at week 5 — the same numbers we targeted in week 1.",
-              ]}
-            />
-          </div>
-          <div className="font-display-mono text-[14.5px] px-6 py-5 bg-ink text-paper rounded-lg leading-[1.75]">
-            Diagnostic credit{" "}
-            <strong className="text-accent font-medium">$2,000</strong> applied
-            to Sprint 1. Effective total{" "}
-            <strong className="text-accent font-medium">$5,000</strong>. Fixed
-            scope. Fixed timeline. No retainer.
-            <span className="block mt-2 opacity-70 text-[13px]">
-              Phase 2+ (revenue stream expansion, ongoing support, productized
-              vertical snapshots) scoped separately — if the work earns it.
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* CASE STUDY */}
-      <section id="case" className="py-[100px] border-b border-rule">
-        <div className="max-w-[1120px] mx-auto px-8">
-          <div className="grid sm:grid-cols-[200px_1fr] gap-4 sm:gap-[60px] mb-10 sm:mb-14">
-            <div className="font-display-mono text-xs uppercase tracking-[0.12em] text-ink-mute pt-3.5 font-medium">
-              03 — Live engagement
-            </div>
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent text-paper font-display-mono text-xs uppercase tracking-[0.08em] rounded-full mb-5">
-                <span className="w-[7px] h-[7px] rounded-full bg-paper animate-pulse" />
-                Week 1 of 5 · Sprint 1 in flight
-              </div>
-              <h2 className="text-[clamp(26px,3vw,36px)] font-bold tracking-tight leading-[1.15] max-w-[720px] m-0">
-                13 Systems, One Founder, 25 Years of Tool Sprawl
-              </h2>
-            </div>
-          </div>
-          <div className="grid lg:grid-cols-[1.2fr_1fr] gap-12">
-            <div className="space-y-4 text-ink-soft text-[16.5px] leading-[1.65]">
-              <p>
-                <strong className="text-ink">The client.</strong> A
-                25-year-old service business with a 50,000+ contractor
-                database, a 16,000+ member online community, 600+ five-star
-                reviews, and enterprise-level customer relationships. Solo
-                founder. Everything ran on the founder&apos;s calendar and the
-                founder&apos;s memory.
-              </p>
-              <p>
-                <strong className="text-ink">The spine.</strong> Go High Level
-                (CRM + SMS), Signing Order (operations database), WordPress
-                (customer site), GoCollab (community + training), DocuSign
-                (e-sign), Zapier (the glue trying to hold it together). Bolted
-                on top: payment processing, scheduling, email infrastructure,
-                storage, marketing automation, and the rest of the modern
-                small-business stack.
-              </p>
-              <p>
-                <strong className="text-ink">What&apos;s shipped (Week 1).</strong>{" "}
-                All 13 systems mapped end-to-end. Broken calendar invites that
-                were costing client trust: fixed. Dead links across the
-                customer-facing site: fixed. Diagnostic report and Sprint 1
-                roadmap delivered.
-              </p>
-              <p>
-                <strong className="text-ink">What&apos;s in flight (Weeks 2–5).</strong>{" "}
-                Restructuring GoCollab into intent-organized courses so
-                members see their subscription&apos;s value. Building the
-                missing upgrade/downgrade flow across three tiers. Automating
-                the GHL ↔ Signing Order sync that was eating ~10 hours/week.
-                Fixing the GHL opportunity filter that resets every login.
-                Extending the 45-day drip into a perpetual newsletter cadence.
-              </p>
-            </div>
-            <div>
-              <div className="grid grid-cols-2 gap-3.5">
-                <Stat from="Manual sync work" to="~10 hrs/wk to near zero" />
-                <Stat from="Audit prep" to="2-day fire drill to routine" />
-                <Stat from="Founder time back" to="~1.5 days/week" />
-                <Stat
-                  from="13 disconnected systems"
-                  to="one operational spine"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="mt-10 px-7 py-6 border-l-[3px] border-accent bg-paper-deep rounded-r-lg text-ink-soft text-base leading-[1.65] max-w-[820px]">
-            Most consultants send you a case study from 18 months ago, or
-            refuse to share anything because of NDA. I&apos;d rather show you a
-            real engagement in progress, with the founder&apos;s permission, so
-            you can see how I actually work — not how I package myself
-            afterward. This page will be updated with measured outcomes at the
-            end of week 5.
-          </div>
-        </div>
-      </section>
-
-      {/* MSP TEASER — DARK */}
-      <section id="msp" className="bg-night text-cream py-[100px]">
-        <div className="max-w-[1120px] mx-auto px-8">
-          <div className="grid sm:grid-cols-[200px_1fr] gap-4 sm:gap-[60px] items-start">
-            <div className="pt-3.5 font-display-mono text-xs uppercase tracking-[0.12em] text-cream-mute font-medium">
-              04 — For MSP partners
-            </div>
-            <div>
-              <h2 className="text-[clamp(28px,3.6vw,42px)] font-bold leading-[1.15] tracking-tight max-w-[760px] mb-6 text-cream">
-                The call you make when the client&apos;s{" "}
-                <span className="text-accent not-italic">non-IT stack</span> is
-                a mess.
-              </h2>
-              <p className="text-lg text-cream/85 leading-[1.6] max-w-[720px] mb-4">
-                If you run an MSP or MSSP serving compliance-heavy verticals —
-                CMMC, SOC 2, HIPAA, FTC Safeguards — your clients have
-                business operations problems that aren&apos;t in your SOW, and
-                nowhere clean to send them. That&apos;s me.
-              </p>
-              <p className="text-lg text-cream/85 leading-[1.6] max-w-[720px] mb-4">
-                The simplest version of the partnership: you send me a client,
-                I run a one-week diagnostic, the client walks away with an
-                architecture map and a roadmap. That&apos;s the entire ask of
-                you.
-              </p>
-              <p className="font-display-mono text-[13px] text-cream-mute mb-8">
-                → <span className="text-accent">binary1702.com/msp</span>
-              </p>
-              <Link
-                href="/msp"
-                className="inline-flex items-center gap-2 px-[22px] py-[14px] text-[15px] font-medium rounded-md bg-cream text-night hover:bg-accent hover:text-cream transition-colors no-underline"
-              >
-                See the partnership model →
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ABOUT */}
-      <section id="about" className="py-[100px] border-b border-rule">
-        <div className="max-w-[1120px] mx-auto px-8">
-          <SectionHead
-            label="05 — About"
-            title="Ben Basuni · Operating Partner, Binary 1702"
-          />
-          <div className="text-[17.5px] text-ink-soft max-w-[720px] leading-[1.65] space-y-4">
-            <p>
-              I run fixed-scope engagements because the consulting industry
-              has trained founders to expect open-ended retainers, scope
-              creep, and PowerPoint decks they can&apos;t act on. None of that
-              is what a $2–5M service business needs. What it needs is a
-              person who maps the actual stack, ships the priorities, and
-              hands the architecture back to the founder.
-            </p>
-            <p>
-              Binary 1702 is a Wyoming LLC. The engagement model is fixed. The
-              deliverables are real. The founder owns the work at the end.
-              That&apos;s the entire pitch.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* CONTACT */}
-      <section id="contact" className="pt-[100px] pb-[60px]">
-        <div className="max-w-[1120px] mx-auto px-8">
-          <h2 className="text-[clamp(28px,3.6vw,42px)] font-bold leading-[1.2] tracking-tight max-w-[720px] mb-6">
-            Drowning in tool sprawl? Or running an MSP and recognize a client
-            in this?
-          </h2>
-          <p className="text-lg text-ink-soft max-w-[640px] mb-8">
-            Email is the fastest way to start. I read everything, and I&apos;ll
-            tell you within a day whether the diagnostic is the right fit — or
-            whether you need a different kind of help.
-          </p>
-          <div className="flex gap-3 flex-wrap">
-            <a
-              href="mailto:ben@binary1702.com"
-              className="inline-flex items-center gap-2 px-[22px] py-[14px] text-[15px] font-medium rounded-md bg-ink text-paper hover:bg-accent-deep transition-colors no-underline"
-            >
-              ben@binary1702.com →
-            </a>
-            <a
-              href="https://www.linkedin.com/in/benbasuni/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-[22px] py-[14px] text-[15px] font-medium rounded-md bg-transparent text-ink border border-ink hover:bg-ink hover:text-paper transition-colors no-underline"
-            >
-              LinkedIn
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <MarketingFooter mspLink={true} />
-    </>
-  );
-}
-
-/* ── Local components ─────────────────────────────────── */
-
-function Phase({
-  tag,
-  title,
-  meta,
-  items,
-}: {
-  tag: string;
-  title: string;
-  meta: string;
-  items: string[];
-}) {
-  return (
-    <div className="bg-paper-deep border border-rule rounded-[10px] p-8">
-      <div className="font-display-mono text-xs uppercase tracking-[0.1em] text-accent mb-3 font-medium">
-        {tag}
-      </div>
-      <div className="text-2xl font-bold tracking-tight mb-2">{title}</div>
-      <div className="font-display-mono text-sm text-ink-mute mb-5">{meta}</div>
-      <ul className="list-none p-0 m-0">
-        {items.map((item, i) => (
-          <li
-            key={i}
-            className="relative pl-[22px] mb-3 text-ink-soft text-[15.5px] leading-[1.55] list-none"
-          >
-            <span className="absolute left-0 top-0 text-accent font-display-mono">
-              →
-            </span>
-            {item}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-function Stat({ from, to }: { from: string; to: string }) {
-  return (
-    <div className="border border-rule bg-paper-deep p-5 rounded-[10px]">
-      <div className="font-display-mono text-xs text-ink-mute mb-1.5">
-        {from}
-      </div>
-      <div className="text-[17px] font-bold text-ink leading-[1.3] tracking-tight">
-        <span className="text-accent mr-1">→</span>
-        {to}
-      </div>
+    <div className="min-h-screen bg-midnight text-frost">
+      <HomeNav />
+      <main>
+        <Hero />
+        <PainPoints />
+        <HowWeWork />
+        <WorkTogether />
+        <Divisions />
+        <FinalCta />
+      </main>
+      <HomeFooter />
     </div>
   );
 }
