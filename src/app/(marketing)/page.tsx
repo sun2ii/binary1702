@@ -32,15 +32,6 @@ function Check({ className = "text-mint" }: { className?: string }) {
   );
 }
 
-function Cross() {
-  return (
-    <svg viewBox="0 0 16 16" className="h-4 w-4 shrink-0 text-red-400" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
-      <circle cx="8" cy="8" r="7" strokeWidth="1.2" opacity="0.5" />
-      <path d="M5.5 5.5l5 5M10.5 5.5l-5 5" />
-    </svg>
-  );
-}
-
 function Eyebrow({ children, className = "text-lavender" }: { children: React.ReactNode; className?: string }) {
   return (
     <p className={`font-display-mono text-xs font-semibold tracking-[0.2em] uppercase ${className}`}>
@@ -422,10 +413,120 @@ function PainPoints() {
    How we work + case study
    ──────────────────────────────────────────────────────────────── */
 
-const steps = [
-  { n: 1, title: "MAP", body: "We document your tools, workflows, handoffs, dependencies, and bottlenecks." },
-  { n: 2, title: "FIX", body: "We repair the immediate failures affecting your customers and your team." },
-  { n: 3, title: "BUILD", body: "We implement the highest-value workflows and hand the completed system back to you." },
+/* Big step icons (Lucide network / wrench / rocket) */
+function StepIcon({ kind }: { kind: "map" | "fix" | "build" }) {
+  const paths: Record<string, React.ReactNode> = {
+    map: (
+      <>
+        <rect x="9" y="2" width="6" height="6" rx="1" />
+        <rect x="2" y="16" width="6" height="6" rx="1" />
+        <rect x="16" y="16" width="6" height="6" rx="1" />
+        <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" />
+        <path d="M12 12V8" />
+      </>
+    ),
+    fix: (
+      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+    ),
+    build: (
+      <>
+        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+        <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+        <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+      </>
+    ),
+  };
+  return (
+    <svg
+      width="104"
+      height="104"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      {paths[kind]}
+    </svg>
+  );
+}
+
+function StepArrow() {
+  return (
+    <svg
+      width="30"
+      height="16"
+      viewBox="0 0 30 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M2 8h24" />
+      <path d="m20 2 6 6-6 6" />
+    </svg>
+  );
+}
+
+/* Mini stat icons (clock / trend / calendar / shield) */
+function StatIcon({ kind }: { kind: "clock" | "trend" | "calendar" | "shield" }) {
+  const paths: Record<string, React.ReactNode> = {
+    clock: (
+      <>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3.5 2" />
+      </>
+    ),
+    trend: (
+      <>
+        <path d="M3 17l5-5 3.5 3.5L19 8" />
+        <path d="M14.5 8H19v4.5" />
+      </>
+    ),
+    calendar: (
+      <>
+        <rect x="3.5" y="5" width="17" height="16" rx="2.5" />
+        <path d="M3.5 9.5h17 M8 3v4 M16 3v4" />
+        <circle cx="8" cy="14" r="0.5" fill="currentColor" />
+        <circle cx="12" cy="14" r="0.5" fill="currentColor" />
+        <circle cx="16" cy="14" r="0.5" fill="currentColor" />
+        <circle cx="8" cy="17.5" r="0.5" fill="currentColor" />
+        <circle cx="12" cy="17.5" r="0.5" fill="currentColor" />
+      </>
+    ),
+    shield: (
+      <>
+        <path d="M12 3 5 5.5v6c0 4.2 3 7.6 7 9.5 4-1.9 7-5.3 7-9.5v-6L12 3Z" />
+        <path d="M9 12l2 2 4-4" />
+      </>
+    ),
+  };
+  return (
+    <svg
+      width="30"
+      height="30"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      {paths[kind]}
+    </svg>
+  );
+}
+
+const steps: { n: number; title: string; body: string; icon: "map" | "fix" | "build" }[] = [
+  { n: 1, title: "MAP", body: "We document your tools, workflows, handoffs, dependencies, and bottlenecks.", icon: "map" },
+  { n: 2, title: "FIX", body: "We repair the immediate failures affecting your customers and your team.", icon: "fix" },
+  { n: 3, title: "BUILD", body: "We implement the highest-value workflows and hand the completed system back to you.", icon: "build" },
 ];
 
 const caseBefore = [
@@ -443,81 +544,123 @@ const caseAfter = [
   "Reorganized member experience",
 ];
 
-const impact = [
-  { big: "10+", small: "hrs/week reclaimed" },
-  { big: "90%", small: "reduction in manual work" },
-  { big: "2 Days → 2 Hrs", small: "audit prep time" },
-  { big: "100%", small: "access issues eliminated" },
+const impact: { icon: "clock" | "trend" | "calendar" | "shield"; big: string; small: string }[] = [
+  { icon: "clock", big: "10+", small: "hrs/week reclaimed" },
+  { icon: "trend", big: "90%", small: "reduction in manual work" },
+  { icon: "calendar", big: "2 Days → 2 Hrs", small: "audit prep time" },
+  { icon: "shield", big: "100%", small: "access issues eliminated" },
 ];
 
 function HowWeWork() {
   return (
-    <section id="how-we-work" className="mx-auto max-w-6xl px-5 py-16">
-      <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
-        <div>
-          <Eyebrow>How we work</Eyebrow>
-          <ol className="mt-8 space-y-8">
-            {steps.map((s) => (
-              <li key={s.n} className="flex gap-4">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-violet text-sm font-bold text-frost">
-                  {s.n}
-                </span>
-                <div>
-                  <h3 className="font-bold tracking-wide text-frost">{s.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-fog">{s.body}</p>
+    <section id="how-we-work" className="mx-auto max-w-[1360px] px-6 py-8">
+      <div className="grid gap-6 rounded-2xl border border-white/[0.06] bg-gradient-to-b from-[#0B0A14] to-[#08070F] px-9 pb-11 pt-10 xl:grid-cols-[minmax(0,1fr)_395px_230px]">
+        {/* Steps */}
+        <div className="flex flex-col">
+          <h2 className="mb-6 font-heading text-[19px] font-bold tracking-[2px] text-violet-bright">
+            HOW WE WORK
+          </h2>
+          <div className="grid flex-1 content-center items-start gap-3 sm:grid-cols-[minmax(0,1fr)_18px_minmax(0,1fr)_18px_minmax(0,1fr)]">
+            {steps.map((s, i) => (
+              <div key={s.n} className="contents">
+                {i > 0 && (
+                  <div className="hidden justify-center pt-[120px] text-violet-bright sm:flex">
+                    <StepArrow />
+                  </div>
+                )}
+                <div
+                  className={`flex flex-col gap-6 ${
+                    i > 0 ? "sm:border-l sm:border-[#A855F7]/[0.15] sm:pl-3.5" : ""
+                  }`}
+                >
+                  <div className="flex items-center gap-3.5">
+                    <span className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-violet to-violet-bright font-heading text-lg font-bold text-white">
+                      {s.n}
+                    </span>
+                    <h3 className="font-heading text-[19px] font-bold tracking-[1px] text-white">
+                      {s.title}
+                    </h3>
+                  </div>
+                  <p className="text-[15px] leading-[1.6] text-[#C9C7D6]">{s.body}</p>
+                  <div className="flex items-center justify-center pt-8 text-violet-bright sm:pt-11">
+                    <StepIcon kind={s.icon} />
+                  </div>
                 </div>
-              </li>
+              </div>
             ))}
-          </ol>
+          </div>
         </div>
 
-        <div id="case-study" className="grid gap-4 md:grid-cols-[1.5fr_1fr]">
-          <div className="rounded-2xl border border-line bg-charcoal/60 p-6">
-            <Eyebrow>Featured case study</Eyebrow>
-            <h3 className="mt-2 text-xl font-extrabold text-frost">
-              25-Year Service Business
-              <span className="block text-base font-bold text-fog">13 Systems. One Founder Bottleneck.</span>
-            </h3>
-            <div className="mt-5 grid gap-6 sm:grid-cols-2">
-              <div>
-                <p className="font-display-mono text-[10px] font-semibold tracking-[0.2em] text-red-400">BEFORE</p>
-                <ul className="mt-2 space-y-2">
-                  {caseBefore.map((b) => (
-                    <li key={b} className="flex items-start gap-2 text-xs text-fog">
-                      <Cross /> {b}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <p className="font-display-mono text-[10px] font-semibold tracking-[0.2em] text-mint">AFTER</p>
-                <ul className="mt-2 space-y-2">
-                  {caseAfter.map((a) => (
-                    <li key={a} className="flex items-start gap-2 text-xs text-fog">
-                      <Check /> {a}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <blockquote className="mt-6 border-l-2 border-violet pl-4 text-sm italic leading-relaxed text-lavender">
-              &ldquo;Binary 1702 identified problems we had been living with for years and gave us a clear
-              system for fixing them. The impact was immediate.&rdquo;
-              <footer className="mt-1 not-italic text-fog">— Mike, Business Owner</footer>
-            </blockquote>
-          </div>
-          <div className="rounded-2xl border border-line bg-charcoal/60 p-6">
-            <p className="font-display-mono text-[10px] font-semibold tracking-[0.2em] text-frost">
-              MEASURED IMPACT <span className="text-fog">(90 DAYS)</span>
-            </p>
-            <ul className="mt-4 space-y-5">
-              {impact.map((m) => (
-                <li key={m.small}>
-                  <p className="text-xl font-extrabold text-frost">{m.big}</p>
-                  <p className="text-xs text-fog">{m.small}</p>
-                </li>
+        {/* Featured case study */}
+        <div
+          id="case-study"
+          className="flex flex-col gap-[18px] rounded-2xl border border-violet-bright/25 bg-[#141024]/55 px-[26px] py-7"
+        >
+          <p className="font-heading text-base font-bold tracking-[2px] text-violet-bright">
+            FEATURED CASE STUDY
+          </p>
+          <h3 className="font-heading text-[22px] font-bold leading-[1.35] text-white">
+            25-Year Service Business
+            <br />
+            13 Systems. One Founder Bottleneck.
+          </h3>
+          <div className="grid grid-cols-2 gap-[22px]">
+            <div className="flex flex-col gap-3">
+              <p className="text-[13px] font-extrabold tracking-[1.5px] text-[#F87171]">BEFORE</p>
+              {caseBefore.map((b) => (
+                <p key={b} className="flex items-start gap-2">
+                  <span className="text-[13px] leading-[1.5] text-[#F87171]">⊗</span>
+                  <span className="text-[12.5px] leading-[1.5] text-[#C9C7D6]">{b}</span>
+                </p>
               ))}
-            </ul>
+            </div>
+            <div className="flex flex-col gap-3">
+              <p className="text-[13px] font-extrabold tracking-[1.5px] text-[#34D399]">AFTER</p>
+              {caseAfter.map((a) => (
+                <p key={a} className="flex items-start gap-2">
+                  <span className="text-[13px] leading-[1.5] text-[#34D399]">✓</span>
+                  <span className="text-[12.5px] leading-[1.5] text-[#C9C7D6]">{a}</span>
+                </p>
+              ))}
+            </div>
+          </div>
+          <p className="text-[14.5px] italic leading-[1.6] text-[#C084FC]">
+            &ldquo;Binary 1702 identified problems we had been living with for years and gave us a
+            clear system for fixing them. The impact was immediate.&rdquo;{" "}
+            <span className="not-italic text-[#B7B5C4]">— Mike, Business Owner</span>
+          </p>
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2.5 font-heading text-[15px] font-bold tracking-[1.5px] text-violet-bright transition hover:text-[#C084FC]"
+          >
+            VIEW FULL CASE STUDY <span aria-hidden className="text-[17px]">→</span>
+          </a>
+        </div>
+
+        {/* Measured impact */}
+        <div className="flex flex-col rounded-2xl border border-white/[0.08] bg-[#0E0C18]/70 px-[22px] py-[26px]">
+          <p className="text-[12.5px] font-extrabold tracking-[1.5px] text-violet-bright">
+            MEASURED IMPACT <span className="font-semibold text-[#8B899A]">(90 DAYS)</span>
+          </p>
+          <div className="flex flex-1 flex-col justify-evenly gap-[18px] pt-[18px]">
+            {impact.map((m, i) => (
+              <div
+                key={m.small}
+                className={`flex items-start gap-3.5 ${
+                  i > 0 ? "border-t border-white/[0.08] pt-4" : ""
+                }`}
+              >
+                <span className="shrink-0 text-violet-bright">
+                  <StatIcon kind={m.icon} />
+                </span>
+                <span>
+                  <span className="block font-heading text-[22px] font-bold leading-[1.2] text-white">
+                    {m.big}
+                  </span>
+                  <span className="block text-[13px] leading-[1.45] text-[#B7B5C4]">{m.small}</span>
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
