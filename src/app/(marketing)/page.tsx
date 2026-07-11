@@ -688,69 +688,119 @@ const sprint = [
   "You own everything we build",
 ];
 
+function OfferBullets({ items }: { items: string[] }) {
+  return (
+    <div className="flex flex-col gap-[11px]">
+      {items.map((it) => (
+        <p key={it} className="flex items-start gap-2.5">
+          <span className="text-sm leading-[1.5] text-[#8B899A]">•</span>
+          <span className="text-sm leading-[1.5] text-[#C9C7D6]">{it}</span>
+        </p>
+      ))}
+    </div>
+  );
+}
+
 function WorkTogether() {
   return (
-    <section className="border-y border-line bg-charcoal/40">
-      <div className="mx-auto max-w-6xl px-5 py-16">
-        <Eyebrow>How we can work together</Eyebrow>
-        <div className="mt-8 grid gap-4 lg:grid-cols-[1.2fr_1fr_1fr_1fr]">
-          <div className="flex flex-col justify-center rounded-2xl border border-mint/40 bg-midnight p-6">
-            <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-mint/15 text-xl text-mint" aria-hidden>
-              ✆
-            </span>
-            <h3 className="text-lg font-extrabold text-frost">Start with a free 15-minute call.</h3>
-            <p className="mt-2 text-sm leading-relaxed text-fog">
-              We learn about your business and challenges so we can recommend the best next step.
-            </p>
-            <p className="mt-4 text-xs font-semibold text-mint">No pressure. Just clarity.</p>
+    <section className="mx-auto max-w-[1360px] px-6 py-8">
+      <div className="rounded-2xl border border-white/[0.06] bg-gradient-to-b from-[#0B0A14] to-[#08070F] px-9 pb-10 pt-9">
+        <h2 className="mb-7 font-heading text-[19px] font-bold tracking-[2px] text-violet-bright">
+          HOW WE CAN WORK TOGETHER
+        </h2>
+        <div className="grid items-stretch gap-5 xl:grid-cols-[minmax(0,1.15fr)_34px_minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.95fr)]">
+          {/* Call card */}
+          <div className="flex flex-col justify-center gap-4 rounded-2xl border border-white/[0.08] bg-[#0E0C18]/70 px-[26px] py-7">
+            <div className="flex items-start gap-[18px]">
+              <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-mint-deep to-mint text-[#04120C]">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </span>
+              <span className="flex flex-col gap-2.5">
+                <span className="font-heading text-[22px] font-bold leading-[1.3] text-white">
+                  Start with a free 15-minute call.
+                </span>
+                <span className="text-[14.5px] leading-[1.6] text-[#C9C7D6]">
+                  We learn about your business and challenges so we can recommend the best next step.
+                </span>
+              </span>
+            </div>
+            <p className="pl-[74px] text-sm text-fog">No pressure. Just clarity.</p>
           </div>
 
-          <div className="rounded-2xl border border-line bg-midnight p-6">
-            <h3 className="font-bold text-frost">Operations Diagnostic</h3>
-            <p className="mt-1 text-2xl font-extrabold text-lavender">$2,000</p>
-            <ul className="mt-4 space-y-2">
-              {diagnostic.map((d) => (
-                <li key={d} className="flex items-start gap-2 text-xs text-fog">
-                  <Check className="text-violet" /> {d}
-                </li>
-              ))}
-            </ul>
+          {/* Arrow */}
+          <div className="hidden items-center justify-center text-violet-bright xl:flex">
+            <StepArrow />
           </div>
 
-          <div className="rounded-2xl border border-line bg-midnight p-6">
-            <h3 className="font-bold text-frost">Systems Sprint</h3>
-            <p className="mt-1 text-2xl font-extrabold text-lavender">
-              <span className="text-sm font-semibold text-fog">Starting at</span> $5,000
-            </p>
-            <ul className="mt-4 space-y-2">
-              {sprint.map((s) => (
-                <li key={s} className="flex items-start gap-2 text-xs text-fog">
-                  <Check className="text-violet" /> {s}
-                </li>
-              ))}
-            </ul>
+          {/* Diagnostic */}
+          <div className="flex flex-col gap-5 rounded-2xl border border-violet-bright/25 bg-[#141024]/55 px-6 py-[26px]">
+            <div className="flex items-start gap-4">
+              <span className="shrink-0 text-violet-bright">
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.3-4.3" />
+                </svg>
+              </span>
+              <span>
+                <span className="block font-heading text-[21px] font-bold leading-[1.25] text-white">
+                  Operations Diagnostic
+                </span>
+                <span className="mt-1 block font-heading text-[19px] font-semibold text-violet-bright">
+                  $2,000
+                </span>
+              </span>
+            </div>
+            <OfferBullets items={diagnostic} />
           </div>
 
-          <div className="rounded-2xl border border-violet/40 bg-midnight p-6">
-            <p className="font-display-mono text-[10px] font-semibold tracking-[0.2em] text-lavender">
+          {/* Sprint */}
+          <div className="flex flex-col gap-5 rounded-2xl border border-violet-bright/25 bg-[#141024]/55 px-6 py-[26px]">
+            <div className="flex items-start gap-4">
+              <span className="shrink-0 text-violet-bright">
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                  <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
+                </svg>
+              </span>
+              <span>
+                <span className="block font-heading text-[21px] font-bold leading-[1.25] text-white">
+                  Systems Sprint
+                </span>
+                <span className="mt-1 block font-heading text-[19px] font-semibold text-violet-bright">
+                  Starting at $5,000
+                </span>
+              </span>
+            </div>
+            <OfferBullets items={sprint} />
+          </div>
+
+          {/* Investment guide */}
+          <div className="flex flex-col rounded-2xl border border-violet-bright/30 bg-[#141024]/75 px-6 py-[26px]">
+            <p className="text-sm font-extrabold tracking-[1.5px] text-violet-bright">
               INVESTMENT GUIDE
             </p>
-            <dl className="mt-4 space-y-4 text-sm">
-              <div className="flex items-baseline justify-between gap-2">
-                <dt className="text-fog">Diagnostic</dt>
-                <dd className="font-bold text-frost">$2,000</dd>
+            <div className="flex flex-1 flex-col justify-evenly pt-3.5">
+              <div className="flex items-baseline justify-between border-b border-white/[0.08] py-3">
+                <span className="text-[13px] font-extrabold tracking-[1px] text-[#E7E6EF]">
+                  DIAGNOSTIC
+                </span>
+                <span className="font-heading text-base font-semibold text-[#C084FC]">$2,000</span>
               </div>
-              <div className="flex items-baseline justify-between gap-2">
-                <dt className="text-fog">Sprint investment</dt>
-                <dd className="font-bold text-frost">$3,000+</dd>
+              <div className="flex items-baseline justify-between border-b border-white/[0.08] py-3">
+                <span className="text-[13px] font-extrabold tracking-[1px] text-[#E7E6EF]">
+                  SPRINT INVESTMENT
+                </span>
+                <span className="font-heading text-base font-semibold text-[#C084FC]">$3,000+</span>
               </div>
-              <div className="flex items-baseline justify-between gap-2 border-t border-line pt-4">
-                <dt className="font-semibold text-frost">Total investment</dt>
-                <dd className="text-xl font-extrabold text-lavender">$5,000+</dd>
+              <div className="flex items-baseline justify-between pb-1.5 pt-3.5">
+                <span className="text-[13.5px] font-extrabold tracking-[1px] text-white">
+                  TOTAL INVESTMENT
+                </span>
+                <span className="font-heading text-2xl font-bold text-violet-bright">$5,000+</span>
               </div>
-            </dl>
-            <p className="mt-4 text-xs text-mint">Clear scope. No surprises.</p>
-            <p className="mt-1 text-xs text-fog">Diagnostic is credited toward your sprint.</p>
+              <p className="text-sm text-[#C084FC]">Clear scope. No surprises.</p>
+            </div>
           </div>
         </div>
       </div>
