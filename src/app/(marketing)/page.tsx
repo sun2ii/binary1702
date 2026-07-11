@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { bookingUrl, intakeUrl } from "@/config/site";
+import { SiteFooter } from "@/components/marketing/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Binary 1702 — Systems. Workflows. Clarity.",
@@ -951,116 +952,6 @@ function FinalCta() {
   );
 }
 
-function SocialIcon({ kind }: { kind: "linkedin" | "mail" | "instagram" | "youtube" }) {
-  const paths: Record<string, React.ReactNode> = {
-    linkedin: (
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM6 9H2v12h4zM4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
-    ),
-    mail: (
-      <>
-        <rect x="2" y="4" width="20" height="16" rx="2" />
-        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-      </>
-    ),
-    instagram: (
-      <>
-        <rect x="2" y="2" width="20" height="20" rx="5" />
-        <circle cx="12" cy="12" r="4" />
-        <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
-      </>
-    ),
-    youtube: (
-      <>
-        <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
-        <path d="m10 15 5-3-5-3z" />
-      </>
-    ),
-  };
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      {paths[kind]}
-    </svg>
-  );
-}
-
-const footerSocials: { kind: "linkedin" | "mail" | "instagram" | "youtube"; href: string; label: string }[] = [
-  { kind: "linkedin", href: "https://linkedin.com/in/benbasuni", label: "LinkedIn" },
-  { kind: "mail", href: "mailto:benbasuni1@gmail.com", label: "Email" },
-  { kind: "instagram", href: "#", label: "Instagram" },
-  { kind: "youtube", href: "#", label: "YouTube" },
-];
-
-function FooterCol({ title, links }: { title: string; links: { label: string; href: string }[] }) {
-  return (
-    <div className="flex flex-col gap-2.5">
-      <p className="text-[13px] font-extrabold tracking-[1.5px] text-violet-bright">{title}</p>
-      {links.map((l) => (
-        <Link key={l.label} href={l.href} className="text-[14.5px] text-[#C9C7D6] transition hover:text-white">
-          {l.label}
-        </Link>
-      ))}
-    </div>
-  );
-}
-
-function HomeFooter() {
-  return (
-    <footer id="footer" className="flex flex-col gap-7">
-      <div className="grid items-start gap-7 border-t border-white/[0.08] pt-7 md:grid-cols-[1.2fr_1fr_1fr_1fr_1.2fr]">
-        <Link href="/" className="flex items-center gap-3">
-          <LogoMark size={38} />
-          <span className="font-heading text-[19px] font-bold tracking-[0.5px] text-white">
-            BINARY <span className="text-violet-bright">1702</span>
-          </span>
-        </Link>
-        <FooterCol
-          title="COMPANY"
-          links={[
-            { label: "About", href: "#footer" },
-            { label: "Contact", href: "#contact" },
-          ]}
-        />
-        <FooterCol
-          title="DIVISIONS"
-          links={divisions.map((d) => ({
-            label: d.name.charAt(0) + d.name.slice(1).toLowerCase(),
-            href: d.href,
-          }))}
-        />
-        <FooterCol
-          title="RESOURCES"
-          links={[
-            { label: "Case Studies", href: "#case-study" },
-            { label: "How It Works", href: "#how-we-work" },
-          ]}
-        />
-        <div className="flex flex-col gap-3.5">
-          <p className="text-sm leading-[1.6] text-[#C9C7D6]">
-            We build systems that help founder-led businesses run smarter, scale faster, and reclaim
-            their time.
-          </p>
-          <div className="flex gap-3.5">
-            {footerSocials.map((s) => (
-              <a
-                key={s.kind}
-                href={s.href}
-                aria-label={s.label}
-                className="inline-flex text-[#B7B5C4] transition hover:text-white"
-                {...(s.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              >
-                <SocialIcon kind={s.kind} />
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-      <p className="text-center text-[13px] text-[#8B899A]">
-        © {new Date().getFullYear()} Binary 1702. All rights reserved.
-      </p>
-    </footer>
-  );
-}
-
 /* ────────────────────────────────────────────────────────────────
    Page
    ──────────────────────────────────────────────────────────────── */
@@ -1081,9 +972,7 @@ export default function HomePage() {
           </div>
         </section>
       </main>
-      <div className="mx-auto max-w-[1360px] px-6 pb-10">
-        <HomeFooter />
-      </div>
+      <SiteFooter />
     </div>
   );
 }
