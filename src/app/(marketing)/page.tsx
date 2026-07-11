@@ -327,28 +327,89 @@ function Hero() {
    Pain points
    ──────────────────────────────────────────────────────────────── */
 
-const pains = [
-  "Your systems only work because you manually connect them.",
-  "Important client information lives across multiple tools.",
-  "Your team asks you questions the system should answer.",
-  "Fixing one workflow seems to break another.",
-  "Nobody has a complete map of how your business operates.",
+function PainIcon({ kind }: { kind: "person" | "folder" | "chat" | "warning" | "map" }) {
+  const paths: Record<string, React.ReactNode> = {
+    person: (
+      <>
+        <circle cx="12" cy="7.5" r="3.5" />
+        <path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6" />
+      </>
+    ),
+    folder: (
+      <path d="M3 7v11a1.5 1.5 0 0 0 1.5 1.5h15A1.5 1.5 0 0 0 21 18V9a1.5 1.5 0 0 0-1.5-1.5H12L9.8 5H4.5A1.5 1.5 0 0 0 3 6.5Z" />
+    ),
+    chat: (
+      <>
+        <path d="M12 4.5c-4.7 0-8.5 3-8.5 6.7 0 2.1 1.2 4 3.1 5.2L6 20l3.6-1.6c.8.2 1.6.3 2.4.3 4.7 0 8.5-3 8.5-6.7S16.7 4.5 12 4.5Z" />
+        <circle cx="8.5" cy="11.2" r="0.5" fill="#A855F7" />
+        <circle cx="12" cy="11.2" r="0.5" fill="#A855F7" />
+        <circle cx="15.5" cy="11.2" r="0.5" fill="#A855F7" />
+      </>
+    ),
+    warning: (
+      <>
+        <path d="M12 4 21 19.5H3L12 4Z" />
+        <line x1="12" y1="10" x2="12" y2="14" />
+        <circle cx="12" cy="16.7" r="0.5" fill="#A855F7" />
+      </>
+    ),
+    map: (
+      <>
+        <path d="M9 4.5 3.5 6.5v13L9 17.5l6 2 5.5-2v-13L15 6.5l-6-2Z" />
+        <line x1="9" y1="4.5" x2="9" y2="17.5" />
+        <line x1="15" y1="6.5" x2="15" y2="19.5" />
+      </>
+    ),
+  };
+  return (
+    <svg
+      width="56"
+      height="56"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#A855F7"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      {paths[kind]}
+    </svg>
+  );
+}
+
+const pains: { icon: "person" | "folder" | "chat" | "warning" | "map"; text: string }[] = [
+  { icon: "person", text: "Your systems only work because you manually connect them." },
+  { icon: "folder", text: "Important client information lives across multiple tools." },
+  { icon: "chat", text: "Your team asks you questions the system should answer." },
+  { icon: "warning", text: "Fixing one workflow seems to break another." },
+  { icon: "map", text: "Nobody has a complete map of how your business operates." },
 ];
 
 function PainPoints() {
   return (
-    <section className="border-y border-line bg-charcoal/40">
-      <div className="mx-auto max-w-6xl px-5 py-14">
-        <h2 className="text-center font-display-mono text-sm font-semibold tracking-[0.25em] text-frost">
+    <section className="mx-auto max-w-[1360px] px-6 py-8">
+      <div className="rounded-2xl border border-white/[0.06] bg-gradient-to-b from-[#0B0A14] to-[#08070F] px-7 pb-14 pt-12 lg:px-14">
+        <h2 className="mb-11 text-center font-heading text-[22px] font-bold tracking-[2px] text-violet-bright">
           DOES THIS SOUND FAMILIAR?
         </h2>
-        <ul className="mt-10 grid gap-8 text-center sm:grid-cols-2 lg:grid-cols-5">
-          {pains.map((p) => (
-            <li key={p} className="mx-auto max-w-[220px] text-sm leading-relaxed text-fog">
-              <span className="mb-3 block text-2xl text-violet" aria-hidden>
-                ◈
+        <ul className="grid items-start gap-y-10 sm:grid-cols-2 lg:grid-cols-5 lg:gap-y-0">
+          {pains.map((p, i) => (
+            <li
+              key={p.text}
+              className={`flex flex-col items-center gap-6 px-7 ${
+                i > 0 ? "lg:border-l lg:border-[#A855F7]/[0.22]" : ""
+              }`}
+            >
+              <span className="flex h-16 items-center justify-center">
+                <PainIcon kind={p.icon} />
               </span>
-              {p}
+              <p
+                className="max-w-[220px] text-center text-[17px] font-semibold leading-[1.55] text-[#D7D5E2]"
+                style={{ textWrap: "pretty" }}
+              >
+                {p.text}
+              </p>
             </li>
           ))}
         </ul>
