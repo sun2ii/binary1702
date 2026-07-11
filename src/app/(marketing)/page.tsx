@@ -55,7 +55,7 @@ function CallButton({ label = "Book a free 15-minute call" }: { label?: string }
       href={bookingUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-mint-deep to-mint px-6 py-3 text-sm font-bold text-midnight shadow-[0_0_24px_rgba(45,212,191,0.3)] transition hover:opacity-90"
+      className="inline-flex h-13 items-center gap-2 rounded-lg bg-gradient-to-r from-mint-deep to-mint px-7 text-sm font-bold uppercase tracking-wide text-midnight shadow-[0_0_24px_rgba(45,212,191,0.3)] transition hover:opacity-90"
     >
       {label} <span aria-hidden>→</span>
     </a>
@@ -233,7 +233,7 @@ function Hero() {
             <CallButton />
             <a
               href="#case-study"
-              className="inline-flex items-center rounded-lg border border-line px-5 py-3 text-xs font-semibold tracking-wide text-fog transition hover:border-fog hover:text-frost"
+              className="inline-flex h-13 items-center rounded-lg border border-line bg-charcoal/40 px-6 text-xs font-semibold tracking-wide text-frost transition hover:border-fog"
             >
               SEE A REAL CLIENT TRANSFORMATION
             </a>
@@ -259,11 +259,11 @@ function Hero() {
             </p>
             <div className="mt-2 flex justify-center gap-2">{disconnectedRow}</div>
             <DashRow />
-            <div className="mx-auto flex w-fit items-center gap-3 rounded-xl border border-violet/40 bg-midnight px-5 py-3 shadow-[0_0_30px_rgba(124,58,237,0.25)]">
-              <LogoMark size={30} />
+            <div className="mx-auto flex w-fit items-center gap-3 rounded-xl border border-violet/40 bg-midnight px-7 py-4 shadow-[0_0_40px_rgba(124,58,237,0.35)]">
+              <LogoMark size={40} />
               <span className="text-left">
-                <span className="block text-sm font-bold text-frost">BINARY 1702</span>
-                <span className="block text-xs text-fog">Maps. Fixes. Builds.</span>
+                <span className="block text-lg font-extrabold tracking-wide text-frost">BINARY 1702</span>
+                <span className="block text-sm text-fog">Maps. Fixes. Builds.</span>
               </span>
             </div>
             <DashRow />
