@@ -55,7 +55,7 @@ function CallButton({ label = "Book a free 15-minute call" }: { label?: string }
       href={bookingUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-3 rounded-[10px] bg-gradient-to-br from-mint-deep to-mint px-[26px] py-[18px] text-[15px] font-extrabold uppercase tracking-[0.8px] text-[#04120C] shadow-[0_8px_32px_rgba(52,224,161,0.25)] transition hover:shadow-[0_8px_40px_rgba(52,224,161,0.4)]"
+      className="inline-flex items-center gap-2.5 whitespace-nowrap rounded-[10px] bg-gradient-to-br from-mint-deep to-mint px-6 py-4 text-sm font-extrabold uppercase tracking-[0.8px] text-[#04120C] shadow-[0_8px_32px_rgba(52,224,161,0.25)] transition hover:shadow-[0_8px_40px_rgba(52,224,161,0.4)]"
     >
       {label} <span aria-hidden>→</span>
     </a>
@@ -221,7 +221,7 @@ function Hero() {
         style={{ background: "radial-gradient(60% 50% at 75% 20%, rgba(124,58,237,0.16), transparent 70%)" }}
         aria-hidden
       />
-      <div className="relative mx-auto grid max-w-[1280px] items-start gap-14 px-6 py-16 lg:grid-cols-[1fr_620px] lg:py-20">
+      <div className="relative mx-auto grid max-w-[1360px] items-start gap-10 px-6 py-16 lg:grid-cols-[1fr_600px] xl:gap-14 lg:py-20">
         <div className="flex flex-col gap-5">
           <p className="text-[15px] font-extrabold tracking-[2px] text-mint">
             SYSTEMS. WORKFLOWS. CLARITY.
@@ -237,11 +237,11 @@ function Hero() {
             Binary 1702 maps your tools, fixes broken handoffs, and builds the workflows that give
             founders their time back.
           </p>
-          <div className="mt-2 flex flex-wrap items-center gap-5">
+          <div className="mt-2 flex flex-col items-start gap-4 min-[440px]:flex-row min-[440px]:flex-wrap min-[440px]:items-center lg:flex-nowrap">
             <CallButton />
             <a
               href="#case-study"
-              className="inline-flex items-center rounded-[10px] border border-white/[0.18] px-6 py-[18px] text-[12.5px] font-bold tracking-[1px] text-[#E7E6EF] transition hover:border-white/40 hover:text-white"
+              className="inline-flex items-center whitespace-nowrap rounded-[10px] border border-white/[0.18] px-5 py-4 text-[12px] font-bold tracking-[1px] text-[#E7E6EF] transition hover:border-white/40 hover:text-white"
             >
               SEE A REAL CLIENT TRANSFORMATION
             </a>
