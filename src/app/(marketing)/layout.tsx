@@ -1,9 +1,16 @@
-import { Inter, IBM_Plex_Mono } from "next/font/google";
+import { Inter, IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
 
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-space-grotesk",
   display: "swap",
 });
 
@@ -26,7 +33,7 @@ export default function MarketingLayout({
 }>) {
   return (
     <div
-      className={`${inter.variable} ${plexMono.variable} font-display bg-paper text-ink min-h-screen`}
+      className={`${inter.variable} ${plexMono.variable} ${spaceGrotesk.variable} font-display bg-paper text-ink min-h-screen`}
     >
       {children}
     </div>

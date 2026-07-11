@@ -29,13 +29,25 @@
   --color-violet: #7C3AED;
   --color-royal: #4C1D95;
   --color-lavender: #A78BFA;
-  --color-mint: #2DD4BF;
-  --color-mint-deep: #14B8A6;
+  --color-mint: #34E0A1;
+  --color-mint-deep: #17C48F;
+  --color-violet-bright: #A855F7;
   --color-gold: #C8A24D;
   --color-gold-bright: #F2C94C;
   --color-line: #2A2A3A;
   --color-frost: #F8FAFC;
   --color-fog: #9CA3AF;
+
+  --font-heading: var(--font-space-grotesk), var(--font-inter), ui-sans-serif, sans-serif;
+}
+
+/* Animated connector lines in the hero diagram */
+@keyframes pulseLine {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+.pulse-line {
+  animation: pulseLine 2.4s ease-in-out infinite;
 }
 
 /* ─────────────────────────────────────────────────────────────

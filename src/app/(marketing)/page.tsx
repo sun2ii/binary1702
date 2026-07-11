@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 function LogoMark({ size = 34 }: { size?: number }) {
   return (
     <span
-      className="inline-flex items-center justify-center rounded-lg bg-gradient-to-br from-violet to-royal font-bold text-frost"
+      className="inline-flex items-center justify-center rounded-[9px] bg-gradient-to-br from-violet to-violet-bright font-heading font-bold text-frost"
       style={{ width: size, height: size, fontSize: size * 0.55 }}
     >
       B
@@ -55,7 +55,7 @@ function CallButton({ label = "Book a free 15-minute call" }: { label?: string }
       href={bookingUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex h-13 items-center gap-2 rounded-lg bg-gradient-to-r from-mint-deep to-mint px-7 text-sm font-bold uppercase tracking-wide text-midnight shadow-[0_0_24px_rgba(45,212,191,0.3)] transition hover:opacity-90"
+      className="inline-flex items-center gap-3 rounded-[10px] bg-gradient-to-br from-mint-deep to-mint px-[26px] py-[18px] text-[15px] font-extrabold uppercase tracking-[0.8px] text-[#04120C] shadow-[0_8px_32px_rgba(52,224,161,0.25)] transition hover:shadow-[0_8px_40px_rgba(52,224,161,0.4)]"
     >
       {label} <span aria-hidden>→</span>
     </a>
@@ -67,7 +67,7 @@ function CallButton({ label = "Book a free 15-minute call" }: { label?: string }
 function Tile({ bg, label, children }: { bg: string; label: string; children: React.ReactNode }) {
   return (
     <span
-      className="flex h-11 w-11 items-center justify-center rounded-xl shadow-md"
+      className="flex h-[52px] w-[52px] items-center justify-center rounded-xl shadow-md"
       style={{ backgroundColor: bg }}
       title={label}
       aria-label={label}
@@ -134,16 +134,19 @@ const alignedRow = [
   </Tile>,
 ];
 
-/* Dotted connector stubs between diagram rows */
-function DashRow() {
+/* Animated pulse connector between diagram rows */
+function PulseLine({ direction = "down" }: { direction?: "down" | "up" }) {
   return (
-    <div className="flex justify-center gap-2" aria-hidden>
-      {[0, 1, 2, 3, 4].map((i) => (
-        <span key={i} className="flex w-11 justify-center">
-          <span className="h-5 border-l border-dashed border-mint/40" />
-        </span>
-      ))}
-    </div>
+    <span
+      className="pulse-line -my-2 h-[22px] w-[2px]"
+      style={{
+        background:
+          direction === "down"
+            ? "linear-gradient(180deg, #34E0A1, transparent)"
+            : "linear-gradient(180deg, transparent, #34E0A1)",
+      }}
+      aria-hidden
+    />
   );
 }
 
@@ -166,8 +169,8 @@ function HomeNav() {
       <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3">
         <Link href="/" className="flex items-center gap-2.5">
           <LogoMark />
-          <span className="text-lg font-extrabold tracking-wide text-frost">
-            BINARY <span className="text-violet">1702</span>
+          <span className="font-heading text-[22px] font-bold tracking-[0.5px] text-frost">
+            BINARY <span className="text-violet-bright">1702</span>
           </span>
         </Link>
         <div className="hidden items-center gap-7 md:flex">
@@ -175,7 +178,7 @@ function HomeNav() {
             <Link
               key={l.label}
               href={l.href}
-              className="text-xs font-semibold uppercase tracking-[0.15em] text-fog transition hover:text-frost"
+              className="text-sm font-bold uppercase tracking-[1px] text-[#E7E6EF] transition hover:text-frost"
             >
               {l.label}
             </Link>
@@ -186,9 +189,9 @@ function HomeNav() {
             href={bookingUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-lg border border-mint px-4 py-2 text-xs font-bold tracking-wide text-mint shadow-[0_0_16px_rgba(45,212,191,0.2)] transition hover:bg-mint hover:text-midnight"
+            className="inline-flex items-center gap-2.5 rounded-[10px] border border-mint bg-mint/[0.08] px-[22px] py-3.5 text-sm font-extrabold tracking-[1px] text-mint transition hover:bg-mint/[0.16]"
           >
-            FREE 15-MINUTE CALL →
+            FREE 15-MINUTE CALL <span aria-hidden>→</span>
           </a>
           <span className="hidden text-[10px] text-fog sm:block">No pressure. Just a conversation.</span>
         </div>
@@ -218,75 +221,99 @@ function Hero() {
         style={{ background: "radial-gradient(60% 50% at 75% 20%, rgba(124,58,237,0.16), transparent 70%)" }}
         aria-hidden
       />
-      <div className="relative mx-auto grid max-w-6xl gap-12 px-5 py-16 lg:grid-cols-[1.05fr_1fr] lg:py-20">
-        <div>
-          <Eyebrow className="text-mint">Systems. Workflows. Clarity.</Eyebrow>
-          <h1 className="mt-4 max-w-xl text-4xl font-extrabold leading-tight text-frost md:text-[2.9rem]">
+      <div className="relative mx-auto grid max-w-[1280px] items-start gap-14 px-6 py-16 lg:grid-cols-[1fr_620px] lg:py-20">
+        <div className="flex flex-col gap-5">
+          <p className="text-[15px] font-extrabold tracking-[2px] text-mint">
+            SYSTEMS. WORKFLOWS. CLARITY.
+          </p>
+          <h1
+            className="font-heading text-4xl font-bold leading-[1.15] text-white md:text-[52px]"
+            style={{ textWrap: "balance" }}
+          >
             Your business should not depend on you manually holding{" "}
-            <span className="text-lavender">every system together.</span>
+            <span className="text-violet-bright">every system together.</span>
           </h1>
-          <p className="mt-5 max-w-xl text-lg text-fog">
+          <p className="max-w-[520px] text-[19px] leading-relaxed text-[#C9C7D6]">
             Binary 1702 maps your tools, fixes broken handoffs, and builds the workflows that give
             founders their time back.
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div className="mt-2 flex flex-wrap items-center gap-5">
             <CallButton />
             <a
               href="#case-study"
-              className="inline-flex h-13 items-center rounded-lg border border-line bg-charcoal/40 px-6 text-xs font-semibold tracking-wide text-frost transition hover:border-fog"
+              className="inline-flex items-center rounded-[10px] border border-white/[0.18] px-6 py-[18px] text-[12.5px] font-bold tracking-[1px] text-[#E7E6EF] transition hover:border-white/40 hover:text-white"
             >
               SEE A REAL CLIENT TRANSFORMATION
             </a>
           </div>
-          <p className="mt-3 text-sm text-fog/80">Let&apos;s talk about your business and challenges.</p>
-          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2">
+          <p className="text-sm text-fog">Let&apos;s talk about your business and challenges.</p>
+          <ul className="mt-2 flex flex-wrap gap-x-6 gap-y-2.5">
             {heroTrust.map((t) => (
-              <li key={t} className="flex items-center gap-2 text-xs font-medium text-fog">
-                <Check className="text-violet" /> {t}
+              <li key={t} className="flex items-center gap-2">
+                <span className="flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full border-[1.5px] border-violet-bright text-[11px] font-extrabold text-violet-bright">
+                  ✓
+                </span>
+                <span className="text-[13.5px] font-semibold text-[#D7D5E2]">{t}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Diagram panel */}
-        <div className="grid gap-4 sm:grid-cols-[1.5fr_1fr]">
-          <div className="rounded-2xl border border-line bg-charcoal/60 p-5">
-            <p className="text-center text-sm font-bold tracking-wide text-frost">
+        {/* Diagram + results */}
+        <div className="grid items-stretch gap-5 sm:grid-cols-[1fr_210px]">
+          {/* Diagram panel */}
+          <div className="flex flex-col items-center gap-4 rounded-2xl border border-violet-bright/25 bg-[#141024]/60 px-[22px] py-6">
+            <p className="font-heading text-[17px] font-bold tracking-[1px] text-frost">
               FROM DISCONNECTED TO <span className="text-mint">ALIGNED</span>
             </p>
-            <p className="mt-4 text-center font-display-mono text-[10px] tracking-[0.2em] text-fog">
-              DISCONNECTED TODAY
-            </p>
-            <div className="mt-2 flex justify-center gap-2">{disconnectedRow}</div>
-            <DashRow />
-            <div className="mx-auto flex w-fit items-center gap-3 rounded-xl border border-violet/40 bg-midnight px-7 py-4 shadow-[0_0_40px_rgba(124,58,237,0.35)]">
+
+            <div className="flex w-full flex-col items-center gap-3.5 rounded-xl border border-white/[0.08] bg-[#0A0912]/70 px-4 pb-[18px] pt-3.5">
+              <p className="text-[11.5px] font-extrabold tracking-[1.5px] text-[#B7B5C4]">
+                DISCONNECTED TODAY
+              </p>
+              <div className="flex gap-4">{disconnectedRow}</div>
+            </div>
+
+            <PulseLine direction="down" />
+
+            <div className="flex w-full items-center justify-center gap-3.5 rounded-xl border border-violet-bright/40 bg-[#0F0C1C]/90 px-5 py-4 shadow-[0_0_40px_rgba(124,58,237,0.2)]">
               <LogoMark size={40} />
               <span className="text-left">
-                <span className="block text-lg font-extrabold tracking-wide text-frost">BINARY 1702</span>
-                <span className="block text-sm text-fog">Maps. Fixes. Builds.</span>
+                <span className="block font-heading text-[17px] font-bold tracking-[0.5px] text-frost">
+                  BINARY 1702
+                </span>
+                <span className="block text-[13px] text-[#B7B5C4]">Maps. Fixes. Builds.</span>
               </span>
             </div>
-            <DashRow />
-            <p className="text-center font-display-mono text-[10px] tracking-[0.2em] text-mint">
-              ALIGNED &amp; AUTOMATED
-            </p>
-            <div className="mt-2 flex justify-center gap-2">{alignedRow}</div>
-          </div>
-          <div className="flex flex-col justify-between rounded-2xl border border-line bg-charcoal/60 p-5">
-            <div>
-              <p className="text-sm font-bold tracking-wide text-frost">THE RESULTS</p>
-              <ul className="mt-3 space-y-2.5">
-                {heroResults.map((r) => (
-                  <li key={r} className="flex items-start gap-2 text-xs text-fog">
-                    <Check /> {r}
-                  </li>
-                ))}
-              </ul>
+
+            <PulseLine direction="up" />
+
+            <div className="flex w-full flex-col items-center gap-3.5 rounded-xl border border-mint/25 bg-[#0A0912]/70 px-4 pb-[18px] pt-3.5">
+              <p className="text-[11.5px] font-extrabold tracking-[1.5px] text-[#B7B5C4]">
+                ALIGNED &amp; AUTOMATED
+              </p>
+              <div className="flex gap-4">{alignedRow}</div>
             </div>
-            <div className="mt-5 border-t border-line pt-4">
-              <Eyebrow className="text-lavender">The Opportunity</Eyebrow>
-              <p className="mt-1 text-2xl font-extrabold text-frost">
-                10+ <span className="text-sm font-semibold text-fog">hrs/week reclaimed</span>
+          </div>
+
+          {/* Results panel */}
+          <div className="flex flex-col rounded-2xl border border-white/[0.08] bg-[#0E0C18]/70 px-[18px] py-6">
+            <p className="font-heading text-[15px] font-bold tracking-[1px] text-frost">THE RESULTS</p>
+            <ul className="flex flex-1 flex-col justify-evenly gap-4 py-[18px]">
+              {heroResults.map((r) => (
+                <li key={r} className="flex items-start gap-2.5">
+                  <span className="text-sm font-extrabold leading-[1.4] text-mint">✓</span>
+                  <span className="text-[13px] leading-[1.45] text-[#C9C7D6]">{r}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="flex flex-col gap-1.5 border-t border-white/[0.08] pt-4">
+              <p className="text-xs font-extrabold tracking-[1.5px] text-violet-bright">
+                THE OPPORTUNITY
+              </p>
+              <p className="text-[15px] text-[#E7E6EF]">
+                <span className="font-heading text-[26px] font-bold text-violet-bright">10+</span>{" "}
+                hrs/week reclaimed
               </p>
             </div>
           </div>
