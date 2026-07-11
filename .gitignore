@@ -34,3 +34,9 @@ public/workbox-*.js
 
 # private operator notes
 _ops/*
+
+# private business data (never commit)
+_private/
+
+# retired static prototypes
+_prototype-static/old-home-static.html
