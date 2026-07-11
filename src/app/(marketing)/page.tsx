@@ -134,7 +134,7 @@ const navLinks = [
   { label: "Labs", href: "/labs" },
   { label: "Legacy", href: "/legacy" },
   { label: "Work", href: "#case-study" },
-  { label: "About", href: "#footer" },
+  { label: "About", href: "#site-footer" },
   { label: "Contact", href: "#contact" },
 ];
 

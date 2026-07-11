@@ -6,7 +6,9 @@ import Link from "next/link";
  */
 export function SiteFooter() {
   return (
-    <footer id="footer" className="border-t border-zinc-800 bg-midnight">
+    // Rendered as a div (not <footer>) with role="contentinfo": ad-blocker
+    // cosmetic filters like `##footer` hide the tag itself on every site.
+    <div id="site-footer" role="contentinfo" className="border-t border-zinc-800 bg-midnight">
       <div className="mx-auto w-full max-w-7xl px-6 py-12">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-5">
           <div className="col-span-2 md:col-span-1">
@@ -26,7 +28,7 @@ export function SiteFooter() {
             </h3>
             <ul className="mt-4 space-y-2">
               <li>
-                <a href="#footer" className="text-sm text-zinc-400 hover:text-white">
+                <a href="#site-footer" className="text-sm text-zinc-400 hover:text-white">
                   About
                 </a>
               </li>
@@ -114,6 +116,6 @@ export function SiteFooter() {
           © {new Date().getFullYear()} Binary 1702. All rights reserved.
         </p>
       </div>
-    </footer>
+    </div>
   );
 }
