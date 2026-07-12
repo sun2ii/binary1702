@@ -111,7 +111,7 @@ function AboutHero() {
           </div>
         </div>
         <PhotoSlot
-          src="/about/founder-desk.jpg"
+          src="/about/founder-desk.png"
           label="Ben working at his desk"
           className="min-h-[280px] lg:min-h-[480px]"
           overlay="linear-gradient(90deg, #0B0A14 0%, rgba(11,10,20,0.4) 30%, transparent 60%)"
@@ -198,7 +198,7 @@ function AboutStory() {
             </div>
           </div>
           <PhotoSlot
-            src="/about/founder-portrait.jpg"
+            src="/about/founder-portrait.png"
             label="Portrait of Ben Basuni"
             className="h-[340px] rounded-[14px] border border-violet-bright/30"
           />

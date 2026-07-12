@@ -12,7 +12,7 @@ const links = [
   { label: "Legacy", href: "/legacy" },
   { label: "Work", href: "/work" },
   { label: "About", href: "/about" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function SiteNav({ active }: { active?: string }) {
