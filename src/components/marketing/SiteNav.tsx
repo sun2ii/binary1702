@@ -11,7 +11,7 @@ const links = [
   { label: "Labs", href: "/labs" },
   { label: "Legacy", href: "/legacy" },
   { label: "Work", href: "/work" },
-  { label: "About", href: "/#site-footer" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "/#contact" },
 ];
 

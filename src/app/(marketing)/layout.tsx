@@ -1,4 +1,11 @@
-import { Inter, IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
+import { Inter, IBM_Plex_Mono, Space_Grotesk, Great_Vibes } from "next/font/google";
+
+const greatVibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-great-vibes",
+  display: "swap",
+});
 
 const inter = Inter({
   subsets: ["latin"],
@@ -33,7 +40,7 @@ export default function MarketingLayout({
 }>) {
   return (
     <div
-      className={`${inter.variable} ${plexMono.variable} ${spaceGrotesk.variable} font-display bg-paper text-ink min-h-screen`}
+      className={`${inter.variable} ${plexMono.variable} ${spaceGrotesk.variable} ${greatVibes.variable} font-display bg-paper text-ink min-h-screen`}
     >
       {children}
     </div>

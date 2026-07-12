@@ -39,6 +39,7 @@
   --color-fog: #9CA3AF;
 
   --font-heading: var(--font-space-grotesk), var(--font-inter), ui-sans-serif, sans-serif;
+  --font-script: var(--font-great-vibes), cursive;
 }
 
 /* Animated connector lines in the hero diagram */
@@ -70,6 +71,18 @@
 .twinkle { animation: twinkle 3s ease-in-out infinite; }
 .float-b { animation: floatB 5s ease-in-out infinite; }
 .glow-pulse { animation: glowPulse 4s ease-in-out infinite; }
+
+/* /about page animations */
+@keyframes stackFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes bubblePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.25); }
+  50% { box-shadow: 0 0 0 14px rgba(124, 58, 237, 0); }
+}
+.stack-float { animation: stackFloat 5s ease-in-out infinite; }
+.bubble-pulse { animation: bubblePulse 4s ease-in-out infinite; }
 
 /* ─────────────────────────────────────────────────────────────
    Existing logs/gallery palette — kept under .logs-scope so

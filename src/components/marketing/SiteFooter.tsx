@@ -28,9 +28,9 @@ export function SiteFooter() {
             </h3>
             <ul className="mt-4 space-y-2">
               <li>
-                <a href="#site-footer" className="text-sm text-zinc-400 hover:text-white">
+                <Link href="/about" className="text-sm text-zinc-400 hover:text-white">
                   About
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="#contact" className="text-sm text-zinc-400 hover:text-white">
