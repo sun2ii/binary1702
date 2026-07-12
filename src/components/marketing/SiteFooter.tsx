@@ -99,7 +99,7 @@ export function SiteFooter() {
                 </svg>
               </a>
               <a
-                href="mailto:benbasuni1@gmail.com"
+                href="mailto:ben@binary1702.com"
                 aria-label="Email"
                 className="text-zinc-500 hover:text-white"
               >

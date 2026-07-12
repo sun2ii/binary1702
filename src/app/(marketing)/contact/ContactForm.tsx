@@ -113,8 +113,8 @@ export function ContactForm() {
       {status === "error" ? (
         <p className="text-xs text-[#F87171]">
           Something went wrong — email us instead at{" "}
-          <a href="mailto:benbasuni1@gmail.com" className="underline">
-            benbasuni1@gmail.com
+          <a href="mailto:ben@binary1702.com" className="underline">
+          ben@binary1702.com
           </a>
           .
         </p>

@@ -389,7 +389,7 @@ function LegacyCta() {
         </div>
         <div className="flex flex-col items-center gap-3">
           <a
-            href="mailto:benbasuni1@gmail.com"
+            href="mailto:ben@binary1702.com"
             className="inline-flex items-center gap-3 rounded-[10px] bg-gradient-to-br from-violet to-violet-bright px-7 py-4 text-sm font-extrabold tracking-[1px] text-white shadow-[0_8px_32px_rgba(124,58,237,0.35)] transition hover:shadow-[0_8px_40px_rgba(124,58,237,0.55)]"
           >
             STAY CONNECTED <span aria-hidden className="text-base">→</span>

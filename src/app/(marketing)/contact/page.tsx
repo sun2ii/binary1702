@@ -292,7 +292,7 @@ function Assurance() {
 }
 
 const emailRows = [
-  { glyph: "✉︎", label: "benbasuni1@gmail.com", href: "mailto:benbasuni1@gmail.com" },
+  { glyph: "✉︎", label: "ben@binary1702.com", href: "mailto:ben@binary1702.com" },
   { glyph: "◷", label: "Response time: Usually within one business day" },
   { glyph: "◉", label: "binary1702.com", href: "https://binary1702.com" },
   { glyph: "in", label: "linkedin.com/in/benbasuni", href: "https://linkedin.com/in/benbasuni" },
