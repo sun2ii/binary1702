@@ -10,7 +10,7 @@ const links = [
   { label: "Studio", href: "/studio" },
   { label: "Labs", href: "/labs" },
   { label: "Legacy", href: "/legacy" },
-  { label: "Work", href: "/#case-study" },
+  { label: "Work", href: "/work" },
   { label: "About", href: "/#site-footer" },
   { label: "Contact", href: "/#contact" },
 ];

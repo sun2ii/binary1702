@@ -69,9 +69,9 @@ export function SiteFooter() {
             </h3>
             <ul className="mt-4 space-y-2">
               <li>
-                <a href="#case-study" className="text-sm text-zinc-400 hover:text-white">
+                <Link href="/work" className="text-sm text-zinc-400 hover:text-white">
                   Case Studies
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="#how-we-work" className="text-sm text-zinc-400 hover:text-white">
