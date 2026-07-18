@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { bookingUrl, intakeUrl } from "@/config/site";
 import { SiteNav } from "@/components/marketing/SiteNav";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
+import { ProjectReadinessCard } from "@/components/studio/ProjectReadinessCard";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Binary 1702 Studio — Our Services. Your Operational Edge.",
+  title: "Studio.",
   description:
-    "Binary 1702 Studio is our menu of fixed-scope services designed to bring clarity, automation, and structure to your business operations.",
+    "Three promises: no surprises, you own everything, and we build systems that actually work. Fixed-scope services with clear deliverables, timeline, and price before we begin.",
 };
 
 /* ────────────────────────────────────────────────────────────────
@@ -158,79 +159,87 @@ function CheckDot({ size = 20 }: { size?: number }) {
   );
 }
 
+function MiniCheck() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="m5 12 5 5 9-11" />
+    </svg>
+  );
+}
+
 /* ────────────────────────────────────────────────────────────────
    Content (verbatim from the design export)
    ──────────────────────────────────────────────────────────────── */
 
-const assurances = [
-  { title: "Fixed Scope", sub: "Clear deliverables and timelines" },
-  { title: "Working Systems", sub: "Built for your business, not just recommendations" },
-  { title: "No Open-Ended Contracts", sub: "Pay for outcomes, not time" },
-  { title: "You Own Everything", sub: "Full ownership of all systems and docs" },
+const promises = [
+  {
+    n: "1",
+    title: "No surprises.",
+    lead: "You'll know exactly what you're getting before we start.",
+    detail: "Clear scope. Clear pricing. Clear timeline.",
+  },
+  {
+    n: "2",
+    title: "You own everything.",
+    lead: "Your website, systems, documentation, and accounts belong to you.",
+    detail: "No vendor lock-in.",
+  },
+  {
+    n: "3",
+    title: "We build things that work.",
+    lead: "No endless strategy decks. No unnecessary complexity.",
+    detail: "Just reliable systems that solve real business problems.",
+  },
 ];
 
-const services: {
-  icon: "search" | "zap" | "settings" | "chart" | "puzzle";
+// The engagement model — visitors choose where they are in the journey, not which
+// technology they need. We diagnose, we recommend, we build. Engineer is the primary stage.
+const stages: {
+  step: string;
+  stage: string;
   name: string;
-  price: string;
-  startingAt: boolean;
-  popular: boolean;
   desc: string;
-  features: string[];
+  note?: string;
+  bullets: string[];
+  cta: string;
+  primary: boolean;
 }[] = [
   {
-    icon: "search",
+    step: "01",
+    stage: "Diagnose",
     name: "Operations Diagnostic",
-    price: "$2,000",
-    startingAt: false,
-    popular: false,
-    desc: "A 1-week deep dive to map, diagnose, and prioritize.",
-    features: ["Complete systems assessment", "Architecture map & findings", "Prioritized roadmap", "Immediate issues fixed", "1-week engagement"],
+    desc: "We learn how your business operates before recommending a solution. Every engagement begins by understanding your goals, identifying bottlenecks, and mapping the systems that matter most.",
+    bullets: ["Process Mapping", "Operations Assessment", "Bottleneck Discovery", "Implementation Roadmap"],
+    cta: "Schedule Discovery",
+    primary: false,
   },
   {
-    icon: "zap",
+    step: "02",
+    stage: "Engineer",
     name: "Systems Sprint",
-    price: "$5,000",
-    startingAt: true,
-    popular: true,
-    desc: "4-week implementation sprint to build and automate.",
-    features: ["High-impact workflow builds", "Automation & integrations", "Documentation & training", "You own everything we build", "4-week engagement"],
+    desc: "Once we understand your business, we engineer the right solution. Whether that involves automation, AI, dashboards, portals, integrations, or custom software depends entirely on your business — not a predefined package.",
+    note: "Examples of what we might build — scoped to your business, never a fixed package.",
+    bullets: ["Workflow Automation", "AI Solutions", "Dashboards", "Client Portals", "System Integrations", "Custom Software"],
+    cta: "Start Building",
+    primary: true,
   },
   {
-    icon: "settings",
-    name: "Workflow Automation",
-    price: "$2,500",
-    startingAt: true,
-    popular: false,
-    desc: "Automate repetitive tasks and manual handoffs.",
-    features: ["Workflow design & build", "Automation setup", "Testing & optimization", "Handoff & documentation", "Timeline based on scope"],
-  },
-  {
-    icon: "chart",
-    name: "Dashboards & Reporting",
-    price: "$2,500",
-    startingAt: true,
-    popular: false,
-    desc: "Real-time insights so you can make better decisions.",
-    features: ["Data sourcing & cleanup", "Dashboard design", "Reports & KPIs", "Training & handoff", "Timeline based on scope"],
-  },
-  {
-    icon: "puzzle",
-    name: "Integrations Package",
-    price: "$1,500",
-    startingAt: true,
-    popular: false,
-    desc: "Connect your tools and unify your data.",
-    features: ["Integration planning", "Tool connections", "Data flow mapping", "Testing & validation", "Timeline based on scope"],
+    step: "03",
+    stage: "Support",
+    name: "Care Plan",
+    desc: "Technology should keep improving after launch. We stay involved through ongoing support, enhancements, optimization, and a long-term partnership.",
+    bullets: ["Priority Support", "Continuous Improvements", "Documentation", "System Optimization", "Strategic Guidance"],
+    cta: "Explore Care Plans",
+    primary: false,
   },
 ];
 
+// "Clear scope" and "Full ownership" now live in the hero promises — kept here only the
+// items that reduce uncertainty not already covered above.
 const included: { icon: "clipboard" | "refresh" | "users" | "book" | "key"; text: string }[] = [
-  { icon: "clipboard", text: "Clear scope & deliverables" },
   { icon: "refresh", text: "Regular updates & checkpoints" },
   { icon: "users", text: "Built with your team, not just for them" },
   { icon: "book", text: "Documentation & training" },
-  { icon: "key", text: "Full ownership of everything we build" },
 ];
 
 const processSteps = [
@@ -241,11 +250,11 @@ const processSteps = [
   { n: "5", name: "Optimize", desc: "We monitor, refine, and improve over time." },
 ];
 
+// "Built to Last" (working systems) and "No Fluff" (clear communication) are now covered by the
+// hero promises. Kept only the two reasons that add uncertainty-reduction not stated above.
 const whyClients: { icon: "user" | "shield" | "lock" | "check-circle"; title: string; desc: string }[] = [
   { icon: "user", title: "Founder-Focused", desc: "We relieve founder bottlenecks and give you back time." },
-  { icon: "shield", title: "Built to Last", desc: "We build systems that are scalable, reliable, and easy to maintain." },
   { icon: "lock", title: "Secure & Private", desc: "Your data and systems are handled with care and confidentiality." },
-  { icon: "check-circle", title: "No Fluff", desc: "Real outcomes. Clear communication. Zero wasted time." },
 ];
 
 /* ────────────────────────────────────────────────────────────────
@@ -264,38 +273,30 @@ function StudioHero() {
         <div className="flex flex-col gap-[22px]">
           <p className="text-[15px] font-extrabold tracking-[2.5px] text-violet-bright">STUDIO</p>
           <h1 className="font-heading text-4xl font-bold leading-[1.12] text-white md:text-[54px]">
-            Our Services.
+          Clarity First.
             <br />
-            <span className="text-violet-bright">Your Operational Edge.</span>
+            <span className="text-violet-bright">Execute Calmly.</span>
           </h1>
           <p className="max-w-[560px] text-[19px] leading-[1.65] text-[#C9C7D6]">
-            Binary 1702 Studio is our menu of fixed-scope services designed to bring clarity,
-            automation, and structure to your business operations.
+            We believe trust is earned by keeping promises. Every service we offer is built around
+            three simple commitments designed to reduce uncertainty and help you move forward with
+            confidence.
           </p>
-          <div className="mt-4 grid grid-cols-2 gap-5 lg:grid-cols-4">
-            {assurances.map((a) => (
-              <div key={a.title} className="flex flex-col gap-2">
+          <div className="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-3">
+            {promises.map((p) => (
+              <div key={p.n} className="flex flex-col gap-2">
                 <div className="flex items-center gap-2">
                   <CheckDot />
-                  <span className="text-[14.5px] font-bold text-white">{a.title}</span>
+                  <span className="text-[14.5px] font-bold text-white">{p.title}</span>
                 </div>
-                <p className="pl-[29px] text-[13px] leading-[1.5] text-fog">{a.sub}</p>
+                <p className="pl-[29px] text-[13px] leading-[1.5] text-fog">{p.lead}</p>
               </div>
             ))}
           </div>
         </div>
-        {/* Visual slot — swap for real imagery when ready */}
-        <div
-          className="relative hidden h-[460px] overflow-hidden rounded-[18px] border border-violet-bright/25 lg:block"
-          style={{
-            background:
-              "radial-gradient(70% 60% at 50% 45%, rgba(124,58,237,0.35), transparent 75%), linear-gradient(180deg, #141024, #0A0912)",
-          }}
-          aria-hidden
-        >
-          <span className="absolute inset-0 flex items-center justify-center text-violet-bright/30">
-            <Icon kind="settings" size={140} />
-          </span>
+        {/* Visual slot — the first reusable design-system component: shows how we work */}
+        <div className="hidden lg:block">
+          <ProjectReadinessCard />
         </div>
       </div>
     </section>
@@ -304,55 +305,72 @@ function StudioHero() {
 
 function StudioMenu() {
   return (
-    <section className="mx-auto max-w-[1360px] px-6 py-8">
-      <div className="flex flex-col items-center gap-2.5 text-center">
+    <section className="mx-auto max-w-[1360px] px-6 py-16">
+      <div className="mx-auto flex max-w-[620px] flex-col items-center gap-3 text-center">
         <h2 className="font-heading text-2xl font-bold tracking-[3px] text-violet-bright">
-          THE STUDIO MENU
+          HOW WE WORK
         </h2>
-        <p className="text-lg text-[#C9C7D6]">Choose the right service for where your business is now.</p>
+        <p className="text-lg leading-relaxed text-[#C9C7D6]">
+          You don&apos;t need to know which technology you need. Tell us where your business is, and
+          we&apos;ll take it from there.
+        </p>
       </div>
-      <div className="mt-8 grid items-stretch gap-[18px] md:grid-cols-2 xl:grid-cols-5">
-        {services.map((s) => (
+
+      <div className="mt-14 grid items-stretch gap-5 lg:grid-cols-3">
+        {stages.map((s) => (
           <div
             key={s.name}
-            className="relative flex flex-col gap-4 rounded-2xl bg-[#100D1C]/70 px-5 py-[26px]"
-            style={{
-              border: `1px solid ${s.popular ? "rgba(168,85,247,0.55)" : "rgba(168,85,247,0.22)"}`,
-            }}
+            className={`relative flex flex-col rounded-2xl border p-7 transition duration-300 md:p-8 ${
+              s.primary
+                ? "border-violet-bright/35 bg-[#130E22]/70 shadow-[0_30px_90px_-55px_rgba(124,58,237,0.75)]"
+                : "border-white/[0.08] bg-[#0E0C18]/50 hover:border-white/[0.14]"
+            }`}
           >
-            {s.popular && (
-              <span className="absolute -top-[13px] left-1/2 -translate-x-1/2 whitespace-nowrap rounded-lg bg-violet px-3 py-1 text-[11.5px] font-extrabold tracking-[1px] text-white">
-                MOST POPULAR
+            {s.primary && (
+              <span className="absolute -top-3 left-8 rounded-full border border-violet-bright/40 bg-midnight px-3 py-1 font-heading text-[10.5px] font-bold uppercase tracking-[1.5px] text-violet-bright">
+                Most engagements start here
               </span>
             )}
-            <div className="flex items-start gap-3">
-              <span className="shrink-0 text-violet-bright">
-                <Icon kind={s.icon} size={32} />
+
+            {/* Stage marker — reinforces the journey */}
+            <div className="flex items-baseline gap-2.5">
+              <span className="font-heading text-[15px] font-bold text-violet-bright">{s.step}</span>
+              <span className="font-heading text-[12px] font-bold uppercase tracking-[2.5px] text-fog">
+                {s.stage}
               </span>
-              <h3 className="font-heading text-[19px] font-bold leading-[1.25] text-white">{s.name}</h3>
             </div>
-            <div>
-              {s.startingAt && <p className="text-[12.5px] text-fog">Starting at</p>}
-              <p className="font-heading text-[28px] font-bold text-violet-bright">{s.price}</p>
-            </div>
-            <p className="text-[13.5px] leading-[1.55] text-[#C9C7D6]">{s.desc}</p>
-            <div className="flex flex-1 flex-col gap-2.5">
-              {s.features.map((f) => (
-                <p key={f} className="flex items-start gap-2">
-                  <span className="mt-px">
-                    <CheckDot size={16} />
+
+            <h3 className="mt-4 font-heading text-[22px] font-bold text-white">{s.name}</h3>
+            <p className="mt-3 text-[14.5px] leading-[1.6] text-[#C9C7D6]">{s.desc}</p>
+
+            {s.note && (
+              <p className="mt-4 border-l-2 border-violet-bright/30 pl-3 text-[12.5px] italic leading-[1.5] text-fog">
+                {s.note}
+              </p>
+            )}
+
+            <ul className="mt-6 flex flex-1 flex-col gap-2.5">
+              {s.bullets.map((b) => (
+                <li key={b} className="flex items-start gap-2.5">
+                  <span className={`mt-[3px] shrink-0 ${s.primary ? "text-violet-bright" : "text-lavender/50"}`}>
+                    <MiniCheck />
                   </span>
-                  <span className="text-[12.5px] leading-[1.45] text-[#C9C7D6]">{f}</span>
-                </p>
+                  <span className="text-[13.5px] leading-[1.4] text-[#D7D5E2]">{b}</span>
+                </li>
               ))}
-            </div>
+            </ul>
+
             <a
               href={bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2.5 rounded-[10px] border border-violet-bright/40 px-2.5 py-3 font-heading text-[13px] font-bold tracking-[1.5px] text-[#C084FC] transition hover:bg-violet-bright/[0.12] hover:text-[#D8B4FE]"
+              className={`mt-8 flex items-center justify-center gap-2 rounded-[10px] px-4 py-3 font-heading text-[13px] font-bold tracking-[1px] transition ${
+                s.primary
+                  ? "bg-gradient-to-br from-violet to-violet-bright text-white shadow-[0_10px_30px_-12px_rgba(124,58,237,0.8)] hover:shadow-[0_14px_38px_-10px_rgba(124,58,237,0.95)]"
+                  : "border border-white/[0.12] text-[#C9C7D6] hover:border-violet-bright/40 hover:text-white"
+              }`}
             >
-              LEARN MORE <span aria-hidden>→</span>
+              {s.cta} <span aria-hidden>→</span>
             </a>
           </div>
         ))}
@@ -383,7 +401,7 @@ function IncludedAndProcess() {
 
         <div className="flex flex-col rounded-2xl border border-white/[0.08] bg-[#0E0C18]/70 px-8 py-7">
           <h2 className="font-heading text-base font-bold tracking-[1.5px] text-violet-bright">
-            OUR PROVEN PROCESS
+            OUR PROCESS
           </h2>
           <div className="grid flex-1 content-center items-start gap-2.5 pt-6 sm:grid-cols-[1fr_30px_1fr_30px_1fr_30px_1fr_30px_1fr]">
             {processSteps.map((p, i) => (
@@ -420,7 +438,7 @@ function WhyAndTestimonial() {
           <h2 className="font-heading text-base font-bold tracking-[1.5px] text-violet-bright">
             WHY CLIENTS WORK WITH BINARY 1702
           </h2>
-          <div className="grid grid-cols-2 gap-5 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-5">
             {whyClients.map((w) => (
               <div key={w.title} className="flex flex-col items-center gap-3 text-center">
                 <span className="text-violet-bright">
@@ -468,11 +486,11 @@ function StudioCta() {
         </span>
         <div className="flex flex-col gap-2">
           <h2 className="font-heading text-[30px] font-bold text-white">
-            Ready to build systems that scale?
+            Let&apos;s build something that works.
           </h2>
           <p className="max-w-[540px] text-base leading-[1.55] text-[#D7D5E2]">
-            Let&apos;s turn complexity into clarity and build the operational backbone your business
-            deserves.
+            Book a call and we&apos;ll walk through your scope, pricing, and timeline up front — so
+            you know exactly what to expect.
           </p>
         </div>
         <div className="flex flex-col items-center gap-3.5">

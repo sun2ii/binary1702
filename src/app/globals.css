@@ -84,6 +84,16 @@
 .stack-float { animation: stackFloat 5s ease-in-out infinite; }
 .bubble-pulse { animation: bubblePulse 4s ease-in-out infinite; }
 
+/* ProjectReadinessCard (studio design-system component) */
+@keyframes readinessPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.12; transform: scale(1.7); }
+}
+.readiness-pulse { animation: readinessPulse 2.6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .readiness-pulse { animation: none; }
+}
+
 /* ─────────────────────────────────────────────────────────────
    Existing logs/gallery palette — kept under .logs-scope so
    it doesn't bleed into the (marketing) route group.
